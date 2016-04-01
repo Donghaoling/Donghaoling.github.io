@@ -1,0 +1,2262 @@
+relations = {
+    "2005": [
+        {
+            "name": "stanford", 
+            "value": [
+                86.387, 
+                -24.957, 
+                4
+            ]
+        }, 
+        {
+            "name": "harvard", 
+            "value": [
+                87.682, 
+                -28.083, 
+                4
+            ]
+        }, 
+        {
+            "name": "cornell", 
+            "value": [
+                87.465, 
+                -27.115, 
+                4
+            ]
+        }, 
+        {
+            "name": "princeton", 
+            "value": [
+                85.976, 
+                -27.295, 
+                4
+            ]
+        }, 
+        {
+            "name": "cambridge", 
+            "value": [
+                87.109, 
+                -27.303, 
+                4
+            ]
+        }, 
+        {
+            "name": "yale", 
+            "value": [
+                85.993, 
+                -27.282, 
+                4
+            ]
+        }, 
+        {
+            "name": "berkeley", 
+            "value": [
+                85.468, 
+                -24.411, 
+                4
+            ]
+        }, 
+        {
+            "name": "mit", 
+            "value": [
+                83.719, 
+                -26.005, 
+                4
+            ]
+        }, 
+        {
+            "name": "peking", 
+            "value": [
+                86.07, 
+                -24.108, 
+                4
+            ]
+        }, 
+        {
+            "name": "oxford", 
+            "value": [
+                87.272, 
+                -27.383, 
+                4
+            ]
+        }, 
+        {
+            "name": "michigan", 
+            "value": [
+                81.706, 
+                20.628, 
+                4
+            ]
+        }, 
+        {
+            "name": "duke", 
+            "value": [
+                84.095, 
+                -15.774000000000001, 
+                4
+            ]
+        }, 
+        {
+            "name": "oxford", 
+            "value": [
+                87.272, 
+                -27.383, 
+                4
+            ]
+        }, 
+        {
+            "name": "pennsylvania", 
+            "value": [
+                81.446, 
+                21.261, 
+                4
+            ]
+        }, 
+        {
+            "name": "linguistics", 
+            "value": [
+                83.708, 
+                -25.807, 
+                4
+            ]
+        }, 
+        {
+            "name": "psychology", 
+            "value": [
+                91.07, 
+                -24.725, 
+                4
+            ]
+        }, 
+        {
+            "name": "neuroscience", 
+            "value": [
+                83.093, 
+                -26.089, 
+                4
+            ]
+        }, 
+        {
+            "name": "biochemistry", 
+            "value": [
+                83.971, 
+                -25.616, 
+                4
+            ]
+        }, 
+        {
+            "name": "anthropology", 
+            "value": [
+                85.027, 
+                -24.782, 
+                4
+            ]
+        }, 
+        {
+            "name": "dentistry", 
+            "value": [
+                82.449, 
+                -26.743, 
+                4
+            ]
+        }, 
+        {
+            "name": "chemistry", 
+            "value": [
+                87.612, 
+                -24.669, 
+                4
+            ]
+        }, 
+        {
+            "name": "physiology", 
+            "value": [
+                87.185, 
+                -23.846, 
+                4
+            ]
+        }, 
+        {
+            "name": "pediatrics", 
+            "value": [
+                88.912, 
+                -16.201, 
+                4
+            ]
+        }, 
+        {
+            "name": "zoology", 
+            "value": [
+                83.095, 
+                -25.703, 
+                4
+            ]
+        }, 
+        {
+            "name": "polytechnic", 
+            "value": [
+                83.502, 
+                -25.277, 
+                4
+            ]
+        }, 
+        {
+            "name": "energy", 
+            "value": [
+                -80.216, 
+                1.68058, 
+                4
+            ]
+        }, 
+        {
+            "name": "biology", 
+            "value": [
+                68.282, 
+                -36.325, 
+                4
+            ]
+        }, 
+        {
+            "name": "sociology", 
+            "value": [
+                90.924, 
+                -23.616, 
+                4
+            ]
+        }
+    ], 
+    "2006": [
+        {
+            "name": "stanford", 
+            "value": [
+                86.93, 
+                -24.305, 
+                4
+            ]
+        }, 
+        {
+            "name": "harvard", 
+            "value": [
+                88.133, 
+                -27.102, 
+                4
+            ]
+        }, 
+        {
+            "name": "cornell", 
+            "value": [
+                87.922, 
+                -26.842, 
+                4
+            ]
+        }, 
+        {
+            "name": "princeton", 
+            "value": [
+                86.515, 
+                -26.599, 
+                4
+            ]
+        }, 
+        {
+            "name": "cambridge", 
+            "value": [
+                87.649, 
+                -26.772, 
+                4
+            ]
+        }, 
+        {
+            "name": "yale", 
+            "value": [
+                86.535, 
+                -26.618, 
+                4
+            ]
+        }, 
+        {
+            "name": "berkeley", 
+            "value": [
+                85.939, 
+                -24.112, 
+                4
+            ]
+        }, 
+        {
+            "name": "mit", 
+            "value": [
+                84.173, 
+                -25.737, 
+                4
+            ]
+        }, 
+        {
+            "name": "peking", 
+            "value": [
+                86.171, 
+                -24.098, 
+                4
+            ]
+        }, 
+        {
+            "name": "oxford", 
+            "value": [
+                87.809, 
+                -26.668, 
+                4
+            ]
+        }, 
+        {
+            "name": "michigan", 
+            "value": [
+                82.248, 
+                21.3, 
+                4
+            ]
+        }, 
+        {
+            "name": "duke", 
+            "value": [
+                84.587, 
+                -14.886, 
+                4
+            ]
+        }, 
+        {
+            "name": "oxford", 
+            "value": [
+                87.809, 
+                -26.668, 
+                4
+            ]
+        }, 
+        {
+            "name": "pennsylvania", 
+            "value": [
+                81.919, 
+                22.195, 
+                4
+            ]
+        }, 
+        {
+            "name": "linguistics", 
+            "value": [
+                84.201, 
+                -25.462, 
+                4
+            ]
+        }, 
+        {
+            "name": "psychology", 
+            "value": [
+                91.58, 
+                -24.333, 
+                4
+            ]
+        }, 
+        {
+            "name": "neuroscience", 
+            "value": [
+                83.307, 
+                -26.041, 
+                4
+            ]
+        }, 
+        {
+            "name": "biochemistry", 
+            "value": [
+                84.479, 
+                -25.231, 
+                4
+            ]
+        }, 
+        {
+            "name": "anthropology", 
+            "value": [
+                85.547, 
+                -24.358, 
+                4
+            ]
+        }, 
+        {
+            "name": "dentistry", 
+            "value": [
+                82.981, 
+                -25.998, 
+                4
+            ]
+        }, 
+        {
+            "name": "chemistry", 
+            "value": [
+                88.156, 
+                -24.086, 
+                4
+            ]
+        }, 
+        {
+            "name": "physiology", 
+            "value": [
+                87.598, 
+                -23.638, 
+                4
+            ]
+        }, 
+        {
+            "name": "pediatrics", 
+            "value": [
+                89.438, 
+                -15.754999999999999, 
+                4
+            ]
+        }, 
+        {
+            "name": "zoology", 
+            "value": [
+                83.639, 
+                -25.102, 
+                4
+            ]
+        }, 
+        {
+            "name": "polytechnic", 
+            "value": [
+                84.002, 
+                -24.914, 
+                4
+            ]
+        }, 
+        {
+            "name": "energy", 
+            "value": [
+                -79.701, 
+                2.4985999999999997, 
+                4
+            ]
+        }, 
+        {
+            "name": "biology", 
+            "value": [
+                68.826, 
+                -35.735, 
+                4
+            ]
+        }, 
+        {
+            "name": "sociology", 
+            "value": [
+                91.467, 
+                -22.956, 
+                4
+            ]
+        }
+    ], 
+    "2007": [
+        {
+            "name": "stanford", 
+            "value": [
+                86.909, 
+                -24.166, 
+                4
+            ]
+        }, 
+        {
+            "name": "harvard", 
+            "value": [
+                88.024, 
+                -26.939, 
+                4
+            ]
+        }, 
+        {
+            "name": "cornell", 
+            "value": [
+                88.009, 
+                -26.524, 
+                4
+            ]
+        }, 
+        {
+            "name": "princeton", 
+            "value": [
+                86.46, 
+                -26.387, 
+                4
+            ]
+        }, 
+        {
+            "name": "cambridge", 
+            "value": [
+                87.539, 
+                -26.284, 
+                4
+            ]
+        }, 
+        {
+            "name": "yale", 
+            "value": [
+                86.491, 
+                -26.41, 
+                4
+            ]
+        }, 
+        {
+            "name": "berkeley", 
+            "value": [
+                86.011, 
+                -23.765, 
+                4
+            ]
+        }, 
+        {
+            "name": "mit", 
+            "value": [
+                84.263, 
+                -25.424, 
+                4
+            ]
+        }, 
+        {
+            "name": "peking", 
+            "value": [
+                86.561, 
+                -23.766, 
+                4
+            ]
+        }, 
+        {
+            "name": "oxford", 
+            "value": [
+                87.71, 
+                -26.379, 
+                4
+            ]
+        }, 
+        {
+            "name": "michigan", 
+            "value": [
+                82.199, 
+                21.512, 
+                4
+            ]
+        }, 
+        {
+            "name": "duke", 
+            "value": [
+                84.554, 
+                -14.809, 
+                4
+            ]
+        }, 
+        {
+            "name": "oxford", 
+            "value": [
+                87.71, 
+                -26.379, 
+                4
+            ]
+        }, 
+        {
+            "name": "pennsylvania", 
+            "value": [
+                81.939, 
+                22.147, 
+                4
+            ]
+        }, 
+        {
+            "name": "linguistics", 
+            "value": [
+                84.249, 
+                -25.27, 
+                4
+            ]
+        }, 
+        {
+            "name": "psychology", 
+            "value": [
+                91.607, 
+                -24.015, 
+                4
+            ]
+        }, 
+        {
+            "name": "neuroscience", 
+            "value": [
+                83.424, 
+                -25.966, 
+                4
+            ]
+        }, 
+        {
+            "name": "biochemistry", 
+            "value": [
+                84.478, 
+                -25.234, 
+                4
+            ]
+        }, 
+        {
+            "name": "anthropology", 
+            "value": [
+                85.55, 
+                -23.997, 
+                4
+            ]
+        }, 
+        {
+            "name": "dentistry", 
+            "value": [
+                82.991, 
+                -26.074, 
+                4
+            ]
+        }, 
+        {
+            "name": "chemistry", 
+            "value": [
+                88.154, 
+                -24.007, 
+                4
+            ]
+        }, 
+        {
+            "name": "physiology", 
+            "value": [
+                87.664, 
+                -23.531, 
+                4
+            ]
+        }, 
+        {
+            "name": "pediatrics", 
+            "value": [
+                89.43, 
+                -15.785, 
+                4
+            ]
+        }, 
+        {
+            "name": "zoology", 
+            "value": [
+                83.639, 
+                -25.069, 
+                4
+            ]
+        }, 
+        {
+            "name": "polytechnic", 
+            "value": [
+                84.024, 
+                -24.843, 
+                4
+            ]
+        }, 
+        {
+            "name": "energy", 
+            "value": [
+                -79.72, 
+                2.5586, 
+                4
+            ]
+        }, 
+        {
+            "name": "biology", 
+            "value": [
+                68.797, 
+                -35.508, 
+                4
+            ]
+        }, 
+        {
+            "name": "sociology", 
+            "value": [
+                91.432, 
+                -22.775, 
+                4
+            ]
+        }
+    ], 
+    "2008": [
+        {
+            "name": "stanford", 
+            "value": [
+                86.877, 
+                -24.064, 
+                4
+            ]
+        }, 
+        {
+            "name": "harvard", 
+            "value": [
+                88.022, 
+                -26.935, 
+                4
+            ]
+        }, 
+        {
+            "name": "cornell", 
+            "value": [
+                88.009, 
+                -26.487, 
+                4
+            ]
+        }, 
+        {
+            "name": "princeton", 
+            "value": [
+                86.388, 
+                -26.248, 
+                4
+            ]
+        }, 
+        {
+            "name": "cambridge", 
+            "value": [
+                87.535, 
+                -26.278, 
+                4
+            ]
+        }, 
+        {
+            "name": "yale", 
+            "value": [
+                86.37, 
+                -26.183, 
+                4
+            ]
+        }, 
+        {
+            "name": "berkeley", 
+            "value": [
+                85.968, 
+                -23.544, 
+                4
+            ]
+        }, 
+        {
+            "name": "mit", 
+            "value": [
+                84.245, 
+                -25.231, 
+                4
+            ]
+        }, 
+        {
+            "name": "peking", 
+            "value": [
+                86.587, 
+                -23.693, 
+                4
+            ]
+        }, 
+        {
+            "name": "oxford", 
+            "value": [
+                87.606, 
+                -26.229, 
+                4
+            ]
+        }, 
+        {
+            "name": "michigan", 
+            "value": [
+                82.156, 
+                21.611, 
+                4
+            ]
+        }, 
+        {
+            "name": "duke", 
+            "value": [
+                84.497, 
+                -14.711, 
+                4
+            ]
+        }, 
+        {
+            "name": "oxford", 
+            "value": [
+                87.606, 
+                -26.229, 
+                4
+            ]
+        }, 
+        {
+            "name": "pennsylvania", 
+            "value": [
+                81.742, 
+                22.458, 
+                4
+            ]
+        }, 
+        {
+            "name": "linguistics", 
+            "value": [
+                84.251, 
+                -25.245, 
+                4
+            ]
+        }, 
+        {
+            "name": "psychology", 
+            "value": [
+                91.565, 
+                -23.846, 
+                4
+            ]
+        }, 
+        {
+            "name": "neuroscience", 
+            "value": [
+                83.635, 
+                -25.427, 
+                4
+            ]
+        }, 
+        {
+            "name": "biochemistry", 
+            "value": [
+                84.481, 
+                -25.225, 
+                4
+            ]
+        }, 
+        {
+            "name": "anthropology", 
+            "value": [
+                85.537, 
+                -23.948, 
+                4
+            ]
+        }, 
+        {
+            "name": "dentistry", 
+            "value": [
+                82.942, 
+                -25.858, 
+                4
+            ]
+        }, 
+        {
+            "name": "chemistry", 
+            "value": [
+                88.144, 
+                -23.925, 
+                4
+            ]
+        }, 
+        {
+            "name": "physiology", 
+            "value": [
+                87.69, 
+                -23.47, 
+                4
+            ]
+        }, 
+        {
+            "name": "pediatrics", 
+            "value": [
+                89.452, 
+                -15.674, 
+                4
+            ]
+        }, 
+        {
+            "name": "zoology", 
+            "value": [
+                83.634, 
+                -25.003, 
+                4
+            ]
+        }, 
+        {
+            "name": "polytechnic", 
+            "value": [
+                83.955, 
+                -24.3, 
+                4
+            ]
+        }, 
+        {
+            "name": "energy", 
+            "value": [
+                -79.756, 
+                2.6418, 
+                4
+            ]
+        }, 
+        {
+            "name": "biology", 
+            "value": [
+                68.792, 
+                -35.49, 
+                4
+            ]
+        }, 
+        {
+            "name": "sociology", 
+            "value": [
+                91.401, 
+                -22.69, 
+                4
+            ]
+        }
+    ], 
+    "2009": [
+        {
+            "name": "stanford", 
+            "value": [
+                86.773, 
+                -23.87, 
+                4
+            ]
+        }, 
+        {
+            "name": "harvard", 
+            "value": [
+                88.035, 
+                -26.951, 
+                4
+            ]
+        }, 
+        {
+            "name": "cornell", 
+            "value": [
+                87.954, 
+                -26.219, 
+                4
+            ]
+        }, 
+        {
+            "name": "princeton", 
+            "value": [
+                86.393, 
+                -26.255, 
+                4
+            ]
+        }, 
+        {
+            "name": "cambridge", 
+            "value": [
+                87.455, 
+                -26.163, 
+                4
+            ]
+        }, 
+        {
+            "name": "yale", 
+            "value": [
+                86.44, 
+                -26.294, 
+                4
+            ]
+        }, 
+        {
+            "name": "berkeley", 
+            "value": [
+                85.911, 
+                -23.416, 
+                4
+            ]
+        }, 
+        {
+            "name": "mit", 
+            "value": [
+                84.252, 
+                -25.266, 
+                4
+            ]
+        }, 
+        {
+            "name": "peking", 
+            "value": [
+                86.604, 
+                -23.378, 
+                4
+            ]
+        }, 
+        {
+            "name": "oxford", 
+            "value": [
+                87.616, 
+                -26.24, 
+                4
+            ]
+        }, 
+        {
+            "name": "michigan", 
+            "value": [
+                82.163, 
+                21.595, 
+                4
+            ]
+        }, 
+        {
+            "name": "duke", 
+            "value": [
+                84.509, 
+                -14.729, 
+                4
+            ]
+        }, 
+        {
+            "name": "oxford", 
+            "value": [
+                87.616, 
+                -26.24, 
+                4
+            ]
+        }, 
+        {
+            "name": "pennsylvania", 
+            "value": [
+                81.858, 
+                22.309, 
+                4
+            ]
+        }, 
+        {
+            "name": "linguistics", 
+            "value": [
+                84.249, 
+                -25.129, 
+                4
+            ]
+        }, 
+        {
+            "name": "psychology", 
+            "value": [
+                91.511, 
+                -23.726, 
+                4
+            ]
+        }, 
+        {
+            "name": "neuroscience", 
+            "value": [
+                83.636, 
+                -25.44, 
+                4
+            ]
+        }, 
+        {
+            "name": "biochemistry", 
+            "value": [
+                84.491, 
+                -25.193, 
+                4
+            ]
+        }, 
+        {
+            "name": "anthropology", 
+            "value": [
+                85.524, 
+                -23.908, 
+                4
+            ]
+        }, 
+        {
+            "name": "dentistry", 
+            "value": [
+                82.964, 
+                -25.924, 
+                4
+            ]
+        }, 
+        {
+            "name": "chemistry", 
+            "value": [
+                88.116, 
+                -23.816, 
+                4
+            ]
+        }, 
+        {
+            "name": "physiology", 
+            "value": [
+                87.688, 
+                -23.474, 
+                4
+            ]
+        }, 
+        {
+            "name": "pediatrics", 
+            "value": [
+                89.449, 
+                -15.692, 
+                4
+            ]
+        }, 
+        {
+            "name": "zoology", 
+            "value": [
+                83.632, 
+                -24.99, 
+                4
+            ]
+        }, 
+        {
+            "name": "polytechnic", 
+            "value": [
+                84.002, 
+                -24.41, 
+                4
+            ]
+        }, 
+        {
+            "name": "energy", 
+            "value": [
+                -79.825, 
+                2.7602, 
+                4
+            ]
+        }, 
+        {
+            "name": "biology", 
+            "value": [
+                68.775, 
+                -35.441, 
+                4
+            ]
+        }, 
+        {
+            "name": "sociology", 
+            "value": [
+                91.393, 
+                -22.674, 
+                4
+            ]
+        }
+    ], 
+    "2010": [
+        {
+            "name": "stanford", 
+            "value": [
+                86.73, 
+                -23.813, 
+                4
+            ]
+        }, 
+        {
+            "name": "harvard", 
+            "value": [
+                88.067, 
+                -26.994, 
+                4
+            ]
+        }, 
+        {
+            "name": "cornell", 
+            "value": [
+                87.853, 
+                -26.031, 
+                4
+            ]
+        }, 
+        {
+            "name": "princeton", 
+            "value": [
+                86.354, 
+                -26.197, 
+                4
+            ]
+        }, 
+        {
+            "name": "cambridge", 
+            "value": [
+                87.553, 
+                -26.309, 
+                4
+            ]
+        }, 
+        {
+            "name": "yale", 
+            "value": [
+                86.379, 
+                -26.195, 
+                4
+            ]
+        }, 
+        {
+            "name": "berkeley", 
+            "value": [
+                85.904, 
+                -23.402, 
+                4
+            ]
+        }, 
+        {
+            "name": "mit", 
+            "value": [
+                84.251, 
+                -25.263, 
+                4
+            ]
+        }, 
+        {
+            "name": "peking", 
+            "value": [
+                86.553, 
+                -23.198, 
+                4
+            ]
+        }, 
+        {
+            "name": "oxford", 
+            "value": [
+                87.591, 
+                -26.212, 
+                4
+            ]
+        }, 
+        {
+            "name": "michigan", 
+            "value": [
+                82.152, 
+                21.617, 
+                4
+            ]
+        }, 
+        {
+            "name": "duke", 
+            "value": [
+                84.485, 
+                -14.692, 
+                4
+            ]
+        }, 
+        {
+            "name": "oxford", 
+            "value": [
+                87.591, 
+                -26.212, 
+                4
+            ]
+        }, 
+        {
+            "name": "pennsylvania", 
+            "value": [
+                81.718, 
+                22.482, 
+                4
+            ]
+        }, 
+        {
+            "name": "linguistics", 
+            "value": [
+                84.238, 
+                -25.052, 
+                4
+            ]
+        }, 
+        {
+            "name": "psychology", 
+            "value": [
+                91.464, 
+                -23.65, 
+                4
+            ]
+        }, 
+        {
+            "name": "neuroscience", 
+            "value": [
+                83.626, 
+                -25.35, 
+                4
+            ]
+        }, 
+        {
+            "name": "biochemistry", 
+            "value": [
+                84.515, 
+                -25.027, 
+                4
+            ]
+        }, 
+        {
+            "name": "anthropology", 
+            "value": [
+                85.52, 
+                -23.897, 
+                4
+            ]
+        }, 
+        {
+            "name": "dentistry", 
+            "value": [
+                82.964, 
+                -25.924, 
+                4
+            ]
+        }, 
+        {
+            "name": "chemistry", 
+            "value": [
+                88.06, 
+                -23.682, 
+                4
+            ]
+        }, 
+        {
+            "name": "physiology", 
+            "value": [
+                87.687, 
+                -23.478, 
+                4
+            ]
+        }, 
+        {
+            "name": "pediatrics", 
+            "value": [
+                89.453, 
+                -15.657, 
+                4
+            ]
+        }, 
+        {
+            "name": "zoology", 
+            "value": [
+                83.627, 
+                -24.961, 
+                4
+            ]
+        }, 
+        {
+            "name": "polytechnic", 
+            "value": [
+                84.014, 
+                -24.447, 
+                4
+            ]
+        }, 
+        {
+            "name": "energy", 
+            "value": [
+                -79.865, 
+                2.8141, 
+                4
+            ]
+        }, 
+        {
+            "name": "biology", 
+            "value": [
+                68.754, 
+                -35.388, 
+                4
+            ]
+        }, 
+        {
+            "name": "sociology", 
+            "value": [
+                91.37, 
+                -22.626, 
+                4
+            ]
+        }
+    ], 
+    "2011": [
+        {
+            "name": "stanford", 
+            "value": [
+                86.685, 
+                -23.763, 
+                4
+            ]
+        }, 
+        {
+            "name": "harvard", 
+            "value": [
+                87.967, 
+                -26.874, 
+                4
+            ]
+        }, 
+        {
+            "name": "cornell", 
+            "value": [
+                87.837, 
+                -26.009, 
+                4
+            ]
+        }, 
+        {
+            "name": "princeton", 
+            "value": [
+                86.29, 
+                -26.118, 
+                4
+            ]
+        }, 
+        {
+            "name": "cambridge", 
+            "value": [
+                87.483, 
+                -26.2, 
+                4
+            ]
+        }, 
+        {
+            "name": "yale", 
+            "value": [
+                86.403, 
+                -26.231, 
+                4
+            ]
+        }, 
+        {
+            "name": "berkeley", 
+            "value": [
+                85.846, 
+                -23.312, 
+                4
+            ]
+        }, 
+        {
+            "name": "mit", 
+            "value": [
+                84.215, 
+                -25.128, 
+                4
+            ]
+        }, 
+        {
+            "name": "peking", 
+            "value": [
+                86.532, 
+                -23.15, 
+                4
+            ]
+        }, 
+        {
+            "name": "oxford", 
+            "value": [
+                87.678, 
+                -26.326, 
+                4
+            ]
+        }, 
+        {
+            "name": "michigan", 
+            "value": [
+                82.127, 
+                21.662, 
+                4
+            ]
+        }, 
+        {
+            "name": "duke", 
+            "value": [
+                84.455, 
+                -14.651, 
+                4
+            ]
+        }, 
+        {
+            "name": "oxford", 
+            "value": [
+                87.678, 
+                -26.326, 
+                4
+            ]
+        }, 
+        {
+            "name": "pennsylvania", 
+            "value": [
+                81.643, 
+                22.549, 
+                4
+            ]
+        }, 
+        {
+            "name": "linguistics", 
+            "value": [
+                84.234, 
+                -25.033, 
+                4
+            ]
+        }, 
+        {
+            "name": "psychology", 
+            "value": [
+                91.396, 
+                -23.562, 
+                4
+            ]
+        }, 
+        {
+            "name": "neuroscience", 
+            "value": [
+                83.626, 
+                -25.351, 
+                4
+            ]
+        }, 
+        {
+            "name": "biochemistry", 
+            "value": [
+                84.513, 
+                -24.948, 
+                4
+            ]
+        }, 
+        {
+            "name": "anthropology", 
+            "value": [
+                85.489, 
+                -23.824, 
+                4
+            ]
+        }, 
+        {
+            "name": "dentistry", 
+            "value": [
+                82.956, 
+                -25.899, 
+                4
+            ]
+        }, 
+        {
+            "name": "chemistry", 
+            "value": [
+                88.103, 
+                -23.778, 
+                4
+            ]
+        }, 
+        {
+            "name": "physiology", 
+            "value": [
+                87.7, 
+                -23.438, 
+                4
+            ]
+        }, 
+        {
+            "name": "pediatrics", 
+            "value": [
+                89.456, 
+                -15.602, 
+                4
+            ]
+        }, 
+        {
+            "name": "zoology", 
+            "value": [
+                83.617, 
+                -24.912, 
+                4
+            ]
+        }, 
+        {
+            "name": "polytechnic", 
+            "value": [
+                83.993, 
+                -24.386, 
+                4
+            ]
+        }, 
+        {
+            "name": "energy", 
+            "value": [
+                -79.874, 
+                2.8253, 
+                4
+            ]
+        }, 
+        {
+            "name": "biology", 
+            "value": [
+                68.773, 
+                -35.434, 
+                4
+            ]
+        }, 
+        {
+            "name": "sociology", 
+            "value": [
+                91.354, 
+                -22.598, 
+                4
+            ]
+        }
+    ], 
+    "2012": [
+        {
+            "name": "stanford", 
+            "value": [
+                86.765, 
+                -23.859, 
+                4
+            ]
+        }, 
+        {
+            "name": "harvard", 
+            "value": [
+                87.916, 
+                -26.826, 
+                4
+            ]
+        }, 
+        {
+            "name": "cornell", 
+            "value": [
+                87.809, 
+                -25.972, 
+                4
+            ]
+        }, 
+        {
+            "name": "princeton", 
+            "value": [
+                86.296, 
+                -26.124, 
+                4
+            ]
+        }, 
+        {
+            "name": "cambridge", 
+            "value": [
+                87.534, 
+                -26.276, 
+                4
+            ]
+        }, 
+        {
+            "name": "yale", 
+            "value": [
+                86.37, 
+                -26.182, 
+                4
+            ]
+        }, 
+        {
+            "name": "berkeley", 
+            "value": [
+                85.803, 
+                -23.257, 
+                4
+            ]
+        }, 
+        {
+            "name": "mit", 
+            "value": [
+                84.215, 
+                -25.128, 
+                4
+            ]
+        }, 
+        {
+            "name": "peking", 
+            "value": [
+                86.524, 
+                -23.134, 
+                4
+            ]
+        }, 
+        {
+            "name": "oxford", 
+            "value": [
+                87.485, 
+                -26.108, 
+                4
+            ]
+        }, 
+        {
+            "name": "michigan", 
+            "value": [
+                82.044, 
+                21.778, 
+                4
+            ]
+        }, 
+        {
+            "name": "duke", 
+            "value": [
+                84.411, 
+                -14.599, 
+                4
+            ]
+        }, 
+        {
+            "name": "oxford", 
+            "value": [
+                87.485, 
+                -26.108, 
+                4
+            ]
+        }, 
+        {
+            "name": "pennsylvania", 
+            "value": [
+                81.651, 
+                22.542, 
+                4
+            ]
+        }, 
+        {
+            "name": "linguistics", 
+            "value": [
+                84.222, 
+                -24.985, 
+                4
+            ]
+        }, 
+        {
+            "name": "psychology", 
+            "value": [
+                91.419, 
+                -23.589, 
+                4
+            ]
+        }, 
+        {
+            "name": "neuroscience", 
+            "value": [
+                83.63, 
+                -25.373, 
+                4
+            ]
+        }, 
+        {
+            "name": "biochemistry", 
+            "value": [
+                84.513, 
+                -24.955, 
+                4
+            ]
+        }, 
+        {
+            "name": "anthropology", 
+            "value": [
+                85.446, 
+                -23.745, 
+                4
+            ]
+        }, 
+        {
+            "name": "dentistry", 
+            "value": [
+                82.956, 
+                -25.898, 
+                4
+            ]
+        }, 
+        {
+            "name": "chemistry", 
+            "value": [
+                88.037, 
+                -23.642, 
+                4
+            ]
+        }, 
+        {
+            "name": "physiology", 
+            "value": [
+                87.701, 
+                -23.435, 
+                4
+            ]
+        }, 
+        {
+            "name": "pediatrics", 
+            "value": [
+                89.456, 
+                -15.584, 
+                4
+            ]
+        }, 
+        {
+            "name": "zoology", 
+            "value": [
+                83.627, 
+                -24.958, 
+                4
+            ]
+        }, 
+        {
+            "name": "polytechnic", 
+            "value": [
+                83.957, 
+                -24.305, 
+                4
+            ]
+        }, 
+        {
+            "name": "energy", 
+            "value": [
+                -79.78, 
+                2.6887, 
+                4
+            ]
+        }, 
+        {
+            "name": "biology", 
+            "value": [
+                68.772, 
+                -35.43, 
+                4
+            ]
+        }, 
+        {
+            "name": "sociology", 
+            "value": [
+                91.326, 
+                -22.552, 
+                4
+            ]
+        }
+    ], 
+    "2013": [
+        {
+            "name": "stanford", 
+            "value": [
+                86.681, 
+                -23.758, 
+                4
+            ]
+        }, 
+        {
+            "name": "harvard", 
+            "value": [
+                88.014, 
+                -26.926, 
+                4
+            ]
+        }, 
+        {
+            "name": "cornell", 
+            "value": [
+                87.796, 
+                -25.958, 
+                4
+            ]
+        }, 
+        {
+            "name": "princeton", 
+            "value": [
+                86.298, 
+                -26.126, 
+                4
+            ]
+        }, 
+        {
+            "name": "cambridge", 
+            "value": [
+                87.501, 
+                -26.224, 
+                4
+            ]
+        }, 
+        {
+            "name": "yale", 
+            "value": [
+                86.384, 
+                -26.202, 
+                4
+            ]
+        }, 
+        {
+            "name": "berkeley", 
+            "value": [
+                85.805, 
+                -23.26, 
+                4
+            ]
+        }, 
+        {
+            "name": "mit", 
+            "value": [
+                84.215, 
+                -25.127, 
+                4
+            ]
+        }, 
+        {
+            "name": "peking", 
+            "value": [
+                86.502, 
+                -23.094, 
+                4
+            ]
+        }, 
+        {
+            "name": "oxford", 
+            "value": [
+                87.597, 
+                -26.218, 
+                4
+            ]
+        }, 
+        {
+            "name": "michigan", 
+            "value": [
+                82.027, 
+                21.797, 
+                4
+            ]
+        }, 
+        {
+            "name": "duke", 
+            "value": [
+                84.456, 
+                -14.653, 
+                4
+            ]
+        }, 
+        {
+            "name": "oxford", 
+            "value": [
+                87.597, 
+                -26.218, 
+                4
+            ]
+        }, 
+        {
+            "name": "pennsylvania", 
+            "value": [
+                81.74, 
+                22.46, 
+                4
+            ]
+        }, 
+        {
+            "name": "linguistics", 
+            "value": [
+                84.201, 
+                -24.921, 
+                4
+            ]
+        }, 
+        {
+            "name": "psychology", 
+            "value": [
+                91.452, 
+                -23.632, 
+                4
+            ]
+        }, 
+        {
+            "name": "neuroscience", 
+            "value": [
+                83.623, 
+                -25.335, 
+                4
+            ]
+        }, 
+        {
+            "name": "biochemistry", 
+            "value": [
+                84.509, 
+                -24.908, 
+                4
+            ]
+        }, 
+        {
+            "name": "anthropology", 
+            "value": [
+                85.424, 
+                -23.71, 
+                4
+            ]
+        }, 
+        {
+            "name": "dentistry", 
+            "value": [
+                82.928, 
+                -25.823, 
+                4
+            ]
+        }, 
+        {
+            "name": "chemistry", 
+            "value": [
+                88.028, 
+                -23.627, 
+                4
+            ]
+        }, 
+        {
+            "name": "physiology", 
+            "value": [
+                87.702, 
+                -23.431, 
+                4
+            ]
+        }, 
+        {
+            "name": "pediatrics", 
+            "value": [
+                89.456, 
+                -15.559999999999999, 
+                4
+            ]
+        }, 
+        {
+            "name": "zoology", 
+            "value": [
+                83.623, 
+                -24.936, 
+                4
+            ]
+        }, 
+        {
+            "name": "polytechnic", 
+            "value": [
+                83.956, 
+                -24.302, 
+                4
+            ]
+        }, 
+        {
+            "name": "energy", 
+            "value": [
+                -79.917, 
+                2.8737, 
+                4
+            ]
+        }, 
+        {
+            "name": "biology", 
+            "value": [
+                68.738, 
+                -35.354, 
+                4
+            ]
+        }, 
+        {
+            "name": "sociology", 
+            "value": [
+                91.37, 
+                -22.626, 
+                4
+            ]
+        }
+    ], 
+    "2014": [
+        {
+            "name": "stanford", 
+            "value": [
+                86.582, 
+                -23.667, 
+                4
+            ]
+        }, 
+        {
+            "name": "harvard", 
+            "value": [
+                87.95, 
+                -26.858, 
+                4
+            ]
+        }, 
+        {
+            "name": "cornell", 
+            "value": [
+                87.768, 
+                -25.926, 
+                4
+            ]
+        }, 
+        {
+            "name": "princeton", 
+            "value": [
+                86.219, 
+                -26.046, 
+                4
+            ]
+        }, 
+        {
+            "name": "cambridge", 
+            "value": [
+                87.435, 
+                -26.14, 
+                4
+            ]
+        }, 
+        {
+            "name": "yale", 
+            "value": [
+                86.356, 
+                -26.164, 
+                4
+            ]
+        }, 
+        {
+            "name": "berkeley", 
+            "value": [
+                85.803, 
+                -23.258, 
+                4
+            ]
+        }, 
+        {
+            "name": "mit", 
+            "value": [
+                84.215, 
+                -25.127, 
+                4
+            ]
+        }, 
+        {
+            "name": "peking", 
+            "value": [
+                86.485, 
+                -23.064, 
+                4
+            ]
+        }, 
+        {
+            "name": "oxford", 
+            "value": [
+                87.511, 
+                -26.131, 
+                4
+            ]
+        }, 
+        {
+            "name": "michigan", 
+            "value": [
+                81.938, 
+                21.887, 
+                4
+            ]
+        }, 
+        {
+            "name": "duke", 
+            "value": [
+                84.447, 
+                -14.642, 
+                4
+            ]
+        }, 
+        {
+            "name": "oxford", 
+            "value": [
+                87.511, 
+                -26.131, 
+                4
+            ]
+        }, 
+        {
+            "name": "pennsylvania", 
+            "value": [
+                81.616, 
+                22.57, 
+                4
+            ]
+        }, 
+        {
+            "name": "linguistics", 
+            "value": [
+                84.198, 
+                -24.914, 
+                4
+            ]
+        }, 
+        {
+            "name": "psychology", 
+            "value": [
+                91.271, 
+                -23.441, 
+                4
+            ]
+        }, 
+        {
+            "name": "neuroscience", 
+            "value": [
+                83.62, 
+                -25.32, 
+                4
+            ]
+        }, 
+        {
+            "name": "biochemistry", 
+            "value": [
+                84.498, 
+                -24.847, 
+                4
+            ]
+        }, 
+        {
+            "name": "anthropology", 
+            "value": [
+                85.419, 
+                -23.703, 
+                4
+            ]
+        }, 
+        {
+            "name": "dentistry", 
+            "value": [
+                82.931, 
+                -25.83, 
+                4
+            ]
+        }, 
+        {
+            "name": "chemistry", 
+            "value": [
+                88.046, 
+                -23.658, 
+                4
+            ]
+        }, 
+        {
+            "name": "physiology", 
+            "value": [
+                87.708, 
+                -23.412, 
+                4
+            ]
+        }, 
+        {
+            "name": "pediatrics", 
+            "value": [
+                89.455, 
+                -15.547999999999998, 
+                4
+            ]
+        }, 
+        {
+            "name": "zoology", 
+            "value": [
+                83.609, 
+                -24.882, 
+                4
+            ]
+        }, 
+        {
+            "name": "polytechnic", 
+            "value": [
+                83.937, 
+                -24.267, 
+                4
+            ]
+        }, 
+        {
+            "name": "energy", 
+            "value": [
+                -79.909, 
+                2.8654, 
+                4
+            ]
+        }, 
+        {
+            "name": "biology", 
+            "value": [
+                68.709, 
+                -35.301, 
+                4
+            ]
+        }, 
+        {
+            "name": "sociology", 
+            "value": [
+                91.353, 
+                -22.596, 
+                4
+            ]
+        }
+    ]
+}
