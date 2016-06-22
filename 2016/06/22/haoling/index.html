@@ -5,29 +5,32 @@
   
   <title>业务学习笔记 | Dong Haoling&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="学习到的业务和问题###casperjs和前端自动化测试的学习因为要用到casperjs框架进行前端的自动化测试，所以我周二早上看基宏写的使用casperjs framework测试magellon的case，并且看了一些capserjs的官方文档。在应用方面，capserjs的TESTER_FRAME目录的结构如下：
+  <meta name="description" content="学习到的业务和问题casperjs和前端自动化测试的学习因为要用到casperjs框架进行前端的自动化测试，所以我周二早上看基宏写的使用casperjs framework测试magellon的case，并且看了一些capserjs的官方文档。在应用方面，capserjs的TESTER_FRAME目录的结构如下：
 --bin 
     -run.sh
     -frame.js
---log">
+--log
+--c">
 <meta property="og:type" content="article">
 <meta property="og:title" content="业务学习笔记">
 <meta property="og:url" content="http://yoursite.com/2016/06/22/haoling/index.html">
 <meta property="og:site_name" content="Dong Haoling's Blog">
-<meta property="og:description" content="学习到的业务和问题###casperjs和前端自动化测试的学习因为要用到casperjs框架进行前端的自动化测试，所以我周二早上看基宏写的使用casperjs framework测试magellon的case，并且看了一些capserjs的官方文档。在应用方面，capserjs的TESTER_FRAME目录的结构如下：
+<meta property="og:description" content="学习到的业务和问题casperjs和前端自动化测试的学习因为要用到casperjs框架进行前端的自动化测试，所以我周二早上看基宏写的使用casperjs framework测试magellon的case，并且看了一些capserjs的官方文档。在应用方面，capserjs的TESTER_FRAME目录的结构如下：
 --bin 
     -run.sh
     -frame.js
---log">
+--log
+--c">
 <meta property="og:image" content="https://github.com/Donghaoling/markdown_image/blob/master/IMG_2968.JPG">
-<meta property="og:updated_time" content="2016-06-22T05:09:58.678Z">
+<meta property="og:updated_time" content="2016-06-22T05:12:56.071Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="业务学习笔记">
-<meta name="twitter:description" content="学习到的业务和问题###casperjs和前端自动化测试的学习因为要用到casperjs框架进行前端的自动化测试，所以我周二早上看基宏写的使用casperjs framework测试magellon的case，并且看了一些capserjs的官方文档。在应用方面，capserjs的TESTER_FRAME目录的结构如下：
+<meta name="twitter:description" content="学习到的业务和问题casperjs和前端自动化测试的学习因为要用到casperjs框架进行前端的自动化测试，所以我周二早上看基宏写的使用casperjs framework测试magellon的case，并且看了一些capserjs的官方文档。在应用方面，capserjs的TESTER_FRAME目录的结构如下：
 --bin 
     -run.sh
     -frame.js
---log">
+--log
+--c">
 <meta name="twitter:image" content="https://github.com/Donghaoling/markdown_image/blob/master/IMG_2968.JPG">
   
     <link rel="alternate" href="/atom.xml" title="Dong Haoling&#39;s Blog" type="application/atom+xml">
@@ -99,7 +102,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="学习到的业务和问题"><a href="#学习到的业务和问题" class="headerlink" title="学习到的业务和问题"></a>学习到的业务和问题</h2><p>###casperjs和前端自动化测试的学习<br>因为要用到casperjs框架进行前端的自动化测试，所以我周二早上看基宏写的使用casperjs framework测试magellon的case，并且看了一些capserjs的官方文档。<br>在应用方面，capserjs的TESTER_FRAME目录的结构如下：</p>
+        <h2 id="学习到的业务和问题"><a href="#学习到的业务和问题" class="headerlink" title="学习到的业务和问题"></a>学习到的业务和问题</h2><h3 id="casperjs和前端自动化测试的学习"><a href="#casperjs和前端自动化测试的学习" class="headerlink" title="casperjs和前端自动化测试的学习"></a>casperjs和前端自动化测试的学习</h3><p>因为要用到casperjs框架进行前端的自动化测试，所以我周二早上看基宏写的使用casperjs framework测试magellon的case，并且看了一些capserjs的官方文档。<br>在应用方面，capserjs的TESTER_FRAME目录的结构如下：</p>
 <pre><code>--bin 
     -run.sh
     -frame.js
@@ -116,7 +119,7 @@
 </code></pre><p>其中与我们编写case相关的目录文件有：bin目录，conf目录。bin目录是用来写自动化test case的，可以一各方面的测试写一个js文件，运行该js文件即可测试相关的内容。运行方式如下（以测试asinRegression.js文件为例）：</p>
 <pre><code>$ casperjs test aisnRegression.js 
 </code></pre><p>其余的目录里：common目录中的lib.js是基宏封装的可以直接通过lib.fun形式调用的方法，pics目录保存的是case运行出现问题时直接保存截图的截图文件，log目录保存的是测试的日志文件。</p>
-<p>###搜索和广告业务的架构的学习<br>通过学习搜索和广告相关的PPT，我对搜索和广告业务有了一点大概的认识。下图是我整理的我理解中的关于搜索和广告业务的框架图。</p>
+<h3 id="搜索和广告业务的架构的学习"><a href="#搜索和广告业务的架构的学习" class="headerlink" title="搜索和广告业务的架构的学习"></a>搜索和广告业务的架构的学习</h3><p>通过学习搜索和广告相关的PPT，我对搜索和广告业务有了一点大概的认识。下图是我整理的我理解中的关于搜索和广告业务的框架图。</p>
 <p><img src="https://github.com/Donghaoling/markdown_image/blob/master/IMG_2968.JPG" alt=""></p>
 <p>搜索和广告业务</p>
 <ul>
