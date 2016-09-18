@@ -5,15 +5,37 @@
   
   <title>Dong Haoling&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
+  <meta name="description" content="JS学习笔记（9.17）Array类型的方法
+转换方法
+
+toString()：对数组里的每个元素调用toString()，然后用”,”连接数组。 
+valueOf()： 返回原数组
+join()： 接受一个参数，连接数组。
+var colors = [&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;, &amp;quot;green&amp;quot;]; 
+colors.length = 4">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Dong Haoling's Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/09/18/0917JS学习笔记/index.html">
 <meta property="og:site_name" content="Dong Haoling's Blog">
-<meta property="og:description">
+<meta property="og:description" content="JS学习笔记（9.17）Array类型的方法
+转换方法
+
+toString()：对数组里的每个元素调用toString()，然后用”,”连接数组。 
+valueOf()： 返回原数组
+join()： 接受一个参数，连接数组。
+var colors = [&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;, &amp;quot;green&amp;quot;]; 
+colors.length = 4">
+<meta property="og:updated_time" content="2016-09-17T12:45:14.649Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dong Haoling's Blog">
-<meta name="twitter:description">
+<meta name="twitter:description" content="JS学习笔记（9.17）Array类型的方法
+转换方法
+
+toString()：对数组里的每个元素调用toString()，然后用”,”连接数组。 
+valueOf()： 返回原数组
+join()： 接受一个参数，连接数组。
+var colors = [&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;, &amp;quot;green&amp;quot;]; 
+colors.length = 4">
   
     <link rel="alternate" href="/atom.xml" title="Dong Haoling&#39;s Blog" type="application/atom+xml">
   
@@ -62,9 +84,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-0917JS学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-0917JS学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/09/18/0917JS学习笔记/" class="article-date">
   <time datetime="2016-09-18T10:48:13.966Z" itemprop="datePublished">2016-09-18</time>
@@ -299,207 +319,19 @@ alert(pattern.lastIndex); //0
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-haoling" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/06/22/haoling/" class="article-date">
-  <time datetime="2016-06-22T04:56:26.122Z" itemprop="datePublished">2016-06-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/22/haoling/">业务学习笔记</a>
-    </h1>
+    <a href="/2016/06/22/haoling/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">业务学习笔记</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="学习到的业务和问题"><a href="#学习到的业务和问题" class="headerlink" title="学习到的业务和问题"></a>学习到的业务和问题</h2><h3 id="casperjs和前端自动化测试的学习"><a href="#casperjs和前端自动化测试的学习" class="headerlink" title="casperjs和前端自动化测试的学习"></a>casperjs和前端自动化测试的学习</h3><p>因为要用到casperjs框架进行前端的自动化测试，所以我周二早上看基宏写的使用casperjs framework测试magellon的case，并且看了一些capserjs的官方文档。<br>在应用方面，capserjs的TESTER_FRAME目录的结构如下：</p>
-<pre><code>--bin 
-    -run.sh
-    -frame.js
---log
---common
-    -lib.js
-    -funcs.js
---conf
-    -host.conf
-    -config.js
---log
---pics
---README
-</code></pre><p>其中与我们编写case相关的目录文件有：bin目录，conf目录。bin目录是用来写自动化test case的，可以一各方面的测试写一个js文件，运行该js文件即可测试相关的内容。运行方式如下（以测试asinRegression.js文件为例）：</p>
-<pre><code>$ casperjs test aisnRegression.js 
-</code></pre><p>其余的目录里：common目录中的lib.js是基宏封装的可以直接通过lib.fun形式调用的方法，pics目录保存的是case运行出现问题时直接保存截图的截图文件，log目录保存的是测试的日志文件。</p>
-<h3 id="搜索和广告业务的架构的学习"><a href="#搜索和广告业务的架构的学习" class="headerlink" title="搜索和广告业务的架构的学习"></a>搜索和广告业务的架构的学习</h3><p>通过学习搜索和广告相关的PPT，我对搜索和广告业务有了一点大概的认识。下图是我整理的我理解中的关于搜索和广告业务的框架图。</p>
-<p><img src="https://github.com/Donghaoling/markdown_image/blob/master/IMG_2968.JPG" alt=""></p>
-<p>搜索和广告业务</p>
-<ul>
-<li><p><strong>故障</strong></p>
-<ul>
-<li>无</li>
-</ul>
-</li>
-<li><p><strong>预发布问题</strong></p>
-<ul>
-<li>无</li>
-</ul>
-</li>
-</ul>
-<h4 id="项目的名称"><a href="#项目的名称" class="headerlink" title="项目的名称:"></a>项目的名称:</h4><ul>
-<li>无</li>
-</ul>
-<h3 id="小需求情况"><a href="#小需求情况" class="headerlink" title="小需求情况"></a>小需求情况</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">业务线</th>
-<th>小需求名称</th>
-<th>是否接手</th>
-<th>不接手原因</th>
-<th>测试策略</th>
-<th>问题</th>
-<th>状态</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"></td>
-</tr>
-</tbody>
-</table>
-<h1 id="效能提升"><a href="#效能提升" class="headerlink" title="效能提升"></a>效能提升</h1><h3 id="自动化建设"><a href="#自动化建设" class="headerlink" title="自动化建设"></a>自动化建设</h3><ul>
-<li>无</li>
-</ul>
-<h3 id="工具平台建设"><a href="#工具平台建设" class="headerlink" title="工具平台建设"></a>工具平台建设</h3><h4 id="数据测试平台"><a href="#数据测试平台" class="headerlink" title="数据测试平台"></a>数据测试平台</h4><ul>
-<li>无</li>
-</ul>
-<h2 id="个人感悟"><a href="#个人感悟" class="headerlink" title="个人感悟"></a>个人感悟</h2><p>  -</p>
-<h2 id="其他（资源投入情况）"><a href="#其他（资源投入情况）" class="headerlink" title="其他（资源投入情况）"></a>其他（资源投入情况）</h2><ul>
-<li>周一: 入职培训，装机，申请各类权限</li>
-<li>周二: 学校有事情，请假</li>
-<li>周三: 开会，了解展会的业务，学习B2B业务相关的PPT，学习入职培训PPT</li>
-<li>周四: 部署光年系统到本地，学习入职培训PPT</li>
-</ul>
-<h2 id="下周计划"><a href="#下周计划" class="headerlink" title="下周计划"></a>下周计划</h2><ul>
-<li>参与联盟或广告的项目</li>
-<li>参与自动化工具的开发和维护</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/06/22/haoling/" data-id="cipqer0sl0000mkxlcxixcpqp" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-first-blog" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/03/02/first-blog/" class="article-date">
-  <time datetime="2016-03-02T13:31:00.731Z" itemprop="datePublished">2016-03-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/02/first-blog/">Hello my blog</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="试试中文"><a href="#试试中文" class="headerlink" title="试试中文"></a>试试中文</h3><p>######中文字体</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/02/first-blog/" data-id="cilavt4mo00010kxlgy0agfvo" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/03/02/hello-world/" class="article-date">
-  <time datetime="2016-03-02T12:07:48.265Z" itemprop="datePublished">2016-03-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/02/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/02/hello-world/" data-id="cilatjro700008gxl17r9lvgv" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 </section>
         
