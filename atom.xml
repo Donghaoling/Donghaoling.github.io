@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-17T12:45:14.649Z</updated>
+  <updated>2016-09-18T14:55:27.324Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,107 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2016/09/18/0918CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2016/09/18/0918CSS学习笔记/</id>
+    <published>2016-09-18T15:11:14.525Z</published>
+    <updated>2016-09-18T14:55:27.324Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;CSS学习笔记-（9-18）&quot;&gt;&lt;a href=&quot;#CSS学习笔记-（9-18）&quot; class=&quot;headerlink&quot; title=&quot;CSS学习笔记 （9.18）&quot;&gt;&lt;/a&gt;CSS学习笔记 （9.18）&lt;/h2&gt;&lt;h4 id=&quot;box-sizing&quot;&gt;&lt;a href=&quot;#box-sizing&quot; class=&quot;headerlink&quot; title=&quot;box-sizing&quot;&gt;&lt;/a&gt;&lt;strong&gt;box-sizing&lt;/strong&gt;&lt;/h4&gt;&lt;p&gt;CSS元素的盒模型：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/DE9pTLZ.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;box-sizing有以下属性值：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;content-box：&lt;strong&gt;默认值&lt;/strong&gt;。宽度和高度分别应用到元素的内容框。&lt;/li&gt;
+&lt;li&gt;border-box：宽度和高度分别应用到元素的边框。也就是内容框的宽度和高度要减去border和padding的宽度。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;inherit：继承父元素的box-sizing属性。&lt;/p&gt;
+&lt;h4 id=&quot;float&quot;&gt;&lt;a href=&quot;#float&quot; class=&quot;headerlink&quot; title=&quot;float&quot;&gt;&lt;/a&gt;&lt;strong&gt;float&lt;/strong&gt;&lt;/h4&gt;&lt;p&gt;float可以实现文字环绕图片。float的元素相当于在文档流里是不占空间的。设置为float的元素相当于脱离了文档流，飘出来，比如设置&lt;code&gt;float:left&lt;/code&gt;如果原先没有元素float，那么这个元素就会飘到最左边。如果之前有元素float,那么会紧贴那个元素float。bootstrap里的col-md-x系列就是用float实现的。最简单的实现可以如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.col-md-6 {
+    float:left;
+    width:50%;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;对应的html如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class = &amp;quot;col-md-6&amp;quot;&amp;gt; 1 &amp;lt;/div&amp;gt;
+&amp;lt;div class = &amp;quot;col-md-6&amp;quot;&amp;gt; 2 &amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;float有以下属性值：&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;left：元素向左浮动&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;right：元素向右浮动&lt;/li&gt;
+&lt;li&gt;none：&lt;strong&gt;默认值&lt;/strong&gt;，不浮动&lt;/li&gt;
+&lt;li&gt;inherit：从父元素继承float属性的值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;clear&quot;&gt;&lt;a href=&quot;#clear&quot; class=&quot;headerlink&quot; title=&quot;clear&quot;&gt;&lt;/a&gt;&lt;strong&gt;clear&lt;/strong&gt;&lt;/h4&gt;&lt;p&gt;clear用于清楚浮动。清楚受浮动影响的其他元素的包围效果。&lt;br&gt;这篇写得很好：&lt;a href=&quot;http://zh.learnlayout.com/clear.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://zh.learnlayout.com/clear.html&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;...&amp;lt;/div&amp;gt;
+&amp;lt;section&amp;gt;...&amp;lt;/section&amp;gt;
+
+.box {
+  float: left;
+  width: 200px;
+  height: 100px;
+  margin: 1em;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;此时的效果是：&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/AiNttPW.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;清楚浮动之后：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.box {
+  float: left;
+  width: 200px;
+  height: 100px;
+  margin: 1em;
+}
+.after-box {
+  clear: left;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;效果是：&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/7ut3Dn8.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;position&quot;&gt;&lt;a href=&quot;#position&quot; class=&quot;headerlink&quot; title=&quot;position&quot;&gt;&lt;/a&gt;&lt;strong&gt;position&lt;/strong&gt;&lt;/h4&gt;&lt;p&gt;position属性的属性值：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;static：&lt;strong&gt;默认值&lt;/strong&gt;。设置为static表示不会被positioned。就固定在它的默认位置，之后设置的额外属性，如top, right, left, bottom都没有用。&lt;/li&gt;
+&lt;li&gt;relative：relative表现的和static一样，除非添加了额外属性top, right, left, bottom来调整&lt;strong&gt;使其偏离正常位置&lt;/strong&gt;。其他元素不会调整位置来弥补它偏离后剩下的空隙。&lt;/li&gt;
+&lt;li&gt;absolute：相对于最近的positioned祖先元素定位，如果没有positioned的祖先元素（即属性不是static的元素），那就是相对于body元素。（&lt;strong&gt;相对父元素定位&lt;/strong&gt;）&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;fixed：相对视窗固定定位，即便页面滚动，它还是会停留在相同的位置。和 relative 一样， top, right, bottom 和 left 属性都可用。如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.fixed {
+    position:fixed;
+    bottom:0;
+    right:0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;则使用了fixed这个class的元素就固定在页面的右下角。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;inherit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这篇写得很好：&lt;a href=&quot;http://zh.learnlayout.com/position.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://zh.learnlayout.com/position.html&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;display&quot;&gt;&lt;a href=&quot;#display&quot; class=&quot;headerlink&quot; title=&quot;display&quot;&gt;&lt;/a&gt;&lt;strong&gt;display&lt;/strong&gt;&lt;/h4&gt;&lt;p&gt;每个元素都有一个默认的 display 值，这与元素的类型有关。对于大多数元素它们的默认值通常是 block 或 inline 。&lt;/p&gt;
+&lt;p&gt;常见的块级元素（属性值为block）：&lt;br&gt;div, p, form, header, footer, section等。&lt;/p&gt;
+&lt;p&gt;常见的行内元素有（属性值为inline）：span, a&lt;/p&gt;
+&lt;p&gt;属性值为none的元素：如script元素。&lt;br&gt;display设为none和visibility不同，&lt;br&gt;把 display 设置成 none 不会保留元素本该显示的空间，但是 visibility: hidden; 还会保留。&lt;/p&gt;
+&lt;p&gt;display属性的常见属性值：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;block&lt;/li&gt;
+&lt;li&gt;inline：可以把&lt;code&gt;&amp;lt;li&amp;gt;&lt;/code&gt;元素的display属性值设为inline,就可以做水平菜单。&lt;/li&gt;
+&lt;li&gt;none&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;inline-block：可以使用inline-box来创建行内块。不必用float来创建行内一块块的分区。可以多个块放在同一行。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.box2 {
+  display: inline-block;
+  width: 200px;
+  height: 100px;
+  margin: 1em;
+}
+
+&amp;lt;div class = &amp;quot;box2&amp;quot;&amp;gt;行内块&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;inline-block：&lt;a href=&quot;http://zh.learnlayout.com/inline-block-layout.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://zh.learnlayout.com/inline-block-layout.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;flex：采用flex方式布局。例子如：&lt;a href=&quot;http://zh.learnlayout.com/flexbox.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://zh.learnlayout.com/flexbox.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;CSS学习笔记-（9-18）&quot;&gt;&lt;a href=&quot;#CSS学习笔记-（9-18）&quot; class=&quot;headerlink&quot; title=&quot;CSS学习笔记 （9.18）&quot;&gt;&lt;/a&gt;CSS学习笔记 （9.18）&lt;/h2&gt;&lt;h4 id=&quot;box-sizing&quot;&gt;&lt;a hr
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title></title>
