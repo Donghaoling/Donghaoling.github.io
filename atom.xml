@@ -122,11 +122,11 @@
     <link href="http://yoursite.com/2016/09/18/0917JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://yoursite.com/2016/09/18/0917JS学习笔记/</id>
     <published>2016-09-18T10:48:13.966Z</published>
-    <updated>2016-09-19T13:05:13.643Z</updated>
+    <updated>2016-09-19T13:10:25.965Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Array类型的方法&quot;&gt;&lt;a href=&quot;#Array类型的方法&quot; class=&quot;headerlink&quot; title=&quot;Array类型的方法&quot;&gt;&lt;/a&gt;&lt;strong&gt;Array类型的方法&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;转换方法&quot;&gt;&lt;a href=&quot;#转换方法&quot; class=&quot;headerlink&quot; title=&quot;转换方法&quot;&gt;&lt;/a&gt;转换方法&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;toString()&lt;/code&gt;：对数组里的每个元素调用toString()，然后用”,”连接数组。 &lt;/li&gt;
-&lt;li&gt;&lt;code&gt;valueOf()&lt;/code&gt;： 返回原数组&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;valueOf()&lt;/code&gt;： 返回原数组。&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;code&gt;join()&lt;/code&gt;： 接受一个参数，连接数组。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var colors = [&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;, &amp;quot;green&amp;quot;]; 
 colors.length = 4; //设置数组长度为4，则第四项(colors[3])为undefined
@@ -135,12 +135,16 @@ colors.length = 4; //设置数组长度为4，则第四项(colors[3])为undefine
 &lt;/ul&gt;
 &lt;h4 id=&quot;栈方法&quot;&gt;&lt;a href=&quot;#栈方法&quot; class=&quot;headerlink&quot; title=&quot;栈方法&quot;&gt;&lt;/a&gt;栈方法&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;push()&lt;/code&gt;： 返回数组长度&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;pop()&lt;/code&gt;： 返回最后一个元素&lt;h4 id=&quot;队列方法&quot;&gt;&lt;a href=&quot;#队列方法&quot; class=&quot;headerlink&quot; title=&quot;队列方法&quot;&gt;&lt;/a&gt;队列方法&lt;/h4&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pop()&lt;/code&gt;： 返回最后一个元素&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;队列方法&quot;&gt;&lt;a href=&quot;#队列方法&quot; class=&quot;headerlink&quot; title=&quot;队列方法&quot;&gt;&lt;/a&gt;队列方法&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;shift()&lt;/code&gt;： 返回第一个元素&lt;br&gt;&lt;code&gt;var item = colors.shift()&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;code&gt;unshift()&lt;/code&gt;：在数组前端添加任意个项并返回新数组的长度&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var colors = new Array();
 var count = colors.unshift(&amp;quot;red&amp;quot;, &amp;quot;green&amp;quot;); // colors = [&amp;quot;red&amp;quot;, &amp;quot;green&amp;quot;]
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;重排序方法&quot;&gt;&lt;a href=&quot;#重排序方法&quot; class=&quot;headerlink&quot; title=&quot;重排序方法&quot;&gt;&lt;/a&gt;重排序方法&lt;/h4&gt;&lt;/li&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;重排序方法&quot;&gt;&lt;a href=&quot;#重排序方法&quot; class=&quot;headerlink&quot; title=&quot;重排序方法&quot;&gt;&lt;/a&gt;重排序方法&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;reverse()&lt;/code&gt;： 反转数组项的顺序&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;code&gt;sort()&lt;/code&gt;： 默认会调用toString()方法转换数组项，然后比较数组元素的大小，从小到大排序。&lt;/p&gt;
 &lt;p&gt;  可以接受比较函数作为参数，如果第一个参数位于第二个参数之前，返回负数，如果两个参数相等，返回0，如果第一个参数位于第二个参数之后，返回负数。比较函数可如下：&lt;/p&gt;
@@ -151,7 +155,9 @@ var count = colors.unshift(&amp;quot;red&amp;quot;, &amp;quot;green&amp;quot;); 
 }
 var values = [1,10,5,15];
 values.sort(compare);
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;操作方法&quot;&gt;&lt;a href=&quot;#操作方法&quot; class=&quot;headerlink&quot; title=&quot;操作方法&quot;&gt;&lt;/a&gt;操作方法&lt;/h4&gt;&lt;/li&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;操作方法&quot;&gt;&lt;a href=&quot;#操作方法&quot; class=&quot;headerlink&quot; title=&quot;操作方法&quot;&gt;&lt;/a&gt;操作方法&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;code&gt;concat()&lt;/code&gt;：可以基于当前数组中的所有项创建一个新数组，首先创建当前数组的一个副本，然后将接收到的参数添加到这个副本的末尾。如果传递给concat()方法的是一个或多个数组，则该方法会将这些数组中的每一项都添加到结果数组中。所以该方法可以用来&lt;strong&gt;连接两个或多个数组&lt;/strong&gt;。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var a = [1,2,3]; 
 var b = [3,4];  
@@ -242,9 +248,10 @@ for (i=0;i&amp;lt;x.length;i++)
       txt=txt + x[i].childNodes[0].nodeValue + &amp;quot;&amp;lt;br /&amp;gt;&amp;quot;;
   }
 document.getElementById(&amp;quot;myDiv&amp;quot;).innerHTML=txt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;XMLHttpRequest对象的重要属性&quot;&gt;&lt;a href=&quot;#XMLHttpRequest对象的重要属性&quot; class=&quot;headerlink&quot; title=&quot;XMLHttpRequest对象的重要属性&quot;&gt;&lt;/a&gt;XMLHttpRequest对象的重要属性&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;onreadystatechange： 每当 readyState 属性改变时，就会调用该函数&lt;/p&gt;
-&lt;/li&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;XMLHttpRequest对象的重要属性&quot;&gt;&lt;a href=&quot;#XMLHttpRequest对象的重要属性&quot; class=&quot;headerlink&quot; title=&quot;XMLHttpRequest对象的重要属性&quot;&gt;&lt;/a&gt;XMLHttpRequest对象的重要属性&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;onreadystatechange： 每当 readyState 属性改变时，就会调用该函数&lt;/li&gt;
 &lt;li&gt;readyState&lt;ul&gt;
 &lt;li&gt;0: 请求未初始化&lt;/li&gt;
 &lt;li&gt;1: 服务器连接已建立&lt;/li&gt;
@@ -261,7 +268,9 @@ document.getElementById(&amp;quot;myDiv&amp;quot;).innerHTML=txt;
 &lt;li&gt;如果两个都是字符串，每个位置的字符都一样，那么[相等]；否则[不相等]。 &lt;/li&gt;
 &lt;li&gt;如果两个值都是true，或者都是false，那么[相等]。 &lt;/li&gt;
 &lt;li&gt;如果两个值都引用同一个对象或函数，那么[相等]；否则[不相等]。 &lt;/li&gt;
-&lt;li&gt;如果两个值都是null，或者都是undefined，那么[相等]。 &lt;h4 id=&quot;：先做类型转换，再判等&quot;&gt;&lt;a href=&quot;#：先做类型转换，再判等&quot; class=&quot;headerlink&quot; title=&quot;==：先做类型转换，再判等&quot;&gt;&lt;/a&gt;==：先做类型转换，再判等&lt;/h4&gt;&lt;/li&gt;
+&lt;li&gt;如果两个值都是null，或者都是undefined，那么[相等]。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&quot;：先做类型转换，再判等&quot;&gt;&lt;a href=&quot;#：先做类型转换，再判等&quot; class=&quot;headerlink&quot; title=&quot;==：先做类型转换，再判等&quot;&gt;&lt;/a&gt;==：先做类型转换，再判等&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;如果两个值类型相同，进行 === 比较。 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;如果两个值类型不同，他们可能相等。根据下面规则进行类型转换再比较： &lt;/p&gt;
 &lt;ul&gt;
@@ -279,17 +288,21 @@ alert(a===b) //false
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&quot;正则&quot;&gt;&lt;a href=&quot;#正则&quot; class=&quot;headerlink&quot; title=&quot;正则&quot;&gt;&lt;/a&gt;&lt;strong&gt;正则&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;pattern：-regExpr-flag&quot;&gt;&lt;a href=&quot;#pattern：-regExpr-flag&quot; class=&quot;headerlink&quot; title=&quot;pattern：/regExpr/flag&quot;&gt;&lt;/a&gt;pattern：/regExpr/flag&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;flag：&lt;/p&gt;
-&lt;ul&gt;
+&lt;li&gt;flag：&lt;ul&gt;
 &lt;li&gt;g：全局模式，发现第一个匹配串后依然继续匹配。&lt;/li&gt;
 &lt;li&gt;i：不区分大小写模式。&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;m：多行模式，到达一行文本末尾后依然匹配下一行。&lt;/p&gt;
-&lt;h4 id=&quot;String的match-方法和RegExp的exec-方法基本相同。&quot;&gt;&lt;a href=&quot;#String的match-方法和RegExp的exec-方法基本相同。&quot; class=&quot;headerlink&quot; title=&quot;String的match()方法和RegExp的exec()方法基本相同。&quot;&gt;&lt;/a&gt;String的match()方法和RegExp的exec()方法基本相同。&lt;/h4&gt;&lt;p&gt;var text = “cat, bat, sat, fat”;&lt;br&gt;var pattern = /.at/;&lt;br&gt;//与pattern.exec(text)结果相同，但如果pattern=/.at/g,那么两者得到的matches会有所不同&lt;br&gt;var matches = text.match(pattern);&lt;br&gt;alert(matches.index); //0&lt;br&gt;alert(matches); //[“cat”]&lt;br&gt;alert(pattern.lastIndex); //0&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;m：多行模式，到达一行文本末尾后依然匹配下一行。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-</content>
+&lt;h4 id=&quot;String的match-方法和RegExp的exec-方法基本相同。&quot;&gt;&lt;a href=&quot;#String的match-方法和RegExp的exec-方法基本相同。&quot; class=&quot;headerlink&quot; title=&quot;String的match()方法和RegExp的exec()方法基本相同。&quot;&gt;&lt;/a&gt;String的match()方法和RegExp的exec()方法基本相同。&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;var text = &amp;quot;cat, bat, sat, fat&amp;quot;;
+var pattern = /.at/;
+//与pattern.exec(text)结果相同，但如果pattern=/.at/g,那么两者得到的matches会有所不同
+var matches = text.match(pattern);
+alert(matches.index); //0
+alert(matches); //[&amp;quot;cat&amp;quot;]
+alert(pattern.lastIndex); //0
+&lt;/code&gt;&lt;/pre&gt;</content>
     
     <summary type="html">
     
