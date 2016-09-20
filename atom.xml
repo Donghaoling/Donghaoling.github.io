@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-19T12:58:12.607Z</updated>
+  <updated>2016-09-20T13:15:11.434Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,283 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2016/09/20/0920JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2016/09/20/0920JS学习笔记/</id>
+    <published>2016-09-20T13:15:56.303Z</published>
+    <updated>2016-09-20T13:15:11.434Z</updated>
+    
+    <content type="html">&lt;hr&gt;
+&lt;h2 id=&quot;title-JS学习笔记-（9-20）&quot;&gt;&lt;a href=&quot;#title-JS学习笔记-（9-20）&quot; class=&quot;headerlink&quot; title=&quot;title: JS学习笔记 （9.20）&quot;&gt;&lt;/a&gt;title: JS学习笔记 （9.20）&lt;/h2&gt;&lt;h2 id=&quot;面向对象编程&quot;&gt;&lt;a href=&quot;#面向对象编程&quot; class=&quot;headerlink&quot; title=&quot;面向对象编程&quot;&gt;&lt;/a&gt;&lt;strong&gt;面向对象编程&lt;/strong&gt;&lt;/h2&gt;&lt;h3 id=&quot;1-创建对象&quot;&gt;&lt;a href=&quot;#1-创建对象&quot; class=&quot;headerlink&quot; title=&quot;1. 创建对象&quot;&gt;&lt;/a&gt;&lt;strong&gt;1. 创建对象&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;工厂模式&quot;&gt;&lt;a href=&quot;#工厂模式&quot; class=&quot;headerlink&quot; title=&quot;工厂模式&quot;&gt;&lt;/a&gt;工厂模式&lt;/h4&gt;&lt;p&gt;用函数封装创建对象的细节。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function createPerson(name, age, job){
+    var o = new Object();
+    o.name = name;
+    o.age = age;
+    o.job = job;
+    o.sayName = function(){
+    alert(this.name);
+    };
+    return o;
+}
+var person1 = createPerson(&amp;quot;Nicholas&amp;quot;, 29, &amp;quot;Software Engineer&amp;quot;);
+var person2 = createPerson(&amp;quot;Greg&amp;quot;, 27, &amp;quot;Doctor&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：工厂模式无法知道对象的类型。&lt;/p&gt;
+&lt;h4 id=&quot;构造函数模式&quot;&gt;&lt;a href=&quot;#构造函数模式&quot; class=&quot;headerlink&quot; title=&quot;构造函数模式&quot;&gt;&lt;/a&gt;构造函数模式&lt;/h4&gt;&lt;p&gt;利用构造函数创建特定对象。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Person(name, age, job){
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.sayName = function(){
+        alert(this.name);
+    };
+}
+var person1 = new Person(&amp;quot;Nicholas&amp;quot;, 29, &amp;quot;Software Engineer&amp;quot;);
+var person2 = new Person(&amp;quot;Greg&amp;quot;, 27, &amp;quot;Doctor&amp;quot;);
+
+alert(person1 instanceof Object); //true
+alert(person1 instanceof Person); //true
+alert(person2 instanceof Object); //true
+alert(person2 instanceof Person); //true
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;构造函数与其他函数的唯一区别，就在于调用它们的方式不同。不过，构造函数毕竟也是函数，不存在定义构造函数的特殊语法。作为习惯，构造函数的函数名首字母会大写，任何函数，只要通过 new 操作符来调用，那它就可以作为构造函数。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 当作构造函数使用
+var person = new Person(&amp;quot;Nicholas&amp;quot;, 29, &amp;quot;Software Engineer&amp;quot;);
+person.sayName(); //&amp;quot;Nicholas&amp;quot;
+// 作为普通函数调用
+Person(&amp;quot;Greg&amp;quot;, 27, &amp;quot;Doctor&amp;quot;); // 添加到 window
+window.sayName(); //&amp;quot;Greg&amp;quot;
+// 在另一个对象的作用域中调用
+var o = new Object();
+Person.call(o, &amp;quot;Kristen&amp;quot;, 25, &amp;quot;Nurse&amp;quot;);
+o.sayName(); //&amp;quot;Kristen&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;优点&lt;/strong&gt;：可以将实例标识为一种特定的类型。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：每个方法在实例上要重新创建一遍。浪费空间。&lt;/p&gt;
+&lt;h4 id=&quot;原型模式&quot;&gt;&lt;a href=&quot;#原型模式&quot; class=&quot;headerlink&quot; title=&quot;原型模式&quot;&gt;&lt;/a&gt;原型模式&lt;/h4&gt;&lt;p&gt;每个函数都有一个prototype属性，这个属性是一个指针，指向一个对象（&lt;strong&gt;原型对象&lt;/strong&gt;），这个对象包含由特定类型所有实例共享的属性和方法。只要创建了一个函数，就会为该函数创建prototype属性，该属性指向原型对象。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Person(){
+}
+Person.prototype.name = &amp;quot;Nicholas&amp;quot;;
+Person.prototype.age = 29;
+Person.prototype.job = &amp;quot;Software Engineer&amp;quot;;
+Person.prototype.sayName = function(){
+alert(this.name);
+};
+var person1 = new Person();
+person1.sayName(); //&amp;quot;Nicholas&amp;quot;
+var person2 = new Person();
+person2.sayName(); //&amp;quot;Nicholas&amp;quot;
+
+alert(person1.sayName == person2.sayName); //true
+
+alert(person1.hasOwnProperty(&amp;quot;name&amp;quot;)); //false
+alert(&amp;quot;name&amp;quot; in person1); //true
+
+person1.name = &amp;quot;Greg&amp;quot;;
+alert(person1.name); //&amp;quot;Greg&amp;quot; —— 来自实例
+alert(person1.hasOwnProperty(&amp;quot;name&amp;quot;)); //true
+alert(&amp;quot;name&amp;quot; in person1); //true
+
+delete person1.name;
+alert(person1.name); //&amp;quot;Nicholas&amp;quot; —— 来自原型
+alert(person1.hasOwnProperty(&amp;quot;name&amp;quot;)); //false
+alert(&amp;quot;name&amp;quot; in person1); //true
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/H8iC837.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;Person Prototype是原型对象。原型对象有个constructor属性，指向构造函数。&lt;/p&gt;
+&lt;p&gt;访问顺序：先访问实例对象的属性，再访问原型对象的属性。&lt;/p&gt;
+&lt;p&gt;更简单的原型语法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Person(){
+}
+Person.prototype = {
+    constructor: Person,
+    name : &amp;quot;Nicholas&amp;quot;,
+    age : 29,
+    job: &amp;quot;Software Engineer&amp;quot;,
+    sayName : function () {
+        alert(this.name);
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;但是这样相当于重写了原型，等于改写了函数的原型对象，那么函数的原型对象里的constructor属性就不指向构造函数Person了，但是instanceof还是可以返回正确结果。所以可以显式加constructor属性。或者这样设置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Object.defineProperty(Person.prototype, &amp;quot;constructor&amp;quot;, {
+    enumerable: false,
+    value: Person
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;instanceof&lt;/code&gt;：判断对象是否属于某个实例。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Person.prototype.isPrototypeOf(person1)&lt;/code&gt; 判断person1的原型对象。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Object.getPrototypeOf(person1) == Person.prototype&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;in&lt;/code&gt;、&lt;code&gt;hasOwnProperty&lt;/code&gt;和&lt;code&gt;hasPrototypeProperty&lt;/code&gt;：in判断属性来自原型或者实例，hasOwnPorperty判断是否来自实例，hasPrototypeProperty判断是否来自原型。&lt;br&gt;&lt;code&gt;person2.hasOwnProperty(&amp;quot;name&amp;quot;)&lt;/code&gt;&lt;br&gt;&lt;code&gt;hasPrototypeProperty(person, &amp;quot;name&amp;quot;)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;typeof Array.prototype.sort //function&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：对于包含引用类型的属性会有问题。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Person(){
+}
+Person.prototype = {
+    constructor: Person,
+    name : &amp;quot;Nicholas&amp;quot;,
+    age : 29,
+    job : &amp;quot;Software Engineer&amp;quot;,
+    friends : [&amp;quot;Shelby&amp;quot;, &amp;quot;Court&amp;quot;],
+    sayName : function () {
+        alert(this.name);
+    }
+};
+var person1 = new Person();
+var person2 = new Person();
+person1.friends.push(&amp;quot;Van&amp;quot;);
+alert(person1.friends); //&amp;quot;Shelby,Court,Van&amp;quot;
+alert(person2.friends); //&amp;quot;Shelby,Court,Van&amp;quot;
+alert(person1.friends === person2.friends); //true
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;组合使用构造函数模式和原型模式&quot;&gt;&lt;a href=&quot;#组合使用构造函数模式和原型模式&quot; class=&quot;headerlink&quot; title=&quot;组合使用构造函数模式和原型模式&quot;&gt;&lt;/a&gt;组合使用构造函数模式和原型模式&lt;/h4&gt;&lt;p&gt;最常见的方式。函数声明在原型中，属性声明在构造函数中。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Person(name, age, job){
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.friends = [&amp;quot;Shelby&amp;quot;, &amp;quot;Court&amp;quot;];
+}
+Person.prototype = {
+    constructor : Person,
+    sayName : function(){
+        alert(this.name);
+    }
+}
+var person1 = new Person(&amp;quot;Nicholas&amp;quot;, 29, &amp;quot;Software Engineer&amp;quot;);
+var person2 = new Person(&amp;quot;Greg&amp;quot;, 27, &amp;quot;Doctor&amp;quot;);
+person1.friends.push(&amp;quot;Van&amp;quot;);
+alert(person1.friends); //&amp;quot;Shelby,Count,Van&amp;quot;
+alert(person2.friends); //&amp;quot;Shelby,Count&amp;quot;
+alert(person1.friends === person2.friends); //false
+alert(person1.sayName === person2.sayName); //true
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：分开了构造函数和原型的定义。和其他OO语言不太一样。&lt;/p&gt;
+&lt;h4 id=&quot;动态原型模式&quot;&gt;&lt;a href=&quot;#动态原型模式&quot; class=&quot;headerlink&quot; title=&quot;动态原型模式&quot;&gt;&lt;/a&gt;动态原型模式&lt;/h4&gt;&lt;p&gt;把属性和函数都封装在构造函数中。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Person(name, age, job){
+    //属性
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    //方法
+    if (typeof this.sayName != &amp;quot;function&amp;quot;){
+        Person.prototype.sayName = function(){
+            alert(this.name);
+        };
+    }
+}
+
+var friend = new Person(&amp;quot;Nicholas&amp;quot;, 29, &amp;quot;Software Engineer&amp;quot;);
+friend.sayName();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;声明sayName()方法的的代码只有在初次调用构造函数的时候才会执行。&lt;/p&gt;
+&lt;h3 id=&quot;2-继承&quot;&gt;&lt;a href=&quot;#2-继承&quot; class=&quot;headerlink&quot; title=&quot;2. 继承&quot;&gt;&lt;/a&gt;&lt;strong&gt;2. 继承&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;原型链&quot;&gt;&lt;a href=&quot;#原型链&quot; class=&quot;headerlink&quot; title=&quot;原型链&quot;&gt;&lt;/a&gt;原型链&lt;/h4&gt;&lt;p&gt;实现&lt;strong&gt;继承&lt;/strong&gt;的机制。&lt;/p&gt;
+&lt;p&gt;构造函数有原型对象，原型对象包含指向构造函数的指针。&lt;/p&gt;
+&lt;p&gt;实例包含指向原型对象的内部指针。&lt;/p&gt;
+&lt;p&gt;实现继承的方式：让子类的原型对象等于父类实例。子类的原型对象包含指向父类原型的指针，但同时也包含了父类的属性，父类原型包含指向父类构造函数的指针。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function SuperType(){
+    this.property = true;
+}
+SuperType.prototype.getSuperValue = function(){
+    return this.property;
+};
+function SubType(){
+    this.subproperty = false;
+}
+//继承了 SuperType
+SubType.prototype = new SuperType();
+SubType.prototype.getSubValue = function (){
+    return this.subproperty;
+};
+var instance = new SubType();
+alert(instance.getSuperValue()); //true
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/4jzOTVC.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;确定原型与实例的关系：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;alert(instance instanceof Object); //true
+alert(instance instanceof SuperType); //true
+alert(instance instanceof SubType); //true
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：子类的引用变量问题&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function SuperType(){
+    this.colors = [&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;, &amp;quot;green&amp;quot;];
+}
+function SubType(){
+}
+//继承了 SuperType
+SubType.prototype = new SuperType();
+var instance1 = new SubType();
+instance1.colors.push(&amp;quot;black&amp;quot;);
+alert(instance1.colors); //&amp;quot;red,blue,green,black&amp;quot;
+var instance2 = new SubType();
+alert(instance2.colors); //&amp;quot;red,blue,green,black&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;SubType.prototype是父类的一个实例，所以和专门创建了一个SubType.prototype.colors 属性一样。但是结果是所有子类的实例都会共享这个属性。&lt;/p&gt;
+&lt;h4 id=&quot;借用构造函数&quot;&gt;&lt;a href=&quot;#借用构造函数&quot; class=&quot;headerlink&quot; title=&quot;借用构造函数&quot;&gt;&lt;/a&gt;借用构造函数&lt;/h4&gt;&lt;p&gt;在子类构造函数的内部调用父类的构造函数。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function SuperType(){
+    this.colors = [&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;, &amp;quot;green&amp;quot;];
+}
+function SubType(){
+//继承了 SuperType
+    SuperType.call(this);
+}
+var instance1 = new SubType();
+instance1.colors.push(&amp;quot;black&amp;quot;);
+alert(instance1.colors); //&amp;quot;red,blue,green,black&amp;quot;
+var instance2 = new SubType();
+alert(instance2.colors); //&amp;quot;red,blue,green&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;优点&lt;/strong&gt;：传递参数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function SuperType(name){
+    this.name = name;
+}
+function SubType(){
+    //继承了 SuperType，同时还传递了参数
+    SuperType.call(this, &amp;quot;Nicholas&amp;quot;);
+    //实例属性
+    this.age = 29;
+}
+var instance = new SubType();
+alert(instance.name); //&amp;quot;Nicholas&amp;quot;;
+alert(instance.age); //29
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：方法在构造函数中定义，没法复用。&lt;/p&gt;
+&lt;h4 id=&quot;组合继承&quot;&gt;&lt;a href=&quot;#组合继承&quot; class=&quot;headerlink&quot; title=&quot;组合继承&quot;&gt;&lt;/a&gt;组合继承&lt;/h4&gt;&lt;p&gt;将原型链和借用构造函数技术组合使用。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function SuperType(name){
+    this.name = name;
+    this.colors = [&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;, &amp;quot;green&amp;quot;];
+}
+SuperType.prototype.sayName = function(){
+    alert(this.name);
+};
+
+function SubType(name, age){
+    //继承属性
+    SuperType.call(this, name);
+    this.age = age;
+}
+//继承方法
+SubType.prototype = new SuperType();
+SubType.prototype.constructor = SubType; //由于父类原型对象的constructor指针指向了父类构造函数，所以要显示地改成子类的构造函数
+SubType.prototype.sayAge = function(){
+    alert(this.age);
+};
+
+var instance1 = new SubType(&amp;quot;Nicholas&amp;quot;, 29);
+instance1.colors.push(&amp;quot;black&amp;quot;);
+alert(instance1.colors); //&amp;quot;red,blue,green,black&amp;quot;
+instance1.sayName(); //&amp;quot;Nicholas&amp;quot;;
+instance1.sayAge(); //29
+
+var instance2 = new SubType(&amp;quot;Greg&amp;quot;, 27);
+alert(instance2.colors); //&amp;quot;red,blue,green&amp;quot;
+instance2.sayName(); //&amp;quot;Greg&amp;quot;;
+instance2.sayAge(); //27
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;3-几个概念&quot;&gt;&lt;a href=&quot;#3-几个概念&quot; class=&quot;headerlink&quot; title=&quot;3. 几个概念&quot;&gt;&lt;/a&gt;&lt;strong&gt;3. 几个概念&lt;/strong&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;每个函数都有prototype属性。&lt;/li&gt;
+&lt;li&gt;原型对象有constructor属性，默认指向原型对象的构造函数。&lt;/li&gt;
+&lt;li&gt;实例对象和构造函数都有instanceof属性，判断继承自哪个类型。&lt;/li&gt;
+&lt;li&gt;一个作用域直观可以理解成一个对象，对象有变量和方法，在这个对象的作用域中执行，只能访问这个作用域的变量和方法。作用域链使内部函数执行的时候可以访问外部函数的作用域中的属性变量和方法。&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;title-JS学习笔记-（9-20）&quot;&gt;&lt;a href=&quot;#title-JS学习笔记-（9-20）&quot; class=&quot;headerlink&quot; title=&quot;title: JS学习笔记 （9.20）&quot;&gt;&lt;/a&gt;title: JS学习笔记 （9.20）&lt;/h
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>CSS学习笔记 （9.18）</title>
