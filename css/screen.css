@@ -246,7 +246,7 @@ pre {
     border: 1px solid #E3EDF3;
     width: 100%;
     padding: 10px;
-    font-family: Inconsolata, monospace, sans-serif;
+    font-family: Consolas, monospace, sans-serif;
     font-size: 0.9em;
     white-space: pre;
     overflow: auto;
