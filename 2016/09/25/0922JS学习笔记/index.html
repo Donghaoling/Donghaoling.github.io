@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JS学习笔记 （9.22） | Dong Haoling&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.跨域问题只要协议、域名、端口有任何一个不同，都被当作是不同的域。
+1.1 跨域问题的解决对于端口和协议的不同，只能通过后台来解决。
+1.2.1 jsonp
+在js中，我们直接用XMLHttpRequest请求不同域上的数据时，是不可以的。但是，在页面上引入不同域上的js脚本文件却是可以的，jsonp正是利用这个特性来实现的。
+例如：123456&amp;lt;script type=&quot;text/jav">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS学习笔记 （9.22）">
+<meta property="og:url" content="http://yoursite.com/2016/09/25/0922JS学习笔记/index.html">
+<meta property="og:site_name" content="Dong Haoling's Blog">
+<meta property="og:description" content="1.跨域问题只要协议、域名、端口有任何一个不同，都被当作是不同的域。
+1.1 跨域问题的解决对于端口和协议的不同，只能通过后台来解决。
+1.2.1 jsonp
+在js中，我们直接用XMLHttpRequest请求不同域上的数据时，是不可以的。但是，在页面上引入不同域上的js脚本文件却是可以的，jsonp正是利用这个特性来实现的。
+例如：123456&amp;lt;script type=&quot;text/jav">
+<meta property="og:updated_time" content="2016-09-22T10:54:53.526Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS学习笔记 （9.22）">
+<meta name="twitter:description" content="1.跨域问题只要协议、域名、端口有任何一个不同，都被当作是不同的域。
+1.1 跨域问题的解决对于端口和协议的不同，只能通过后台来解决。
+1.2.1 jsonp
+在js中，我们直接用XMLHttpRequest请求不同域上的数据时，是不可以的。但是，在页面上引入不同域上的js脚本文件却是可以的，jsonp正是利用这个特性来实现的。
+例如：123456&amp;lt;script type=&quot;text/jav">
+  
+    <link rel="alternate" href="/atom.xml" title="Dong Haoling&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Dong Haoling&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-0922JS学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/25/0922JS学习笔记/" class="article-date">
+  <time datetime="2016-09-25T10:32:33.867Z" itemprop="datePublished">2016-09-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS学习笔记 （9.22）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-跨域问题"><a href="#1-跨域问题" class="headerlink" title="1.跨域问题"></a><strong>1.跨域问题</strong></h3><p>只要协议、域名、端口有任何一个不同，都被当作是不同的域。</p>
+<h4 id="1-1-跨域问题的解决"><a href="#1-1-跨域问题的解决" class="headerlink" title="1.1 跨域问题的解决"></a>1.1 跨域问题的解决</h4><p>对于端口和协议的不同，只能通过后台来解决。</p>
+<p><strong>1.2.1 jsonp</strong></p>
+<p>在js中，我们直接用XMLHttpRequest请求不同域上的数据时，是不可以的。但是，在页面上引入不同域上的js脚本文件却是可以的，jsonp正是利用这个特性来实现的。</p>
+<p>例如：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">dosomething</span>(<span class="params">jsondata</span>)</span>&#123;</span><br><span class="line">        <span class="comment">//处理获得的json数据</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://example.com/data.php?callback=dosomething"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>使用jquery<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">    $.getJSON(<span class="string">'http://example.com/data.php?callback=?'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">jsondata</span>))</span>&#123;</span><br><span class="line">        <span class="comment">//处理获得的json数据</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>jquery会自动生成一个全局函数来替换callback=?中的问号，之后获取到数据后又会自动销毁，实际上就是起一个临时代理函数的作用。$.getJSON方法会自动判断是否跨域，不跨域的话，就调用普通的ajax方法；跨域的话，则会以异步加载js文件的形式来调用jsonp的回调函数。</p>
+<p>缺点：只支持GET请求而不支持POST等其它类型的HTTP请求；它只支持跨域HTTP请求这种情况，不能解决不同域的两个页面之间如何进行JavaScript调用的问题。</p>
+<p><strong>1.2.2 CORS(Cross-Origin Resource Sharing) 跨域资源共享</strong></p>
+<h4 id="1-1-浏览器对跨域问题的实现"><a href="#1-1-浏览器对跨域问题的实现" class="headerlink" title="1.1 浏览器对跨域问题的实现"></a>1.1 浏览器对跨域问题的实现</h4><p>使用自定义的头部实现浏览器和服务器的沟通</p>
+<p>比如请求时头部增加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Origin: http://donghaoling.github.io</span><br></pre></td></tr></table></figure></p>
+<p>服务器响应时的头部增加（表示允许跨域的访问）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Origin: http:/donghaoling.github.io</span><br></pre></td></tr></table></figure></p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://segmentfault.com/a/1190000000718840" target="_blank" rel="external">https://segmentfault.com/a/1190000000718840</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/09/25/0922JS学习笔记/" data-id="citihkqqi0001bkxl2o1609wx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/09/25/0922HTTP学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          HTTP/2.0
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/21/0921JS学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JS学习笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/25/0922HTTP学习笔记/">HTTP/2.0</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/25/0922JS学习笔记/">JS学习笔记 （9.22）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/21/0921JS学习笔记/">JS学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/20/0920JS学习笔记/">JS学习笔记 ——面向对象编程</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/18/0918CSS学习笔记/">CSS学习笔记 （9.18）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Dong Haoling<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

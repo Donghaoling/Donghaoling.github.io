@@ -5,28 +5,25 @@
   
   <title>JS学习笔记 （9.17） | Dong Haoling&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Array类型的方法转换方法* `toString()`：对数组里的每个元素调用toString()，然后用&amp;quot;,&amp;quot;连接数组。 
-* `valueOf()`： 返回原数组
-* `join()`： 接受一个参数，连接数组。
-
-        var colors = [&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;, &amp;quot;green&amp;quot;];">
+  <meta name="description" content="1. Array类型的方法1.1 转换方法
+toString()：对数组里的每个元素调用toString()，然后用”,”连接数组。 
+valueOf()： 返回原数组。
+join()： 接受一个参数，连接数组。123var colors = [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;]; colors.length = 4; //设置数组长度为4，则第四项(colors[3])为undefi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS学习笔记 （9.17）">
 <meta property="og:url" content="http://yoursite.com/2016/09/18/0917JS学习笔记/index.html">
 <meta property="og:site_name" content="Dong Haoling's Blog">
-<meta property="og:description" content="Array类型的方法转换方法* `toString()`：对数组里的每个元素调用toString()，然后用&amp;quot;,&amp;quot;连接数组。 
-* `valueOf()`： 返回原数组
-* `join()`： 接受一个参数，连接数组。
-
-        var colors = [&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;, &amp;quot;green&amp;quot;];">
-<meta property="og:updated_time" content="2016-09-19T12:44:11.546Z">
+<meta property="og:description" content="1. Array类型的方法1.1 转换方法
+toString()：对数组里的每个元素调用toString()，然后用”,”连接数组。 
+valueOf()： 返回原数组。
+join()： 接受一个参数，连接数组。123var colors = [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;]; colors.length = 4; //设置数组长度为4，则第四项(colors[3])为undefi">
+<meta property="og:updated_time" content="2016-09-25T10:17:32.808Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS学习笔记 （9.17）">
-<meta name="twitter:description" content="Array类型的方法转换方法* `toString()`：对数组里的每个元素调用toString()，然后用&amp;quot;,&amp;quot;连接数组。 
-* `valueOf()`： 返回原数组
-* `join()`： 接受一个参数，连接数组。
-
-        var colors = [&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;, &amp;quot;green&amp;quot;];">
+<meta name="twitter:description" content="1. Array类型的方法1.1 转换方法
+toString()：对数组里的每个元素调用toString()，然后用”,”连接数组。 
+valueOf()： 返回原数组。
+join()： 接受一个参数，连接数组。123var colors = [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;]; colors.length = 4; //设置数组长度为4，则第四项(colors[3])为undefi">
   
     <link rel="alternate" href="/atom.xml" title="Dong Haoling&#39;s Blog" type="application/atom+xml">
   
@@ -66,7 +63,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -97,155 +94,130 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Array类型的方法"><a href="#Array类型的方法" class="headerlink" title="Array类型的方法"></a><strong>Array类型的方法</strong></h3><h4 id="转换方法"><a href="#转换方法" class="headerlink" title="转换方法"></a>转换方法</h4><pre><code>* `toString()`：对数组里的每个元素调用toString()，然后用&quot;,&quot;连接数组。 
-* `valueOf()`： 返回原数组
-* `join()`： 接受一个参数，连接数组。
+        <h3 id="1-Array类型的方法"><a href="#1-Array类型的方法" class="headerlink" title="1. Array类型的方法"></a><strong>1. Array类型的方法</strong></h3><h4 id="1-1-转换方法"><a href="#1-1-转换方法" class="headerlink" title="1.1 转换方法"></a>1.1 转换方法</h4><ul>
+<li><code>toString()</code>：对数组里的每个元素调用toString()，然后用”,”连接数组。 </li>
+<li><code>valueOf()</code>： 返回原数组。</li>
+<li><code>join()</code>： 接受一个参数，连接数组。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>]; </span><br><span class="line">colors.length = <span class="number">4</span>; <span class="comment">//设置数组长度为4，则第四项(colors[3])为undefined</span></span><br><span class="line">alert(colors.join(<span class="string">'||'</span>) ) <span class="comment">// 结果为：red||green||blue||， 因为undefined 的项toString()后的结果是空字符串</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="1-2-栈方法"><a href="#1-2-栈方法" class="headerlink" title="1.2 栈方法"></a>1.2 栈方法</h4><ul>
+<li><code>push()</code>： 返回数组长度</li>
+<li><code>pop()</code>： 返回最后一个元素</li>
+</ul>
+<h4 id="1-3-队列方法"><a href="#1-3-队列方法" class="headerlink" title="1.3 队列方法"></a>1.3 队列方法</h4><ul>
+<li><code>shift()</code>： 返回第一个元素<br><code>var item = colors.shift()</code></li>
+<li><code>unshift()</code>：在数组前端添加任意个项并返回新数组的长度<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="keyword">var</span> count = colors.unshift(<span class="string">"red"</span>, <span class="string">"green"</span>); <span class="comment">// colors = ["red", "green"]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="1-4-重排序方法"><a href="#1-4-重排序方法" class="headerlink" title="1.4 重排序方法"></a>1.4 重排序方法</h4><ul>
+<li><code>reverse()</code>： 反转数组项的顺序</li>
+<li><p><code>sort()</code>： 默认会调用toString()方法转换数组项，然后比较数组元素的大小，从小到大排序。</p>
+<p>  可以接受比较函数作为参数，如果第一个参数位于第二个参数之前，返回负数，如果两个参数相等，返回0，如果第一个参数位于第二个参数之后，返回负数。比较函数可如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">value1, value2</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(value1 &lt; value2) <span class="keyword">return</span><span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(value1 &gt; value2) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> values = [<span class="number">1</span>,<span class="number">10</span>,<span class="number">5</span>,<span class="number">15</span>];</span><br><span class="line">values.sort(compare);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="1-5-操作方法"><a href="#1-5-操作方法" class="headerlink" title="1.5 操作方法"></a>1.5 操作方法</h4><ul>
+<li><p><code>concat()</code>：可以基于当前数组中的所有项创建一个新数组，首先创建当前数组的一个副本，然后将接收到的参数添加到这个副本的末尾。如果传递给concat()方法的是一个或多个数组，则该方法会将这些数组中的每一项都添加到结果数组中。所以该方法可以用来<strong>连接两个或多个数组</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]; </span><br><span class="line"><span class="keyword">var</span> b = [<span class="number">3</span>,<span class="number">4</span>];  </span><br><span class="line"><span class="keyword">var</span> c = a.concat(<span class="string">"hi"</span>, b); <span class="comment">// c = [1,2,3,"hi",3,4]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>slice()</code>：能够基于当前数组的一个或多个项创建一个新数组。接收两个参数，要返回项的起始和结束位置（返回的新数组不包括结束位置）。若只有一个参数，则返回从起始位置到当前数末尾的所有项。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"><span class="keyword">var</span> b = a.slice(<span class="number">1</span>); <span class="comment">//b = [2,3,4,5] </span></span><br><span class="line"><span class="keyword">var</span> c = a.slice(<span class="number">1</span>,<span class="number">4</span>) <span class="comment">//c = [2,3,4]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>splice()</code>：用于向数组中部插入项。<strong>返回从原数组中删除的项</strong>。有以下三种用法：</p>
+<ul>
+<li>删除：指定2个参数，要删除的第一项的位置和要删除的项数。</li>
+<li><p>插入：向指定位置插入任意数量的项。指定3个参数：起始位置，0（要删除的项数为0），要插入的项。    </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">colors.splice(<span class="number">2</span>,<span class="number">0</span>,<span class="string">"red"</span>,<span class="string">"blue"</span>) <span class="comment">// 从位置2开始插入字符串"red","blue"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>替换：可以向指定位置插入任意数量的项，且删除任意数量的项。指定3个参数：起始位置，要删除的项数，要插入的项。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">colors.splice(<span class="number">2</span>,<span class="number">1</span>,<span class="string">"red"</span>,<span class="string">"blue"</span>) <span class="comment">// 删除位置2的项，然后从位置2开始插入字符串"red","blue"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-6-位置方法"><a href="#1-6-位置方法" class="headerlink" title="1.6 位置方法"></a>1.6 位置方法</h4><ul>
+<li><code>indexOf()</code>：返回查找的项在数组中的位置，从头开始查找</li>
+<li><code>lastIndexOf()</code>：同样返回查找的项在数组中的位置，从数组末尾开始查找</li>
+</ul>
+<h4 id="1-7-迭代方法"><a href="#1-7-迭代方法" class="headerlink" title="1.7 迭代方法"></a>1.7 迭代方法</h4><p>都接受一个函数作为传入参数，该函数会接收三个参数，数据项的值，该项在数组中的位置和数组对象本身。</p>
+<ul>
+<li><code>every()</code>：传入一个函数，对数组中的每一项运行给定函数，每一项都返回true,则最后返回true。</li>
+<li><code>filter()</code>：传入一个函数，对数组中的每一项运行给定函数，返回函数会返回true的项组成的数组。</li>
+<li><code>forEach()</code>：传入一个函数，对数组中的每一项运行给定函数，没有返回值。<br>  <code>var numbers = [1,2,3,4];</code><br>  <code>numbers.forEach(function(item, index, array){...})</code><ul>
+<li><code>map()</code>：传入一个函数，对数组中的每一项运行给定函数，返回函数调用的结果组成的数组。</li>
+<li><code>some()</code>：传入一个函数，对数组中的每一项运行给定函数，如果函数对任一项返回true，就返回true。</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-8-归并方法"><a href="#1-8-归并方法" class="headerlink" title="1.8 归并方法"></a>1.8 归并方法</h4><p>迭代数组中的所有项，构建一个最终返回的值。接受2个参数：在每一项上调用的函数，归并的初始值。传给函数的4个参数：前一个值，当前值，项的索引，数组对象。</p>
+<ul>
+<li><code>reduce()</code>：从数组第一项开始</li>
+<li><code>reduceRight()</code>：从数组最后一项开始<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var values = [1,2,3,4,5];</span><br><span class="line">var sum = values.reduce(function(prev, cur, index, array)&#123;</span><br><span class="line">		return prev+cur;</span><br><span class="line">&#125;); </span><br><span class="line">console.log(sum) //15</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-AJAX"><a href="#2-AJAX" class="headerlink" title="2. AJAX"></a><strong>2. AJAX</strong></h3><p>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。</p>
+<h4 id="2-1-创建XMLHttpRequest对象"><a href="#2-1-创建XMLHttpRequest对象" class="headerlink" title="2.1 创建XMLHttpRequest对象"></a>2.1 创建XMLHttpRequest对象</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xmlhttp;</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest)</span><br><span class="line">&#123;<span class="comment">// code for IE7+, Firefox, Chrome, Opera, Safari</span></span><br><span class="line">	 xmlhttp=<span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;<span class="comment">// code for IE6, IE5</span></span><br><span class="line">	xmlhttp=<span class="keyword">new</span> ActiveXObjec(<span class="string">"Microsoft.XMLHTTP"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-向服务器发送请求"><a href="#2-2-向服务器发送请求" class="headerlink" title="2.2 向服务器发送请求"></a>2.2 向服务器发送请求</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xmlhttp.open(&quot;GET&quot;,&quot;demo_get2.asp?fname=Bill&amp;lname=Gates&quot;,true);</span><br><span class="line">xmlhttp.send();</span><br></pre></td></tr></table></figure>
+<p>open的三个参数：</p>
+<ul>
+<li>method:请求使用的方法</li>
+<li>url：请求的地址</li>
+<li>async:是否异步，true表示异步，如果异步，则需要加onreadystatechange函数。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">xmlhttp.open(<span class="string">"GET"</span>,<span class="string">"test1.txt"</span>,<span class="literal">true</span>);</span><br><span class="line">xmlhttp.send();</span><br><span class="line">xmlhttp.onreadystatechange=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (xmlhttp.readyState==<span class="number">4</span> &amp;&amp; xmlhttp.status==<span class="number">200</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).innerHTML=xmlhttp.responseText;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果设置为async设置为false,则不需要加onreadystatechange函数。如果没有响应，则挂起应用程序，一般不推荐使用。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xmlhttp.open(<span class="string">"GET"</span>,<span class="string">"test1.txt"</span>,<span class="literal">false</span>);</span><br><span class="line">xmlhttp.send();</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).innerHTML=xmlhttp.responseText;</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-3-服务器响应"><a href="#2-3-服务器响应" class="headerlink" title="2.3 服务器响应"></a>2.3 服务器响应</h4><ul>
+<li>responseText属性：响应的是文本</li>
+<li>responseXML属性：响应的是XML<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">xmlDoc=xmlhttp.responseXML;</span><br><span class="line">txt=<span class="string">""</span>;</span><br><span class="line">x=xmlDoc.getElementsByTagName(<span class="string">"ARTIST"</span>);</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;x.length;i++)</span><br><span class="line">&#123;</span><br><span class="line">	txt=txt + x[i].childNodes[<span class="number">0</span>].nodeValue + <span class="string">"&lt;br /&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).innerHTML=txt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="2-4XMLHttpRequest对象的重要属性"><a href="#2-4XMLHttpRequest对象的重要属性" class="headerlink" title="2.4XMLHttpRequest对象的重要属性"></a>2.4XMLHttpRequest对象的重要属性</h4><ul>
+<li>onreadystatechange： 每当 readyState 属性改变时，就会调用该函数</li>
+<li>readyState<ul>
+<li>0: 请求未初始化</li>
+<li>1: 服务器连接已建立</li>
+<li>2: 请求已接收</li>
+<li>3: 请求处理中</li>
+<li>4: 请求已完成，且响应已就绪</li>
+</ul>
+</li>
+<li>status：200 = “OK”， 404 = “未找到页面”</li>
+</ul>
+<h3 id="3-与-的区别"><a href="#3-与-的区别" class="headerlink" title="3. ===与==的区别"></a><strong>3. ===与==的区别</strong></h3><h4 id="3-1-：-不做类型转换，直接判等"><a href="#3-1-：-不做类型转换，直接判等" class="headerlink" title="3.1 ===： 不做类型转换，直接判等"></a>3.1 ===： 不做类型转换，直接判等</h4><ol>
+<li>如果类型不同，就[不相等] </li>
+<li>如果两个都是数值，并且是同一个值，那么[相等]；(！例外)的是，如果其中至少一个是NaN，那么[不相等]。（判断一个值是否是NaN，只能用isNaN()来判断） </li>
+<li>如果两个都是字符串，每个位置的字符都一样，那么[相等]；否则[不相等]。 </li>
+<li>如果两个值都是true，或者都是false，那么[相等]。 </li>
+<li>如果两个值都引用同一个对象或函数，那么[相等]；否则[不相等]。 </li>
+<li>如果两个值都是null，或者都是undefined，那么[相等]。</li>
+</ol>
+<h4 id="3-2-：先做类型转换，再判等"><a href="#3-2-：先做类型转换，再判等" class="headerlink" title="3.2 ==：先做类型转换，再判等"></a>3.2 ==：先做类型转换，再判等</h4><ol>
+<li>如果两个值类型相同，进行 === 比较。 </li>
+<li>如果两个值类型不同，他们可能相等。根据下面规则进行类型转换再比较： <ul>
+<li>如果一个是null、一个是undefined，那么[相等]。 </li>
+<li>如果一个是字符串，一个是数值，把字符串转换成数值再进行比较。 </li>
+<li>如果任一值是 true，把它转换成 1 再比较；如果任一值是 false，把它转换成 0 再比较。 </li>
+<li>如果一个是对象，另一个是数值或字符串，把对象转换成基础类型的值再比较。对象转换成基础类型，利用它的toString或者valueOf方法。 js核心内置类，会尝试valueOf先于toString；例外的是Date，Date利用的是toString转换。非js核心的对象，令说。</li>
+<li>任何其他组合，都[不相等]。 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="string">"3"</span>;</span><br><span class="line">alert(a==b) <span class="comment">//true，类型不同，会把字符串转化为数字</span></span><br><span class="line">alert(a===b) <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="4-正则"><a href="#4-正则" class="headerlink" title="4. 正则"></a><strong>4. 正则</strong></h3><h4 id="4-1-正则表达式形式"><a href="#4-1-正则表达式形式" class="headerlink" title="4.1 正则表达式形式"></a>4.1 正则表达式形式</h4><p>/regExpr/flag</p>
+<ul>
+<li>flag：<ul>
+<li>g：全局模式，发现第一个匹配串后依然继续匹配。</li>
+<li>i：不区分大小写模式。</li>
+<li>m：多行模式，到达一行文本末尾后依然匹配下一行。</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-2-String的match-和RegExp的exec"><a href="#4-2-String的match-和RegExp的exec" class="headerlink" title="4.2 String的match()和RegExp的exec()"></a>4.2 String的match()和RegExp的exec()</h4><p>String的match()方法和RegExp的exec()方法基本相同。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> text = <span class="string">"cat, bat, sat, fat"</span>;</span><br><span class="line"><span class="keyword">var</span> pattern = <span class="regexp">/.at/</span>;</span><br><span class="line"><span class="comment">//与pattern.exec(text)结果相同，但如果pattern=/.at/g,那么两者得到的matches会有所不同</span></span><br><span class="line"><span class="keyword">var</span> matches = text.match(pattern);</span><br><span class="line">alert(matches.index); <span class="comment">//0</span></span><br><span class="line">alert(matches); <span class="comment">//["cat"]</span></span><br><span class="line">alert(pattern.lastIndex); <span class="comment">//0</span></span><br></pre></td></tr></table></figure></p>
 
-        var colors = [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;]; 
-        colors.length = 4; //设置数组长度为4，则第四项(colors[3])为undefined
-         alert(colors.join(&apos;||&apos;) ) // 结果为：red||green||blue||， 因为undefined 的项toString()后的结果是空字符串
-</code></pre><h4 id="栈方法"><a href="#栈方法" class="headerlink" title="栈方法"></a>栈方法</h4><pre><code>* `push()`： 返回数组长度
-* `pop()`： 返回最后一个元素
-</code></pre><h4 id="队列方法"><a href="#队列方法" class="headerlink" title="队列方法"></a>队列方法</h4><pre><code>* `shift()`： 返回第一个元素
-`var item = colors.shift()`
-* `unshift()`：在数组前端添加任意个项并返回新数组的长度
-
-        var colors = new Array();
-        var count = colors.unshift(&quot;red&quot;, &quot;green&quot;); // colors = [&quot;red&quot;, &quot;green&quot;]
-</code></pre><h4 id="重排序方法"><a href="#重排序方法" class="headerlink" title="重排序方法"></a>重排序方法</h4><pre><code>* `reverse()`： 反转数组项的顺序
-* `sort()`： 默认会调用toString()方法转换数组项，然后比较数组元素的大小，从小到大排序。
-
-    可以接受比较函数作为参数，如果第一个参数位于第二个参数之前，返回负数，如果两个参数相等，返回0，如果第一个参数位于第二个参数之后，返回负数。比较函数可如下：
-
-        function compare(value1, value2) {
-            if(value1 &lt; value2) return-1;
-            else if(value1 &gt; value2) return 1;
-            else return 0;
-        }
-        var values = [1,10,5,15];
-        values.sort(compare);
-</code></pre><h4 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h4><pre><code>* `concat()`：可以基于当前数组中的所有项创建一个新数组，首先创建当前数组的一个副本，然后将接收到的参数添加到这个副本的末尾。如果传递给concat()方法的是一个或多个数组，则该方法会将这些数组中的每一项都添加到结果数组中。所以该方法可以用来**连接两个或多个数组**。
-
-        var a = [1,2,3]; 
-        var b = [3,4];  
-        var c = a.concat(&quot;hi&quot;, b); // c = [1,2,3,&quot;hi&quot;,3,4]          
-
-* `slice()`：能够基于当前数组的一个或多个项创建一个新数组。接收两个参数，要返回项的起始和结束位置（返回的新数组不包括结束位置）。若只有一个参数，则返回从起始位置到当前数末尾的所有项。
-
-        var a = [1,2,3,4,5];
-        var b = a.slice(1); //b = [2,3,4,5] 
-        var c = a.slice(1,4) //c = [2,3,4]
-* `splice()`：用于向数组中部插入项。**返回从原数组中删除的项**。有以下三种用法：
-    * 删除：指定2个参数，要删除的第一项的位置和要删除的项数。
-    * 插入：向指定位置插入任意数量的项。指定3个参数：起始位置，0（要删除的项数为0），要插入的项。
-
-            colors.splice(2,0,&quot;red&quot;,&quot;blue&quot;) // 从位置2开始插入字符串&quot;red&quot;,&quot;blue&quot;
-    * 替换：可以向指定位置插入任意数量的项，且删除任意数量的项。指定3个参数：起始位置，要删除的项数，要插入的项。
-
-            colors.splice(2,1,&quot;red&quot;,&quot;blue&quot;) // 删除位置2的项，然后从位置2开始插入字符串&quot;red&quot;,&quot;blue&quot;
-</code></pre><h4 id="位置方法"><a href="#位置方法" class="headerlink" title="位置方法"></a>位置方法</h4><pre><code>* `indexOf()`：返回查找的项在数组中的位置，从头开始查找
-* `lastIndexOf()`：同样返回查找的项在数组中的位置，从数组末尾开始查找
-</code></pre><h4 id="迭代方法"><a href="#迭代方法" class="headerlink" title="迭代方法"></a>迭代方法</h4><pre><code>都接受一个函数作为传入参数，该函数会接收三个参数，数据项的值，该项在数组中的位置和数组对象本身。
-* `every()`：传入一个函数，对数组中的每一项运行给定函数，每一项都返回true,则最后返回true。
-* `filter()`：传入一个函数，对数组中的每一项运行给定函数，返回函数会返回true的项组成的数组。
-* `forEach()`：传入一个函数，对数组中的每一项运行给定函数，没有返回值。
-`var numbers = [1,2,3,4];`
-`numbers.forEach(function(item, index, array){...})`
-* `map()`：传入一个函数，对数组中的每一项运行给定函数，返回函数调用的结果组成的数组。
-* `some()`：传入一个函数，对数组中的每一项运行给定函数，如果函数对任一项返回true，就返回true。
-</code></pre><h4 id="归并方法"><a href="#归并方法" class="headerlink" title="归并方法"></a>归并方法</h4><pre><code>迭代数组中的所有项，构建一个最终返回的值。接受2个参数：在每一项上调用的函数，归并的初始值。传给函数的4个参数：前一个值，当前值，项的索引，数组对象。
-* `reduce()`：从数组第一项开始
-* `reduceRight()`：从数组最后一项开始
-
-        var values = [1,2,3,4,5];
-        var sum = values.reduce(function(prev, cur, index, array){
-            return prev+cur;
-        }); 
-        console.log(sum) //15
-</code></pre><h3 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a><strong>AJAX</strong></h3><p>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。</p>
-<h4 id="创建XMLHttpRequest对象"><a href="#创建XMLHttpRequest对象" class="headerlink" title="创建XMLHttpRequest对象"></a>创建XMLHttpRequest对象</h4><pre><code>var xmlhttp;
-if (window.XMLHttpRequest)
-  {// code for IE7+, Firefox, Chrome, Opera, Safari
-      xmlhttp=new XMLHttpRequest();
-  }
-else
-  {// code for IE6, IE5
-      xmlhttp=new ActiveXObjec(&quot;Microsoft.XMLHTTP&quot;);
-  }
-</code></pre><h4 id="向服务器发送请求"><a href="#向服务器发送请求" class="headerlink" title="向服务器发送请求"></a>向服务器发送请求</h4><pre><code>    xmlhttp.open(&quot;GET&quot;,&quot;demo_get2.asp?fname=Bill&amp;lname=Gates&quot;,true);
-    xmlhttp.send();
-open的三个参数：
-* method:请求使用的方法
-* url：请求的地址
-* async:是否异步，true表示异步，如果异步，则需要加onreadystatechange函数。
-
-        xmlhttp.open(&quot;GET&quot;,&quot;test1.txt&quot;,true);
-        xmlhttp.send();
-        xmlhttp.onreadystatechange=function()
-          {
-              if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200)
-            {
-                document.getElementById(&quot;myDiv&quot;).innerHTML=xmlhttp.responseText;
-            }
-         }
-如果设置为async设置为false,则不需要加onreadystatechange函数。如果没有响应，则挂起应用程序，一般不推荐使用。
-
-        xmlhttp.open(&quot;GET&quot;,&quot;test1.txt&quot;,false);
-        xmlhttp.send();
-        document.getElementById(&quot;myDiv&quot;).innerHTML=xmlhttp.responseText;
-</code></pre><h4 id="服务器响应"><a href="#服务器响应" class="headerlink" title="服务器响应"></a>服务器响应</h4><pre><code>* responseText属性：响应的是文本
-* responseXML属性：响应的是XML
-
-        xmlDoc=xmlhttp.responseXML;
-        txt=&quot;&quot;;
-        x=xmlDoc.getElementsByTagName(&quot;ARTIST&quot;);
-        for (i=0;i&lt;x.length;i++)
-          {
-              txt=txt + x[i].childNodes[0].nodeValue + &quot;&lt;br /&gt;&quot;;
-          }
-        document.getElementById(&quot;myDiv&quot;).innerHTML=txt;
-</code></pre><h4 id="XMLHttpRequest对象的重要属性"><a href="#XMLHttpRequest对象的重要属性" class="headerlink" title="XMLHttpRequest对象的重要属性"></a>XMLHttpRequest对象的重要属性</h4><pre><code>* onreadystatechange： 每当 readyState 属性改变时，就会调用该函数
-* readyState
-    * 0: 请求未初始化
-    * 1: 服务器连接已建立
-    * 2: 请求已接收
-    * 3: 请求处理中
-    * 4: 请求已完成，且响应已就绪
-* status：200 = &quot;OK&quot;， 404 = &quot;未找到页面&quot;
-</code></pre><h3 id="与-的区别"><a href="#与-的区别" class="headerlink" title="===与==的区别"></a><strong>===与==的区别</strong></h3><h4 id="：-不做类型转换，直接判等"><a href="#：-不做类型转换，直接判等" class="headerlink" title="===： 不做类型转换，直接判等"></a>===： 不做类型转换，直接判等</h4><pre><code>1. 如果类型不同，就[不相等] 
-1. 如果两个都是数值，并且是同一个值，那么[相等]；(！例外)的是，如果其中至少一个是NaN，那么[不相等]。（判断一个值是否是NaN，只能用isNaN()来判断） 
-1. 如果两个都是字符串，每个位置的字符都一样，那么[相等]；否则[不相等]。 
-1. 如果两个值都是true，或者都是false，那么[相等]。 
-1. 如果两个值都引用同一个对象或函数，那么[相等]；否则[不相等]。 
-1. 如果两个值都是null，或者都是undefined，那么[相等]。 
-</code></pre><h4 id="：先做类型转换，再判等"><a href="#：先做类型转换，再判等" class="headerlink" title="==：先做类型转换，再判等"></a>==：先做类型转换，再判等</h4><pre><code>1. 如果两个值类型相同，进行 === 比较。 
-1. 如果两个值类型不同，他们可能相等。根据下面规则进行类型转换再比较： 
-    -  如果一个是null、一个是undefined，那么[相等]。 
-    - 如果一个是字符串，一个是数值，把字符串转换成数值再进行比较。 
-    - 如果任一值是 true，把它转换成 1 再比较；如果任一值是 false，把它转换成 0 再比较。 
-    - 如果一个是对象，另一个是数值或字符串，把对象转换成基础类型的值再比较。对象转换成基础类型，利用它的toString或者valueOf方法。 js核心内置类，会尝试valueOf先于toString；例外的是Date，Date利用的是toString转换。非js核心的对象，令说。
-    - 任何其他组合，都[不相等]。 
-
-            var a = 3;
-            var b = &quot;3&quot;;
-            alert(a==b) //true，类型不同，会把字符串转化为数字
-            alert(a===b) //false 
-</code></pre><h3 id="正则"><a href="#正则" class="headerlink" title="正则"></a><strong>正则</strong></h3><h4 id="pattern：-regExpr-flag"><a href="#pattern：-regExpr-flag" class="headerlink" title="pattern：/regExpr/flag"></a>pattern：/regExpr/flag</h4><pre><code>* flag：
-    * g：全局模式，发现第一个匹配串后依然继续匹配。
-    * i：不区分大小写模式。
-    * m：多行模式，到达一行文本末尾后依然匹配下一行。
-</code></pre><h4 id="String的match-方法和RegExp的exec-方法基本相同。"><a href="#String的match-方法和RegExp的exec-方法基本相同。" class="headerlink" title="String的match()方法和RegExp的exec()方法基本相同。"></a>String的match()方法和RegExp的exec()方法基本相同。</h4><pre><code>var text = &quot;cat, bat, sat, fat&quot;;
-var pattern = /.at/;
-//与pattern.exec(text)结果相同，但如果pattern=/.at/g,那么两者得到的matches会有所不同
-var matches = text.match(pattern);
-alert(matches.index); //0
-alert(matches); //[&quot;cat&quot;]
-alert(pattern.lastIndex); //0
-</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/09/18/0917JS学习笔记/" data-id="cit8i6feq00003oxllzm9y3tq" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2016/09/18/0917JS学习笔记/" data-id="cit8i6feq00003oxllzm9y3tq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -255,17 +227,17 @@ alert(pattern.lastIndex); //0
 <nav id="article-nav">
   
     <a href="/2016/09/18/0918CSS学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Nieuwer</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          (no title)
+          CSS学习笔记 （9.18）
         
       </div>
     </a>
   
   
     <a href="/2016/03/02/first-blog/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ouder</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">Hello my blog</div>
     </a>
   
@@ -288,7 +260,7 @@ alert(pattern.lastIndex); //0
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
     </div>
@@ -298,28 +270,28 @@ alert(pattern.lastIndex); //0
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/09/25/0922HTTP学习笔记/">HTTP/2.0</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/25/0922JS学习笔记/">JS学习笔记 （9.22）</a>
+          </li>
         
           <li>
             <a href="/2016/09/21/0921JS学习笔记/">JS学习笔记</a>
           </li>
         
           <li>
-            <a href="/2016/09/20/0920JS学习笔记/">(no title)</a>
+            <a href="/2016/09/20/0920JS学习笔记/">JS学习笔记 ——面向对象编程</a>
           </li>
         
           <li>
-            <a href="/2016/09/19/haoling/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2016/09/18/0918CSS学习笔记/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2016/09/18/0917JS学习笔记/">JS学习笔记 （9.17）</a>
+            <a href="/2016/09/18/0918CSS学习笔记/">CSS学习笔记 （9.18）</a>
           </li>
         
       </ul>

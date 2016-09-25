@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-22T06:07:19.096Z</updated>
+  <updated>2016-09-22T11:33:09.366Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,79 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>HTTP/2.0</title>
+    <link href="http://yoursite.com/2016/09/25/0922HTTP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2016/09/25/0922HTTP学习笔记/</id>
+    <published>2016-09-25T10:32:33.868Z</published>
+    <updated>2016-09-22T11:33:09.366Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;网络结构&quot;&gt;&lt;a href=&quot;#网络结构&quot; class=&quot;headerlink&quot; title=&quot;网络结构&quot;&gt;&lt;/a&gt;&lt;strong&gt;网络结构&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;第7层 &lt;strong&gt;应用层&lt;/strong&gt;(Application Layer)&lt;br&gt;提供为应用软件而设的界面，以设置与另一应用软件之间的通信。例如: HTTP，HTTPS，FTP，TELNET，SSH，SMTP，POP3等。&lt;/p&gt;
+&lt;p&gt;第6层 &lt;strong&gt;表示层&lt;/strong&gt;(Presentation Layer)&lt;br&gt;把数据转换为能与接收者的系统格式兼容并适合传输的格式。&lt;/p&gt;
+&lt;p&gt;第5层 &lt;strong&gt;会话层&lt;/strong&gt;(Session Layer)&lt;br&gt;负责在数据传输中设置和维护电脑网络中两台电脑之间的通信连接。&lt;/p&gt;
+&lt;p&gt;第4层 &lt;strong&gt;传输层&lt;/strong&gt;(Transport Layer)&lt;br&gt;把传输表头(TH)加至数据以形成数据包。传输表头包含了所使用的协议等发送信息。例如:传输控制协议义(TCP) 等。&lt;/p&gt;
+&lt;p&gt;第3层 &lt;strong&gt;网络层&lt;/strong&gt;(Network Layer)&lt;br&gt;决定数据的路径选择和转寄，将网络表头(NH)加至数据包，以形成分组。网络表头包含了网络数据。例如:互联网协议(IP) 等。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IP协议&lt;/strong&gt;：IP协议是用于将多个包交换网络连接起来的，它在源地址和目的地址之间传送一种称之为数据包的东西，它还提供对数据大小的重新组装功能，以适应不同网络对包大小的要求。&lt;/p&gt;
+&lt;p&gt;第2层 &lt;strong&gt;数据链接层&lt;/strong&gt;(Data Link Layer)&lt;br&gt;负责网络寻址、错误侦测和改错。当表头和表尾被加至数据包时，会形成了帧。数据链表头(DLH)是包含了物理地址和错误侦测及改错的方法。数据链表尾(DLT)是一串指示数据包末端的字符串。例如以太网、无线局域网(Wi-Fi)和通用分组无线服务(GPRS)等。&lt;/p&gt;
+&lt;p&gt;分为两种子层：logic link control sublayer &amp;amp; media access control sublayer&lt;/p&gt;
+&lt;p&gt;第1层 &lt;strong&gt;物理层&lt;/strong&gt;(Physical Layer)&lt;br&gt;在局部局域网上传送帧，它负责管理电脑通信设备和网络媒体之间的互通。包括了针脚、电压、线缆规范、集线器、中继器、网卡、主机适配器等&lt;/p&gt;
+&lt;h3 id=&quot;HTTP-2-0-改进&quot;&gt;&lt;a href=&quot;#HTTP-2-0-改进&quot; class=&quot;headerlink&quot; title=&quot;HTTP/2.0 改进&quot;&gt;&lt;/a&gt;&lt;strong&gt;HTTP/2.0 改进&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;多路复用&quot;&gt;&lt;a href=&quot;#多路复用&quot; class=&quot;headerlink&quot; title=&quot;多路复用&quot;&gt;&lt;/a&gt;多路复用&lt;/h4&gt;&lt;p&gt;在 HTTP/1.1 协议中 「浏览器客户端在同一时间，针对同一域名下的请求有一定数量限制。超过限制数目的请求会被阻塞」。&lt;/p&gt;
+&lt;p&gt;多路复用允许同时通过单一的 HTTP/2 连接发起多重的请求-响应消息。&lt;/p&gt;
+&lt;h4 id=&quot;二进制分帧&quot;&gt;&lt;a href=&quot;#二进制分帧&quot; class=&quot;headerlink&quot; title=&quot;二进制分帧&quot;&gt;&lt;/a&gt;二进制分帧&lt;/h4&gt;&lt;p&gt;关键之一就是在 应用层(HTTP/2)和传输层(TCP or UDP)之间增加一个二进制分帧层。可以&lt;strong&gt;并行地在同一个 TCP 连接上双向交换消息。&lt;/strong&gt;&lt;br&gt;在二进制分帧层中， HTTP/2 会将所有传输的信息分割为更小的消息和帧（frame）,并对它们采用二进制格式的编码 ，其中 HTTP1.x 的首部信息会被封装到 HEADER frame，而相应的 Request Body 则封装到 DATA frame 里面。&lt;br&gt;HTTP/2 通信都在一个连接上完成，这个连接可以承载任意数量的双向数据流。&lt;/p&gt;
+&lt;h4 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://www.zhihu.com/question/34074946&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.zhihu.com/question/34074946&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;面向对象的特性&quot;&gt;&lt;a href=&quot;#面向对象的特性&quot; class=&quot;headerlink&quot; title=&quot;面向对象的特性&quot;&gt;&lt;/a&gt;&lt;strong&gt;面向对象的特性&lt;/strong&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;继承&lt;/li&gt;
+&lt;li&gt;多态&lt;/li&gt;
+&lt;li&gt;封装：封装成抽象的类&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;网络结构&quot;&gt;&lt;a href=&quot;#网络结构&quot; class=&quot;headerlink&quot; title=&quot;网络结构&quot;&gt;&lt;/a&gt;&lt;strong&gt;网络结构&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;第7层 &lt;strong&gt;应用层&lt;/strong&gt;(Application Layer)&lt;b
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JS学习笔记 （9.22）</title>
+    <link href="http://yoursite.com/2016/09/25/0922JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2016/09/25/0922JS学习笔记/</id>
+    <published>2016-09-25T10:32:33.867Z</published>
+    <updated>2016-09-22T10:54:53.526Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;1-跨域问题&quot;&gt;&lt;a href=&quot;#1-跨域问题&quot; class=&quot;headerlink&quot; title=&quot;1.跨域问题&quot;&gt;&lt;/a&gt;&lt;strong&gt;1.跨域问题&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;只要协议、域名、端口有任何一个不同，都被当作是不同的域。&lt;/p&gt;
+&lt;h4 id=&quot;1-1-跨域问题的解决&quot;&gt;&lt;a href=&quot;#1-1-跨域问题的解决&quot; class=&quot;headerlink&quot; title=&quot;1.1 跨域问题的解决&quot;&gt;&lt;/a&gt;1.1 跨域问题的解决&lt;/h4&gt;&lt;p&gt;对于端口和协议的不同，只能通过后台来解决。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1.2.1 jsonp&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在js中，我们直接用XMLHttpRequest请求不同域上的数据时，是不可以的。但是，在页面上引入不同域上的js脚本文件却是可以的，jsonp正是利用这个特性来实现的。&lt;/p&gt;
+&lt;p&gt;例如：&lt;br&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;dosomething&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;jsondata&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//处理获得的json数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;http://example.com/data.php?callback=dosomething&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;undefined&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;使用jquery&lt;br&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    $.getJSON(&lt;span class=&quot;string&quot;&gt;&#39;http://example.com/data.php?callback=?&#39;&lt;/span&gt;,&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;jsondata&lt;/span&gt;))&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//处理获得的json数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;jquery会自动生成一个全局函数来替换callback=?中的问号，之后获取到数据后又会自动销毁，实际上就是起一个临时代理函数的作用。$.getJSON方法会自动判断是否跨域，不跨域的话，就调用普通的ajax方法；跨域的话，则会以异步加载js文件的形式来调用jsonp的回调函数。&lt;/p&gt;
+&lt;p&gt;缺点：只支持GET请求而不支持POST等其它类型的HTTP请求；它只支持跨域HTTP请求这种情况，不能解决不同域的两个页面之间如何进行JavaScript调用的问题。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1.2.2 CORS(Cross-Origin Resource Sharing) 跨域资源共享&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&quot;1-1-浏览器对跨域问题的实现&quot;&gt;&lt;a href=&quot;#1-1-浏览器对跨域问题的实现&quot; class=&quot;headerlink&quot; title=&quot;1.1 浏览器对跨域问题的实现&quot;&gt;&lt;/a&gt;1.1 浏览器对跨域问题的实现&lt;/h4&gt;&lt;p&gt;使用自定义的头部实现浏览器和服务器的沟通&lt;/p&gt;
+&lt;p&gt;比如请求时头部增加：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Origin: http://donghaoling.github.io&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;服务器响应时的头部增加（表示允许跨域的访问）：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Access-Control-Allow-Origin: http:/donghaoling.github.io&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h4 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000000718840&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://segmentfault.com/a/1190000000718840&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;1-跨域问题&quot;&gt;&lt;a href=&quot;#1-跨域问题&quot; class=&quot;headerlink&quot; title=&quot;1.跨域问题&quot;&gt;&lt;/a&gt;&lt;strong&gt;1.跨域问题&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;只要协议、域名、端口有任何一个不同，都被当作是不同的域。&lt;/p&gt;
+&lt;h4 
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>JS学习笔记</title>
     <link href="http://yoursite.com/2016/09/21/0921JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://yoursite.com/2016/09/21/0921JS学习笔记/</id>
     <published>2016-09-21T14:56:57.200Z</published>
-    <updated>2016-09-22T06:07:19.096Z</updated>
+    <updated>2016-09-22T06:46:17.202Z</updated>
     
     <content type="html">&lt;p&gt;简单说作用域链和this都是函数执行上下文(Execution Context)的变量。this是调用函数的对象，可以是全局对象，也可以是当前对象。&lt;/p&gt;
 &lt;h3 id=&quot;1-作用域链&quot;&gt;&lt;a href=&quot;#1-作用域链&quot; class=&quot;headerlink&quot; title=&quot;1. 作用域链&quot;&gt;&lt;/a&gt;&lt;strong&gt;1. 作用域链&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;1-1-函数执行上下文&quot;&gt;&lt;a href=&quot;#1-1-函数执行上下文&quot; class=&quot;headerlink&quot; title=&quot;1.1 函数执行上下文&quot;&gt;&lt;/a&gt;1.1 函数执行上下文&lt;/h4&gt;&lt;p&gt;函数的执行上下文包括：&lt;/p&gt;
@@ -32,7 +100,7 @@
 &lt;h4 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000000533094&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://segmentfault.com/a/1190000000533094&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;2-this关键字&quot;&gt;&lt;a href=&quot;#2-this关键字&quot; class=&quot;headerlink&quot; title=&quot;2. this关键字&quot;&gt;&lt;/a&gt;&lt;strong&gt;2. this关键字&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;简单来说，this关键字就是调用这个函数的对象。&lt;/p&gt;
 &lt;p&gt;举个例子：&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;name, age, job&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name = name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.age = age;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.job = job;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.sayName = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           alert(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;// 当作构造函数使用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;Nicholas&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Software Engineer&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   person.sayName(); &lt;span class=&quot;comment&quot;&gt;//&quot;Nicholas&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(person);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(person &lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; Person);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;// 作为普通函数调用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   Person(&lt;span class=&quot;string&quot;&gt;&quot;Greg&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;27&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Doctor&quot;&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;// 添加到 window&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt;.sayName(); &lt;span class=&quot;comment&quot;&gt;//&quot;Greg&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;// 在另一个对象的作用域中调用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; o = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   Person.call(o, &lt;span class=&quot;string&quot;&gt;&quot;Kristen&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;25&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Nurse&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   o.sayName(); &lt;span class=&quot;comment&quot;&gt;//&quot;Kristen&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;name, age, job&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name = name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.age = age;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.job = job;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.sayName = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        alert(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 当作构造函数使用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;Nicholas&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Software Engineer&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person.sayName(); &lt;span class=&quot;comment&quot;&gt;//&quot;Nicholas&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(person);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(person &lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; Person);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 作为普通函数调用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Person(&lt;span class=&quot;string&quot;&gt;&quot;Greg&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;27&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Doctor&quot;&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;// 添加到 window&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt;.sayName(); &lt;span class=&quot;comment&quot;&gt;//&quot;Greg&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 在另一个对象的作用域中调用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; o = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Person.call(o, &lt;span class=&quot;string&quot;&gt;&quot;Kristen&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;25&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Nurse&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;o.sayName(); &lt;span class=&quot;comment&quot;&gt;//&quot;Kristen&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;比如&lt;code&gt;person.sayName()&lt;/code&gt;，那么this就是person,如果直接是&lt;code&gt;sayName()&lt;/code&gt;，那么相当于window.sayName()。&lt;/p&gt;
 &lt;p&gt;JavaScript 中函数的调用有以下几种方式：作为对象方法调用，作为函数调用，作为构造函数调用，和使用 apply 或 call 调用。下面我们将按照调用方式的不同，分别讨论 this 的含义。&lt;/p&gt;
 &lt;h4 id=&quot;2-1-作为对象方法调用&quot;&gt;&lt;a href=&quot;#2-1-作为对象方法调用&quot; class=&quot;headerlink&quot; title=&quot;2.1 作为对象方法调用&quot;&gt;&lt;/a&gt;2.1 作为对象方法调用&lt;/h4&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; point = &amp;#123; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;x : &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;y : &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;moveTo : &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;x, y&lt;/span&gt;) &lt;/span&gt;&amp;#123; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.x = &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.x + x; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.y = &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.y + y; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;point.moveTo(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)&lt;span class=&quot;comment&quot;&gt;//this 绑定到当前对象，即 point 对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -55,265 +123,49 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>JS学习笔记 ——面向对象编程</title>
     <link href="http://yoursite.com/2016/09/20/0920JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://yoursite.com/2016/09/20/0920JS学习笔记/</id>
     <published>2016-09-20T02:07:56.913Z</published>
-    <updated>2016-09-20T13:19:27.193Z</updated>
+    <updated>2016-09-21T02:52:51.080Z</updated>
     
-    <content type="html">&lt;hr&gt;
-&lt;h2 id=&quot;title-JS学习笔记-（9-20）&quot;&gt;&lt;a href=&quot;#title-JS学习笔记-（9-20）&quot; class=&quot;headerlink&quot; title=&quot;title: JS学习笔记 （9.20）&quot;&gt;&lt;/a&gt;title: JS学习笔记 （9.20）&lt;/h2&gt;&lt;h2 id=&quot;面向对象编程&quot;&gt;&lt;a href=&quot;#面向对象编程&quot; class=&quot;headerlink&quot; title=&quot;面向对象编程&quot;&gt;&lt;/a&gt;&lt;strong&gt;面向对象编程&lt;/strong&gt;&lt;/h2&gt;&lt;h3 id=&quot;1-创建对象&quot;&gt;&lt;a href=&quot;#1-创建对象&quot; class=&quot;headerlink&quot; title=&quot;1. 创建对象&quot;&gt;&lt;/a&gt;&lt;strong&gt;1. 创建对象&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;1-1-工厂模式&quot;&gt;&lt;a href=&quot;#1-1-工厂模式&quot; class=&quot;headerlink&quot; title=&quot;1.1 工厂模式&quot;&gt;&lt;/a&gt;1.1 工厂模式&lt;/h4&gt;&lt;p&gt;用函数封装创建对象的细节。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function createPerson(name, age, job){
-    var o = new Object();
-    o.name = name;
-    o.age = age;
-    o.job = job;
-    o.sayName = function(){
-    alert(this.name);
-    };
-    return o;
-}
-var person1 = createPerson(&amp;quot;Nicholas&amp;quot;, 29, &amp;quot;Software Engineer&amp;quot;);
-var person2 = createPerson(&amp;quot;Greg&amp;quot;, 27, &amp;quot;Doctor&amp;quot;);
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：工厂模式无法知道对象的类型。&lt;/p&gt;
-&lt;h4 id=&quot;1-2-构造函数模式&quot;&gt;&lt;a href=&quot;#1-2-构造函数模式&quot; class=&quot;headerlink&quot; title=&quot;1.2 构造函数模式&quot;&gt;&lt;/a&gt;1.2 构造函数模式&lt;/h4&gt;&lt;p&gt;利用构造函数创建特定对象。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function Person(name, age, job){
-    this.name = name;
-    this.age = age;
-    this.job = job;
-    this.sayName = function(){
-        alert(this.name);
-    };
-}
-var person1 = new Person(&amp;quot;Nicholas&amp;quot;, 29, &amp;quot;Software Engineer&amp;quot;);
-var person2 = new Person(&amp;quot;Greg&amp;quot;, 27, &amp;quot;Doctor&amp;quot;);
-
-alert(person1 instanceof Object); //true
-alert(person1 instanceof Person); //true
-alert(person2 instanceof Object); //true
-alert(person2 instanceof Person); //true
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;构造函数与其他函数的唯一区别，就在于调用它们的方式不同。不过，构造函数毕竟也是函数，不存在定义构造函数的特殊语法。作为习惯，构造函数的函数名首字母会大写，任何函数，只要通过 new 操作符来调用，那它就可以作为构造函数。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// 当作构造函数使用
-var person = new Person(&amp;quot;Nicholas&amp;quot;, 29, &amp;quot;Software Engineer&amp;quot;);
-person.sayName(); //&amp;quot;Nicholas&amp;quot;
-// 作为普通函数调用
-Person(&amp;quot;Greg&amp;quot;, 27, &amp;quot;Doctor&amp;quot;); // 添加到 window
-window.sayName(); //&amp;quot;Greg&amp;quot;
-// 在另一个对象的作用域中调用
-var o = new Object();
-Person.call(o, &amp;quot;Kristen&amp;quot;, 25, &amp;quot;Nurse&amp;quot;);
-o.sayName(); //&amp;quot;Kristen&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;优点&lt;/strong&gt;：可以将实例标识为一种特定的类型。&lt;/p&gt;
+    <content type="html">&lt;h3 id=&quot;1-创建对象&quot;&gt;&lt;a href=&quot;#1-创建对象&quot; class=&quot;headerlink&quot; title=&quot;1. 创建对象&quot;&gt;&lt;/a&gt;&lt;strong&gt;1. 创建对象&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;1-1-工厂模式&quot;&gt;&lt;a href=&quot;#1-1-工厂模式&quot; class=&quot;headerlink&quot; title=&quot;1.1 工厂模式&quot;&gt;&lt;/a&gt;1.1 工厂模式&lt;/h4&gt;&lt;p&gt;用函数封装创建对象的细节。&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;createPerson&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;name, age, job&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; o = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	o.name = name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	o.age = age;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	o.job = job;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	o.sayName = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		alert(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; o;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person1 = createPerson(&lt;span class=&quot;string&quot;&gt;&quot;Nicholas&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Software Engineer&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person2 = createPerson(&lt;span class=&quot;string&quot;&gt;&quot;Greg&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;27&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Doctor&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：工厂模式无法知道对象的类型。&lt;/p&gt;
+&lt;h4 id=&quot;1-2-构造函数模式&quot;&gt;&lt;a href=&quot;#1-2-构造函数模式&quot; class=&quot;headerlink&quot; title=&quot;1.2 构造函数模式&quot;&gt;&lt;/a&gt;1.2 构造函数模式&lt;/h4&gt;&lt;p&gt;利用构造函数创建特定对象。&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;name, age, job&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name = name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.age = age;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.job = job;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.sayName = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		alert(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person1 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;Nicholas&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Software Engineer&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person2 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;Greg&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;27&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Doctor&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(person1 &lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(person1 &lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; Person); &lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(person2 &lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(person2 &lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; Person); &lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;构造函数与其他函数的唯一区别，就在于调用它们的方式不同。不过，构造函数毕竟也是函数，不存在定义构造函数的特殊语法。作为习惯，构造函数的函数名首字母会大写，任何函数，只要通过 new 操作符来调用，那它就可以作为构造函数。&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 当作构造函数使用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;Nicholas&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Software Engineer&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person.sayName(); &lt;span class=&quot;comment&quot;&gt;//&quot;Nicholas&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 作为普通函数调用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Person(&lt;span class=&quot;string&quot;&gt;&quot;Greg&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;27&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Doctor&quot;&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;// 添加到 window&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt;.sayName(); &lt;span class=&quot;comment&quot;&gt;//&quot;Greg&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 在另一个对象的作用域中调用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; o = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Person.call(o, &lt;span class=&quot;string&quot;&gt;&quot;Kristen&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;25&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Nurse&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;o.sayName(); &lt;span class=&quot;comment&quot;&gt;//&quot;Kristen&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;优点&lt;/strong&gt;：可以将实例标识为一种特定的类型。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：每个方法在实例上要重新创建一遍。浪费空间。&lt;/p&gt;
-&lt;h4 id=&quot;1-3-原型模式&quot;&gt;&lt;a href=&quot;#1-3-原型模式&quot; class=&quot;headerlink&quot; title=&quot;1.3 原型模式&quot;&gt;&lt;/a&gt;1.3 原型模式&lt;/h4&gt;&lt;p&gt;每个函数都有一个prototype属性，这个属性是一个指针，指向一个对象（&lt;strong&gt;原型对象&lt;/strong&gt;），这个对象包含由特定类型所有实例共享的属性和方法。只要创建了一个函数，就会为该函数创建prototype属性，该属性指向原型对象。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function Person(){
-}
-Person.prototype.name = &amp;quot;Nicholas&amp;quot;;
-Person.prototype.age = 29;
-Person.prototype.job = &amp;quot;Software Engineer&amp;quot;;
-Person.prototype.sayName = function(){
-alert(this.name);
-};
-var person1 = new Person();
-person1.sayName(); //&amp;quot;Nicholas&amp;quot;
-var person2 = new Person();
-person2.sayName(); //&amp;quot;Nicholas&amp;quot;
-
-alert(person1.sayName == person2.sayName); //true
-
-alert(person1.hasOwnProperty(&amp;quot;name&amp;quot;)); //false
-alert(&amp;quot;name&amp;quot; in person1); //true
-
-person1.name = &amp;quot;Greg&amp;quot;;
-alert(person1.name); //&amp;quot;Greg&amp;quot; —— 来自实例
-alert(person1.hasOwnProperty(&amp;quot;name&amp;quot;)); //true
-alert(&amp;quot;name&amp;quot; in person1); //true
-
-delete person1.name;
-alert(person1.name); //&amp;quot;Nicholas&amp;quot; —— 来自原型
-alert(person1.hasOwnProperty(&amp;quot;name&amp;quot;)); //false
-alert(&amp;quot;name&amp;quot; in person1); //true
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/H8iC837.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;Person Prototype是原型对象。原型对象有个constructor属性，指向构造函数。&lt;/p&gt;
+&lt;h4 id=&quot;1-3-原型模式&quot;&gt;&lt;a href=&quot;#1-3-原型模式&quot; class=&quot;headerlink&quot; title=&quot;1.3 原型模式&quot;&gt;&lt;/a&gt;1.3 原型模式&lt;/h4&gt;&lt;p&gt;每个函数都有一个prototype属性，这个属性是一个指针，指向一个对象（&lt;strong&gt;原型对象&lt;/strong&gt;），这个对象包含由特定类型所有实例共享的属性和方法。只要创建了一个函数，就会为该函数创建prototype属性，该属性指向原型对象。&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Person.prototype.name = &lt;span class=&quot;string&quot;&gt;&quot;Nicholas&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Person.prototype.age = &lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Person.prototype.job = &lt;span class=&quot;string&quot;&gt;&quot;Software Engineer&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Person.prototype.sayName = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person1 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person1.sayName(); &lt;span class=&quot;comment&quot;&gt;//&quot;Nicholas&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person2 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person2.sayName(); &lt;span class=&quot;comment&quot;&gt;//&quot;Nicholas&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(person1.sayName == person2.sayName); &lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(person1.hasOwnProperty(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;)); &lt;span class=&quot;comment&quot;&gt;//false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; person1); &lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person1.name = &lt;span class=&quot;string&quot;&gt;&quot;Greg&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(person1.name); &lt;span class=&quot;comment&quot;&gt;//&quot;Greg&quot; —— 来自实例&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(person1.hasOwnProperty(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;)); &lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; person1); &lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;delete&lt;/span&gt; person1.name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(person1.name); &lt;span class=&quot;comment&quot;&gt;//&quot;Nicholas&quot; —— 来自原型&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(person1.hasOwnProperty(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;)); &lt;span class=&quot;comment&quot;&gt;//false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; person1); &lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/H8iC837.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;Person Prototype是原型对象。原型对象有个constructor属性，指向构造函数。&lt;/p&gt;
 &lt;p&gt;访问顺序：先访问实例对象的属性，再访问原型对象的属性。&lt;/p&gt;
-&lt;p&gt;更简单的原型语法：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function Person(){
-}
-Person.prototype = {
-    constructor: Person,
-    name : &amp;quot;Nicholas&amp;quot;,
-    age : 29,
-    job: &amp;quot;Software Engineer&amp;quot;,
-    sayName : function () {
-        alert(this.name);
-    }
-};
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;但是这样相当于重写了原型，等于改写了函数的原型对象，那么函数的原型对象里的constructor属性就不指向构造函数Person了，但是instanceof还是可以返回正确结果。所以可以显式加constructor属性。或者这样设置：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Object.defineProperty(Person.prototype, &amp;quot;constructor&amp;quot;, {
-    enumerable: false,
-    value: Person
-});
-&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;p&gt;更简单的原型语法：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Person.prototype = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;constructor&lt;/span&gt;: Person,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	name : &quot;Nicholas&quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	age : 29,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	job: &quot;Software Engineer&quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	sayName : function () &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		alert(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;但是这样相当于重写了原型，等于改写了函数的原型对象，那么函数的原型对象里的constructor属性就不指向构造函数Person了，但是instanceof还是可以返回正确结果。所以可以显式加constructor属性。或者这样设置：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;.defineProperty(Person.prototype, &lt;span class=&quot;string&quot;&gt;&quot;constructor&quot;&lt;/span&gt;, &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	enumerable: &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	value: Person&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;instanceof&lt;/code&gt;：判断对象是否属于某个实例。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Person.prototype.isPrototypeOf(person1)&lt;/code&gt; 判断person1的原型对象。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Object.getPrototypeOf(person1) == Person.prototype&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;in&lt;/code&gt;、&lt;code&gt;hasOwnProperty&lt;/code&gt;和&lt;code&gt;hasPrototypeProperty&lt;/code&gt;：in判断属性来自原型或者实例，hasOwnPorperty判断是否来自实例，hasPrototypeProperty判断是否来自原型。&lt;br&gt;&lt;code&gt;person2.hasOwnProperty(&amp;quot;name&amp;quot;)&lt;/code&gt;&lt;br&gt;&lt;code&gt;hasPrototypeProperty(person, &amp;quot;name&amp;quot;)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;in&lt;/code&gt;、&lt;code&gt;hasOwnProperty&lt;/code&gt;和&lt;code&gt;hasPrototypeProperty&lt;/code&gt;：&lt;code&gt;in&lt;/code&gt;判断属性来自原型或者实例，&lt;code&gt;hasOwnPorperty&lt;/code&gt;判断是否来自实例，&lt;code&gt;hasPrototypeProperty&lt;/code&gt;判断是否来自原型。&lt;br&gt;&lt;code&gt;person2.hasOwnProperty(&amp;quot;name&amp;quot;)&lt;/code&gt;&lt;br&gt;&lt;code&gt;hasPrototypeProperty(person, &amp;quot;name&amp;quot;)&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;typeof Array.prototype.sort //function&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：对于包含引用类型的属性会有问题。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function Person(){
-}
-Person.prototype = {
-    constructor: Person,
-    name : &amp;quot;Nicholas&amp;quot;,
-    age : 29,
-    job : &amp;quot;Software Engineer&amp;quot;,
-    friends : [&amp;quot;Shelby&amp;quot;, &amp;quot;Court&amp;quot;],
-    sayName : function () {
-        alert(this.name);
-    }
-};
-var person1 = new Person();
-var person2 = new Person();
-person1.friends.push(&amp;quot;Van&amp;quot;);
-alert(person1.friends); //&amp;quot;Shelby,Court,Van&amp;quot;
-alert(person2.friends); //&amp;quot;Shelby,Court,Van&amp;quot;
-alert(person1.friends === person2.friends); //true
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;1-4-组合使用构造函数模式和原型模式&quot;&gt;&lt;a href=&quot;#1-4-组合使用构造函数模式和原型模式&quot; class=&quot;headerlink&quot; title=&quot;1.4 组合使用构造函数模式和原型模式&quot;&gt;&lt;/a&gt;1.4 组合使用构造函数模式和原型模式&lt;/h4&gt;&lt;p&gt;最常见的方式。函数声明在原型中，属性声明在构造函数中。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function Person(name, age, job){
-    this.name = name;
-    this.age = age;
-    this.job = job;
-    this.friends = [&amp;quot;Shelby&amp;quot;, &amp;quot;Court&amp;quot;];
-}
-Person.prototype = {
-    constructor : Person,
-    sayName : function(){
-        alert(this.name);
-    }
-}
-var person1 = new Person(&amp;quot;Nicholas&amp;quot;, 29, &amp;quot;Software Engineer&amp;quot;);
-var person2 = new Person(&amp;quot;Greg&amp;quot;, 27, &amp;quot;Doctor&amp;quot;);
-person1.friends.push(&amp;quot;Van&amp;quot;);
-alert(person1.friends); //&amp;quot;Shelby,Count,Van&amp;quot;
-alert(person2.friends); //&amp;quot;Shelby,Count&amp;quot;
-alert(person1.friends === person2.friends); //false
-alert(person1.sayName === person2.sayName); //true
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：分开了构造函数和原型的定义。和其他OO语言不太一样。&lt;/p&gt;
-&lt;h4 id=&quot;1-5-动态原型模式&quot;&gt;&lt;a href=&quot;#1-5-动态原型模式&quot; class=&quot;headerlink&quot; title=&quot;1.5 动态原型模式&quot;&gt;&lt;/a&gt;1.5 动态原型模式&lt;/h4&gt;&lt;p&gt;把属性和函数都封装在构造函数中。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function Person(name, age, job){
-    //属性
-    this.name = name;
-    this.age = age;
-    this.job = job;
-    //方法
-    if (typeof this.sayName != &amp;quot;function&amp;quot;){
-        Person.prototype.sayName = function(){
-            alert(this.name);
-        };
-    }
-}
-
-var friend = new Person(&amp;quot;Nicholas&amp;quot;, 29, &amp;quot;Software Engineer&amp;quot;);
-friend.sayName();
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;声明sayName()方法的的代码只有在初次调用构造函数的时候才会执行。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：对于包含引用类型的属性会有问题。&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Person.prototype = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;constructor&lt;/span&gt;: Person,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	name : &quot;Nicholas&quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	age : 29,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	job : &quot;Software Engineer&quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	friends : [&quot;Shelby&quot;, &quot;Court&quot;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	sayName : function () &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		alert(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person1 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person2 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person1.friends.push(&lt;span class=&quot;string&quot;&gt;&quot;Van&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(person1.friends); &lt;span class=&quot;comment&quot;&gt;//&quot;Shelby,Court,Van&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(person2.friends); &lt;span class=&quot;comment&quot;&gt;//&quot;Shelby,Court,Van&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(person1.friends === person2.friends); &lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h4 id=&quot;1-4-组合使用构造函数模式和原型模式&quot;&gt;&lt;a href=&quot;#1-4-组合使用构造函数模式和原型模式&quot; class=&quot;headerlink&quot; title=&quot;1.4 组合使用构造函数模式和原型模式&quot;&gt;&lt;/a&gt;1.4 组合使用构造函数模式和原型模式&lt;/h4&gt;&lt;p&gt;最常见的方式。函数声明在原型中，属性声明在构造函数中。&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;name, age, job&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name = name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.age = age;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.job = job;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.friends = [&lt;span class=&quot;string&quot;&gt;&quot;Shelby&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Court&quot;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Person.prototype = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;constructor&lt;/span&gt; : Person,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	sayName : function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		alert(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person1 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;Nicholas&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Software Engineer&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; person2 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;Greg&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;27&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Doctor&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;person1.friends.push(&lt;span class=&quot;string&quot;&gt;&quot;Van&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(person1.friends); &lt;span class=&quot;comment&quot;&gt;//&quot;Shelby,Count,Van&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(person2.friends); &lt;span class=&quot;comment&quot;&gt;//&quot;Shelby,Count&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(person1.friends === person2.friends); &lt;span class=&quot;comment&quot;&gt;//false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(person1.sayName === person2.sayName); &lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：分开了构造函数和原型的定义。和其他OO语言不太一样。&lt;/p&gt;
+&lt;h4 id=&quot;1-5-动态原型模式&quot;&gt;&lt;a href=&quot;#1-5-动态原型模式&quot; class=&quot;headerlink&quot; title=&quot;1.5 动态原型模式&quot;&gt;&lt;/a&gt;1.5 动态原型模式&lt;/h4&gt;&lt;p&gt;把属性和函数都封装在构造函数中。&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;name, age, job&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//属性&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name = name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.age = age;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.job = job;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//方法&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.sayName != &lt;span class=&quot;string&quot;&gt;&quot;function&quot;&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		Person.prototype.sayName = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			alert(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; friend = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;Nicholas&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Software Engineer&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;friend.sayName();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;声明sayName()方法的的代码只有在初次调用构造函数的时候才会执行。&lt;/p&gt;
 &lt;h3 id=&quot;2-继承&quot;&gt;&lt;a href=&quot;#2-继承&quot; class=&quot;headerlink&quot; title=&quot;2. 继承&quot;&gt;&lt;/a&gt;&lt;strong&gt;2. 继承&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;2-1-原型链&quot;&gt;&lt;a href=&quot;#2-1-原型链&quot; class=&quot;headerlink&quot; title=&quot;2.1 原型链&quot;&gt;&lt;/a&gt;2.1 原型链&lt;/h4&gt;&lt;p&gt;实现&lt;strong&gt;继承&lt;/strong&gt;的机制。&lt;/p&gt;
 &lt;p&gt;构造函数有原型对象，原型对象包含指向构造函数的指针。&lt;/p&gt;
 &lt;p&gt;实例包含指向原型对象的内部指针。&lt;/p&gt;
-&lt;p&gt;实现继承的方式：让子类的原型对象等于父类实例。子类的原型对象包含指向父类原型的指针，但同时也包含了父类的属性，父类原型包含指向父类构造函数的指针。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function SuperType(){
-    this.property = true;
-}
-SuperType.prototype.getSuperValue = function(){
-    return this.property;
-};
-function SubType(){
-    this.subproperty = false;
-}
-//继承了 SuperType
-SubType.prototype = new SuperType();
-SubType.prototype.getSubValue = function (){
-    return this.subproperty;
-};
-var instance = new SubType();
-alert(instance.getSuperValue()); //true
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/4jzOTVC.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;确定原型与实例的关系：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;alert(instance instanceof Object); //true
-alert(instance instanceof SuperType); //true
-alert(instance instanceof SubType); //true
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：子类的引用变量问题&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function SuperType(){
-    this.colors = [&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;, &amp;quot;green&amp;quot;];
-}
-function SubType(){
-}
-//继承了 SuperType
-SubType.prototype = new SuperType();
-var instance1 = new SubType();
-instance1.colors.push(&amp;quot;black&amp;quot;);
-alert(instance1.colors); //&amp;quot;red,blue,green,black&amp;quot;
-var instance2 = new SubType();
-alert(instance2.colors); //&amp;quot;red,blue,green,black&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;SubType.prototype是父类的一个实例，所以和专门创建了一个SubType.prototype.colors 属性一样。但是结果是所有子类的实例都会共享这个属性。&lt;/p&gt;
-&lt;h4 id=&quot;2-2-借用构造函数&quot;&gt;&lt;a href=&quot;#2-2-借用构造函数&quot; class=&quot;headerlink&quot; title=&quot;2.2 借用构造函数&quot;&gt;&lt;/a&gt;2.2 借用构造函数&lt;/h4&gt;&lt;p&gt;在子类构造函数的内部调用父类的构造函数。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function SuperType(){
-    this.colors = [&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;, &amp;quot;green&amp;quot;];
-}
-function SubType(){
-//继承了 SuperType
-    SuperType.call(this);
-}
-var instance1 = new SubType();
-instance1.colors.push(&amp;quot;black&amp;quot;);
-alert(instance1.colors); //&amp;quot;red,blue,green,black&amp;quot;
-var instance2 = new SubType();
-alert(instance2.colors); //&amp;quot;red,blue,green&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;优点&lt;/strong&gt;：传递参数&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function SuperType(name){
-    this.name = name;
-}
-function SubType(){
-    //继承了 SuperType，同时还传递了参数
-    SuperType.call(this, &amp;quot;Nicholas&amp;quot;);
-    //实例属性
-    this.age = 29;
-}
-var instance = new SubType();
-alert(instance.name); //&amp;quot;Nicholas&amp;quot;;
-alert(instance.age); //29
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：方法在构造函数中定义，没法复用。&lt;/p&gt;
-&lt;h4 id=&quot;2-3-组合继承&quot;&gt;&lt;a href=&quot;#2-3-组合继承&quot; class=&quot;headerlink&quot; title=&quot;2.3 组合继承&quot;&gt;&lt;/a&gt;2.3 组合继承&lt;/h4&gt;&lt;p&gt;将原型链和借用构造函数技术组合使用。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function SuperType(name){
-    this.name = name;
-    this.colors = [&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;, &amp;quot;green&amp;quot;];
-}
-SuperType.prototype.sayName = function(){
-    alert(this.name);
-};
-
-function SubType(name, age){
-    //继承属性
-    SuperType.call(this, name);
-    this.age = age;
-}
-//继承方法
-SubType.prototype = new SuperType();
-SubType.prototype.constructor = SubType; //由于父类原型对象的constructor指针指向了父类构造函数，所以要显示地改成子类的构造函数
-SubType.prototype.sayAge = function(){
-    alert(this.age);
-};
-
-var instance1 = new SubType(&amp;quot;Nicholas&amp;quot;, 29);
-instance1.colors.push(&amp;quot;black&amp;quot;);
-alert(instance1.colors); //&amp;quot;red,blue,green,black&amp;quot;
-instance1.sayName(); //&amp;quot;Nicholas&amp;quot;;
-instance1.sayAge(); //29
-
-var instance2 = new SubType(&amp;quot;Greg&amp;quot;, 27);
-alert(instance2.colors); //&amp;quot;red,blue,green&amp;quot;
-instance2.sayName(); //&amp;quot;Greg&amp;quot;;
-instance2.sayAge(); //27
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;3-几个概念&quot;&gt;&lt;a href=&quot;#3-几个概念&quot; class=&quot;headerlink&quot; title=&quot;3. 几个概念&quot;&gt;&lt;/a&gt;&lt;strong&gt;3. 几个概念&lt;/strong&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;p&gt;实现继承的方式：让子类的原型对象等于父类实例。子类的原型对象包含指向父类原型的指针，但同时也包含了父类的属性，父类原型包含指向父类构造函数的指针。&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SuperType&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.property = &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SuperType.prototype.getSuperValue = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.property;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SubType&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.subproperty = &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//继承了 SuperType&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SubType.prototype = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SuperType();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SubType.prototype.getSubValue = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.subproperty;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; instance = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SubType();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(instance.getSuperValue()); &lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/4jzOTVC.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;确定原型与实例的关系：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;alert(instance &lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(instance &lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; SuperType); &lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(instance &lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; SubType); &lt;span class=&quot;comment&quot;&gt;//true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：子类的引用变量问题&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SuperType&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.colors = [&lt;span class=&quot;string&quot;&gt;&quot;red&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;blue&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;green&quot;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SubType&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//继承了 SuperType&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SubType.prototype = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SuperType();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; instance1 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SubType();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;instance1.colors.push(&lt;span class=&quot;string&quot;&gt;&quot;black&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(instance1.colors); &lt;span class=&quot;comment&quot;&gt;//&quot;red,blue,green,black&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; instance2 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SubType();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(instance2.colors); &lt;span class=&quot;comment&quot;&gt;//&quot;red,blue,green,black&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;SubType.prototype是父类的一个实例，所以和专门创建了一个SubType.prototype.colors 属性一样。但是结果是所有子类的实例都会共享这个属性。&lt;/p&gt;
+&lt;h4 id=&quot;2-2-借用构造函数&quot;&gt;&lt;a href=&quot;#2-2-借用构造函数&quot; class=&quot;headerlink&quot; title=&quot;2.2 借用构造函数&quot;&gt;&lt;/a&gt;2.2 借用构造函数&lt;/h4&gt;&lt;p&gt;在子类构造函数的内部调用父类的构造函数。&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SuperType&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.colors = [&lt;span class=&quot;string&quot;&gt;&quot;red&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;blue&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;green&quot;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SubType&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//继承了 SuperType&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	SuperType.call(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; instance1 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SubType();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;instance1.colors.push(&lt;span class=&quot;string&quot;&gt;&quot;black&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(instance1.colors); &lt;span class=&quot;comment&quot;&gt;//&quot;red,blue,green,black&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; instance2 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SubType();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(instance2.colors); &lt;span class=&quot;comment&quot;&gt;//&quot;red,blue,green&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;优点&lt;/strong&gt;：传递参数&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SuperType&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;name&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name = name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SubType&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//继承了 SuperType，同时还传递了参数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	SuperType.call(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Nicholas&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//实例属性&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.age = &lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; instance = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SubType();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(instance.name); &lt;span class=&quot;comment&quot;&gt;//&quot;Nicholas&quot;;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(instance.age); &lt;span class=&quot;comment&quot;&gt;//29&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：方法在构造函数中定义，没法复用。&lt;/p&gt;
+&lt;h4 id=&quot;2-3-组合继承&quot;&gt;&lt;a href=&quot;#2-3-组合继承&quot; class=&quot;headerlink&quot; title=&quot;2.3 组合继承&quot;&gt;&lt;/a&gt;2.3 组合继承&lt;/h4&gt;&lt;p&gt;将原型链和借用构造函数技术组合使用。&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SuperType&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;name&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name = name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.colors = [&lt;span class=&quot;string&quot;&gt;&quot;red&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;blue&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;green&quot;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SuperType.prototype.sayName = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	alert(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SubType&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;name, age&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//继承属性&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	SuperType.call(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;, name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.age = age;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//继承方法&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SubType.prototype = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SuperType();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SubType.prototype.constructor = SubType; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SubType.prototype.sayAge = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	alert(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.age);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; instance1 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SubType(&lt;span class=&quot;string&quot;&gt;&quot;Nicholas&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;instance1.colors.push(&lt;span class=&quot;string&quot;&gt;&quot;black&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(instance1.colors); &lt;span class=&quot;comment&quot;&gt;//&quot;red,blue,green,black&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;instance1.sayName(); &lt;span class=&quot;comment&quot;&gt;//&quot;Nicholas&quot;;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;instance1.sayAge(); &lt;span class=&quot;comment&quot;&gt;//29&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; instance2 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SubType(&lt;span class=&quot;string&quot;&gt;&quot;Greg&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;27&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(instance2.colors); &lt;span class=&quot;comment&quot;&gt;//&quot;red,blue,green&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;instance2.sayName(); &lt;span class=&quot;comment&quot;&gt;//&quot;Greg&quot;;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;instance2.sayAge(); &lt;span class=&quot;comment&quot;&gt;//27&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;注：由于父类原型对象的constructor指针指向了父类构造函数，所以要显示地改成子类的构造函数&lt;/p&gt;
+&lt;h3 id=&quot;3-几个概念&quot;&gt;&lt;a href=&quot;#3-几个概念&quot; class=&quot;headerlink&quot; title=&quot;3. 几个概念&quot;&gt;&lt;/a&gt;&lt;strong&gt;3. 几个概念&lt;/strong&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;每个函数都有prototype属性。&lt;/li&gt;
 &lt;li&gt;原型对象有constructor属性，默认指向原型对象的构造函数。&lt;/li&gt;
 &lt;li&gt;实例对象和构造函数都有instanceof属性，判断继承自哪个类型。&lt;/li&gt;
@@ -323,8 +175,7 @@ instance2.sayAge(); //27
     
     <summary type="html">
     
-      &lt;hr&gt;
-&lt;h2 id=&quot;title-JS学习笔记-（9-20）&quot;&gt;&lt;a href=&quot;#title-JS学习笔记-（9-20）&quot; class=&quot;headerlink&quot; title=&quot;title: JS学习笔记 （9.20）&quot;&gt;&lt;/a&gt;title: JS学习笔记 （9.20）&lt;/h
+      &lt;h3 id=&quot;1-创建对象&quot;&gt;&lt;a href=&quot;#1-创建对象&quot; class=&quot;headerlink&quot; title=&quot;1. 创建对象&quot;&gt;&lt;/a&gt;&lt;strong&gt;1. 创建对象&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;1-1-工厂模式&quot;&gt;&lt;a href=&quot;#1-1-工厂模式&quot; 
     
     </summary>
     
@@ -332,30 +183,13 @@ instance2.sayAge(); //27
   </entry>
   
   <entry>
-    <title></title>
-    <link href="http://yoursite.com/2016/09/19/haoling/"/>
-    <id>http://yoursite.com/2016/09/19/haoling/</id>
-    <published>2016-09-19T10:13:32.317Z</published>
-    <updated>2016-09-19T10:13:32.317Z</updated>
-    
-    <content type="html"></content>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
+    <title>CSS学习笔记 （9.18）</title>
     <link href="http://yoursite.com/2016/09/18/0918CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://yoursite.com/2016/09/18/0918CSS学习笔记/</id>
     <published>2016-09-18T15:11:14.525Z</published>
-    <updated>2016-09-19T12:44:41.755Z</updated>
+    <updated>2016-09-20T14:51:21.275Z</updated>
     
-    <content type="html">&lt;hr&gt;
-&lt;h2 id=&quot;title-CSS学习笔记-（9-18）&quot;&gt;&lt;a href=&quot;#title-CSS学习笔记-（9-18）&quot; class=&quot;headerlink&quot; title=&quot;title: CSS学习笔记 （9.18）&quot;&gt;&lt;/a&gt;title: CSS学习笔记 （9.18）&lt;/h2&gt;&lt;h3 id=&quot;box-sizing&quot;&gt;&lt;a href=&quot;#box-sizing&quot; class=&quot;headerlink&quot; title=&quot;box-sizing&quot;&gt;&lt;/a&gt;&lt;strong&gt;box-sizing&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;CSS元素的盒模型：&lt;/p&gt;
+    <content type="html">&lt;h3 id=&quot;1-box-sizing&quot;&gt;&lt;a href=&quot;#1-box-sizing&quot; class=&quot;headerlink&quot; title=&quot;1. box-sizing&quot;&gt;&lt;/a&gt;&lt;strong&gt;1. box-sizing&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;CSS元素的盒模型：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/DE9pTLZ.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;box-sizing有以下属性值：&lt;/p&gt;
 &lt;ul&gt;
@@ -363,60 +197,34 @@ instance2.sayAge(); //27
 &lt;li&gt;border-box：宽度和高度分别应用到元素的边框。也就是内容框的宽度和高度要减去border和padding的宽度。&lt;/li&gt;
 &lt;li&gt;inherit：继承父元素的box-sizing属性。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&quot;float&quot;&gt;&lt;a href=&quot;#float&quot; class=&quot;headerlink&quot; title=&quot;float&quot;&gt;&lt;/a&gt;&lt;strong&gt;float&lt;/strong&gt;&lt;/h4&gt;&lt;p&gt;float可以实现文字环绕图片。float的元素相当于在文档流里是不占空间的。设置为float的元素相当于脱离了文档流，飘出来，比如设置&lt;code&gt;float:left&lt;/code&gt;如果原先没有元素float，那么这个元素就会飘到最左边。如果之前有元素float,那么会紧贴那个元素float。bootstrap里的col-md-x系列就是用float实现的。最简单的实现可以如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;.col-md-6 {
-    float:left;
-    width:50%;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;对应的html如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;div class = &amp;quot;col-md-6&amp;quot;&amp;gt; 1 &amp;lt;/div&amp;gt;
-&amp;lt;div class = &amp;quot;col-md-6&amp;quot;&amp;gt; 2 &amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;float有以下属性值：&lt;/p&gt;
+&lt;h3 id=&quot;2-float&quot;&gt;&lt;a href=&quot;#2-float&quot; class=&quot;headerlink&quot; title=&quot;2. float&quot;&gt;&lt;/a&gt;&lt;strong&gt;2. float&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;float可以实现文字环绕图片。float的元素相当于在文档流里是不占空间的。设置为float的元素相当于脱离了文档流，飘出来，比如设置&lt;code&gt;float:left&lt;/code&gt;如果原先没有元素float，那么这个元素就会飘到最左边。如果之前有元素float,那么会紧贴那个元素float。bootstrap里的col-md-x系列就是用float实现的。最简单的实现可以如下：&lt;br&gt;&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.col-md-6&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;attribute&quot;&gt;float&lt;/span&gt;:left;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;50%&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;对应的html如下：&lt;br&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt; = &quot;&lt;span class=&quot;attr&quot;&gt;col-md-6&lt;/span&gt;&quot;&amp;gt;&lt;/span&gt; 1 &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt; = &quot;&lt;span class=&quot;attr&quot;&gt;col-md-6&lt;/span&gt;&quot;&amp;gt;&lt;/span&gt; 2 &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;float有以下属性值：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;left：元素向左浮动&lt;/li&gt;
 &lt;li&gt;right：元素向右浮动&lt;/li&gt;
 &lt;li&gt;none：&lt;strong&gt;默认值&lt;/strong&gt;，不浮动&lt;/li&gt;
 &lt;li&gt;inherit：从父元素继承float属性的值&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&quot;clear&quot;&gt;&lt;a href=&quot;#clear&quot; class=&quot;headerlink&quot; title=&quot;clear&quot;&gt;&lt;/a&gt;&lt;strong&gt;clear&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;clear用于清楚浮动。清楚受浮动影响的其他元素的包围效果。&lt;br&gt;这篇写得很好：&lt;a href=&quot;http://zh.learnlayout.com/clear.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://zh.learnlayout.com/clear.html&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;...&amp;lt;/div&amp;gt;
-&amp;lt;section&amp;gt;...&amp;lt;/section&amp;gt;
-
-.box {
-  float: left;
-  width: 200px;
-  height: 100px;
-  margin: 1em;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;此时的效果是：&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/AiNttPW.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;清楚浮动之后：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;.box {
-  float: left;
-  width: 200px;
-  height: 100px;
-  margin: 1em;
-}
-.after-box {
-  clear: left;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;效果是：&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/7ut3Dn8.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;position&quot;&gt;&lt;a href=&quot;#position&quot; class=&quot;headerlink&quot; title=&quot;position&quot;&gt;&lt;/a&gt;&lt;strong&gt;position&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;position属性的属性值：&lt;/p&gt;
+&lt;h3 id=&quot;clear&quot;&gt;&lt;a href=&quot;#clear&quot; class=&quot;headerlink&quot; title=&quot;clear&quot;&gt;&lt;/a&gt;&lt;strong&gt;clear&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;clear用于清楚浮动。清楚受浮动影响的其他元素的包围效果。&lt;br&gt;这篇写得很好：&lt;a href=&quot;http://zh.learnlayout.com/clear.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://zh.learnlayout.com/clear.html&lt;/a&gt;&lt;br&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;box&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;...&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;section&lt;/span&gt;&amp;gt;&lt;/span&gt;...&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;section&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.box&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;float&lt;/span&gt;: left;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;200px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;margin&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;1em&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;此时的效果是：&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/AiNttPW.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;清楚浮动之后：&lt;br&gt;&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.box&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;float&lt;/span&gt;: left;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;200px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;margin&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;1em&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.after-box&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;clear&lt;/span&gt;: left;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;效果是：&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/7ut3Dn8.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;3-position&quot;&gt;&lt;a href=&quot;#3-position&quot; class=&quot;headerlink&quot; title=&quot;3. position&quot;&gt;&lt;/a&gt;&lt;strong&gt;3. position&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;position属性的属性值：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;static：&lt;strong&gt;默认值&lt;/strong&gt;。设置为static表示不会被positioned。就固定在它的默认位置，之后设置的额外属性，如top, right, left, bottom都没有用。&lt;/li&gt;
 &lt;li&gt;relative：relative表现的和static一样，除非添加了额外属性top, right, left, bottom来调整&lt;strong&gt;使其偏离正常位置&lt;/strong&gt;。其他元素不会调整位置来弥补它偏离后剩下的空隙。&lt;/li&gt;
 &lt;li&gt;absolute：相对于最近的positioned祖先元素定位，如果没有positioned的祖先元素（即属性不是static的元素），那就是相对于body元素。（&lt;strong&gt;相对父元素定位&lt;/strong&gt;）&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;fixed：相对视窗固定定位，即便页面滚动，它还是会停留在相同的位置。和 relative 一样， top, right, bottom 和 left 属性都可用。如：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;.fixed {
-    position:fixed;
-    bottom:0;
-    right:0;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;则使用了fixed这个class的元素就固定在页面的右下角。&lt;/p&gt;
+&lt;li&gt;fixed：相对视窗固定定位，即便页面滚动，它还是会停留在相同的位置。和 relative 一样， top, right, bottom 和 left 属性都可用。如：&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.fixed&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;attribute&quot;&gt;position&lt;/span&gt;:fixed;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;attribute&quot;&gt;bottom&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;attribute&quot;&gt;right&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;则使用了fixed这个class的元素就固定在页面的右下角。&lt;/p&gt;
+&lt;ul&gt;
 &lt;li&gt;inherit&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;这篇写得很好：&lt;a href=&quot;http://zh.learnlayout.com/position.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://zh.learnlayout.com/position.html&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;display&quot;&gt;&lt;a href=&quot;#display&quot; class=&quot;headerlink&quot; title=&quot;display&quot;&gt;&lt;/a&gt;&lt;strong&gt;display&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;每个元素都有一个默认的 display 值，这与元素的类型有关。对于大多数元素它们的默认值通常是 block 或 inline 。&lt;/p&gt;
+&lt;h3 id=&quot;4-display&quot;&gt;&lt;a href=&quot;#4-display&quot; class=&quot;headerlink&quot; title=&quot;4. display&quot;&gt;&lt;/a&gt;&lt;strong&gt;4. display&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;每个元素都有一个默认的 display 值，这与元素的类型有关。对于大多数元素它们的默认值通常是 block 或 inline 。&lt;/p&gt;
 &lt;p&gt;常见的块级元素（属性值为block）：&lt;br&gt;div, p, form, header, footer, section等。&lt;/p&gt;
 &lt;p&gt;常见的行内元素有（属性值为inline）：span, a&lt;/p&gt;
 &lt;p&gt;属性值为none的元素：如script元素。&lt;br&gt;display设为none和visibility不同，&lt;br&gt;把 display 设置成 none 不会保留元素本该显示的空间，但是 visibility: hidden; 还会保留。&lt;/p&gt;
@@ -425,16 +233,11 @@ instance2.sayAge(); //27
 &lt;li&gt;block&lt;/li&gt;
 &lt;li&gt;inline：可以把&lt;code&gt;&amp;lt;li&amp;gt;&lt;/code&gt;元素的display属性值设为inline,就可以做水平菜单。&lt;/li&gt;
 &lt;li&gt;none&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;inline-block：可以使用inline-box来创建行内块。不必用float来创建行内一块块的分区。可以多个块放在同一行。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;.box2 {
-  display: inline-block;
-  width: 200px;
-  height: 100px;
-  margin: 1em;
-}
-
-&amp;lt;div class = &amp;quot;box2&amp;quot;&amp;gt;行内块&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;inline-block：可以使用inline-box来创建行内块。不必用float来创建行内一块块的分区。可以多个块放在同一行。&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.box2&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;display&lt;/span&gt;: inline-block;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;200px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;margin&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;1em&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt; = &quot;&lt;span class=&quot;attr&quot;&gt;box2&lt;/span&gt;&quot;&amp;gt;&lt;/span&gt;行内块&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
 &lt;li&gt;inline-block：&lt;a href=&quot;http://zh.learnlayout.com/inline-block-layout.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://zh.learnlayout.com/inline-block-layout.html&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;flex：采用flex方式布局。例子如：&lt;a href=&quot;http://zh.learnlayout.com/flexbox.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://zh.learnlayout.com/flexbox.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -442,8 +245,7 @@ instance2.sayAge(); //27
     
     <summary type="html">
     
-      &lt;hr&gt;
-&lt;h2 id=&quot;title-CSS学习笔记-（9-18）&quot;&gt;&lt;a href=&quot;#title-CSS学习笔记-（9-18）&quot; class=&quot;headerlink&quot; title=&quot;title: CSS学习笔记 （9.18）&quot;&gt;&lt;/a&gt;title: CSS学习笔记 （9.18
+      &lt;h3 id=&quot;1-box-sizing&quot;&gt;&lt;a href=&quot;#1-box-sizing&quot; class=&quot;headerlink&quot; title=&quot;1. box-sizing&quot;&gt;&lt;/a&gt;&lt;strong&gt;1. box-sizing&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;CSS元素的盒模型：&lt;
     
     </summary>
     
@@ -455,157 +257,132 @@ instance2.sayAge(); //27
     <link href="http://yoursite.com/2016/09/18/0917JS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://yoursite.com/2016/09/18/0917JS学习笔记/</id>
     <published>2016-09-18T10:48:13.966Z</published>
-    <updated>2016-09-19T12:44:11.546Z</updated>
+    <updated>2016-09-25T10:17:32.808Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;Array类型的方法&quot;&gt;&lt;a href=&quot;#Array类型的方法&quot; class=&quot;headerlink&quot; title=&quot;Array类型的方法&quot;&gt;&lt;/a&gt;&lt;strong&gt;Array类型的方法&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;转换方法&quot;&gt;&lt;a href=&quot;#转换方法&quot; class=&quot;headerlink&quot; title=&quot;转换方法&quot;&gt;&lt;/a&gt;转换方法&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;* `toString()`：对数组里的每个元素调用toString()，然后用&amp;quot;,&amp;quot;连接数组。 
-* `valueOf()`： 返回原数组
-* `join()`： 接受一个参数，连接数组。
-
-        var colors = [&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;, &amp;quot;green&amp;quot;]; 
-        colors.length = 4; //设置数组长度为4，则第四项(colors[3])为undefined
-         alert(colors.join(&amp;apos;||&amp;apos;) ) // 结果为：red||green||blue||， 因为undefined 的项toString()后的结果是空字符串
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;栈方法&quot;&gt;&lt;a href=&quot;#栈方法&quot; class=&quot;headerlink&quot; title=&quot;栈方法&quot;&gt;&lt;/a&gt;栈方法&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;* `push()`： 返回数组长度
-* `pop()`： 返回最后一个元素
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;队列方法&quot;&gt;&lt;a href=&quot;#队列方法&quot; class=&quot;headerlink&quot; title=&quot;队列方法&quot;&gt;&lt;/a&gt;队列方法&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;* `shift()`： 返回第一个元素
-`var item = colors.shift()`
-* `unshift()`：在数组前端添加任意个项并返回新数组的长度
-
-        var colors = new Array();
-        var count = colors.unshift(&amp;quot;red&amp;quot;, &amp;quot;green&amp;quot;); // colors = [&amp;quot;red&amp;quot;, &amp;quot;green&amp;quot;]
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;重排序方法&quot;&gt;&lt;a href=&quot;#重排序方法&quot; class=&quot;headerlink&quot; title=&quot;重排序方法&quot;&gt;&lt;/a&gt;重排序方法&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;* `reverse()`： 反转数组项的顺序
-* `sort()`： 默认会调用toString()方法转换数组项，然后比较数组元素的大小，从小到大排序。
-
-    可以接受比较函数作为参数，如果第一个参数位于第二个参数之前，返回负数，如果两个参数相等，返回0，如果第一个参数位于第二个参数之后，返回负数。比较函数可如下：
-
-        function compare(value1, value2) {
-            if(value1 &amp;lt; value2) return-1;
-            else if(value1 &amp;gt; value2) return 1;
-            else return 0;
-        }
-        var values = [1,10,5,15];
-        values.sort(compare);
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;操作方法&quot;&gt;&lt;a href=&quot;#操作方法&quot; class=&quot;headerlink&quot; title=&quot;操作方法&quot;&gt;&lt;/a&gt;操作方法&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;* `concat()`：可以基于当前数组中的所有项创建一个新数组，首先创建当前数组的一个副本，然后将接收到的参数添加到这个副本的末尾。如果传递给concat()方法的是一个或多个数组，则该方法会将这些数组中的每一项都添加到结果数组中。所以该方法可以用来**连接两个或多个数组**。
-
-        var a = [1,2,3]; 
-        var b = [3,4];  
-        var c = a.concat(&amp;quot;hi&amp;quot;, b); // c = [1,2,3,&amp;quot;hi&amp;quot;,3,4]          
-
-* `slice()`：能够基于当前数组的一个或多个项创建一个新数组。接收两个参数，要返回项的起始和结束位置（返回的新数组不包括结束位置）。若只有一个参数，则返回从起始位置到当前数末尾的所有项。
-
-        var a = [1,2,3,4,5];
-        var b = a.slice(1); //b = [2,3,4,5] 
-        var c = a.slice(1,4) //c = [2,3,4]
-* `splice()`：用于向数组中部插入项。**返回从原数组中删除的项**。有以下三种用法：
-    * 删除：指定2个参数，要删除的第一项的位置和要删除的项数。
-    * 插入：向指定位置插入任意数量的项。指定3个参数：起始位置，0（要删除的项数为0），要插入的项。
-
-            colors.splice(2,0,&amp;quot;red&amp;quot;,&amp;quot;blue&amp;quot;) // 从位置2开始插入字符串&amp;quot;red&amp;quot;,&amp;quot;blue&amp;quot;
-    * 替换：可以向指定位置插入任意数量的项，且删除任意数量的项。指定3个参数：起始位置，要删除的项数，要插入的项。
-
-            colors.splice(2,1,&amp;quot;red&amp;quot;,&amp;quot;blue&amp;quot;) // 删除位置2的项，然后从位置2开始插入字符串&amp;quot;red&amp;quot;,&amp;quot;blue&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;位置方法&quot;&gt;&lt;a href=&quot;#位置方法&quot; class=&quot;headerlink&quot; title=&quot;位置方法&quot;&gt;&lt;/a&gt;位置方法&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;* `indexOf()`：返回查找的项在数组中的位置，从头开始查找
-* `lastIndexOf()`：同样返回查找的项在数组中的位置，从数组末尾开始查找
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;迭代方法&quot;&gt;&lt;a href=&quot;#迭代方法&quot; class=&quot;headerlink&quot; title=&quot;迭代方法&quot;&gt;&lt;/a&gt;迭代方法&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;都接受一个函数作为传入参数，该函数会接收三个参数，数据项的值，该项在数组中的位置和数组对象本身。
-* `every()`：传入一个函数，对数组中的每一项运行给定函数，每一项都返回true,则最后返回true。
-* `filter()`：传入一个函数，对数组中的每一项运行给定函数，返回函数会返回true的项组成的数组。
-* `forEach()`：传入一个函数，对数组中的每一项运行给定函数，没有返回值。
-`var numbers = [1,2,3,4];`
-`numbers.forEach(function(item, index, array){...})`
-* `map()`：传入一个函数，对数组中的每一项运行给定函数，返回函数调用的结果组成的数组。
-* `some()`：传入一个函数，对数组中的每一项运行给定函数，如果函数对任一项返回true，就返回true。
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;归并方法&quot;&gt;&lt;a href=&quot;#归并方法&quot; class=&quot;headerlink&quot; title=&quot;归并方法&quot;&gt;&lt;/a&gt;归并方法&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;迭代数组中的所有项，构建一个最终返回的值。接受2个参数：在每一项上调用的函数，归并的初始值。传给函数的4个参数：前一个值，当前值，项的索引，数组对象。
-* `reduce()`：从数组第一项开始
-* `reduceRight()`：从数组最后一项开始
-
-        var values = [1,2,3,4,5];
-        var sum = values.reduce(function(prev, cur, index, array){
-            return prev+cur;
-        }); 
-        console.log(sum) //15
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;AJAX&quot;&gt;&lt;a href=&quot;#AJAX&quot; class=&quot;headerlink&quot; title=&quot;AJAX&quot;&gt;&lt;/a&gt;&lt;strong&gt;AJAX&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。&lt;/p&gt;
-&lt;h4 id=&quot;创建XMLHttpRequest对象&quot;&gt;&lt;a href=&quot;#创建XMLHttpRequest对象&quot; class=&quot;headerlink&quot; title=&quot;创建XMLHttpRequest对象&quot;&gt;&lt;/a&gt;创建XMLHttpRequest对象&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;var xmlhttp;
-if (window.XMLHttpRequest)
-  {// code for IE7+, Firefox, Chrome, Opera, Safari
-      xmlhttp=new XMLHttpRequest();
-  }
-else
-  {// code for IE6, IE5
-      xmlhttp=new ActiveXObjec(&amp;quot;Microsoft.XMLHTTP&amp;quot;);
-  }
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;向服务器发送请求&quot;&gt;&lt;a href=&quot;#向服务器发送请求&quot; class=&quot;headerlink&quot; title=&quot;向服务器发送请求&quot;&gt;&lt;/a&gt;向服务器发送请求&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;    xmlhttp.open(&amp;quot;GET&amp;quot;,&amp;quot;demo_get2.asp?fname=Bill&amp;amp;lname=Gates&amp;quot;,true);
-    xmlhttp.send();
-open的三个参数：
-* method:请求使用的方法
-* url：请求的地址
-* async:是否异步，true表示异步，如果异步，则需要加onreadystatechange函数。
-
-        xmlhttp.open(&amp;quot;GET&amp;quot;,&amp;quot;test1.txt&amp;quot;,true);
-        xmlhttp.send();
-        xmlhttp.onreadystatechange=function()
-          {
-              if (xmlhttp.readyState==4 &amp;amp;&amp;amp; xmlhttp.status==200)
-            {
-                document.getElementById(&amp;quot;myDiv&amp;quot;).innerHTML=xmlhttp.responseText;
-            }
-         }
-如果设置为async设置为false,则不需要加onreadystatechange函数。如果没有响应，则挂起应用程序，一般不推荐使用。
-
-        xmlhttp.open(&amp;quot;GET&amp;quot;,&amp;quot;test1.txt&amp;quot;,false);
-        xmlhttp.send();
-        document.getElementById(&amp;quot;myDiv&amp;quot;).innerHTML=xmlhttp.responseText;
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;服务器响应&quot;&gt;&lt;a href=&quot;#服务器响应&quot; class=&quot;headerlink&quot; title=&quot;服务器响应&quot;&gt;&lt;/a&gt;服务器响应&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;* responseText属性：响应的是文本
-* responseXML属性：响应的是XML
-
-        xmlDoc=xmlhttp.responseXML;
-        txt=&amp;quot;&amp;quot;;
-        x=xmlDoc.getElementsByTagName(&amp;quot;ARTIST&amp;quot;);
-        for (i=0;i&amp;lt;x.length;i++)
-          {
-              txt=txt + x[i].childNodes[0].nodeValue + &amp;quot;&amp;lt;br /&amp;gt;&amp;quot;;
-          }
-        document.getElementById(&amp;quot;myDiv&amp;quot;).innerHTML=txt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;XMLHttpRequest对象的重要属性&quot;&gt;&lt;a href=&quot;#XMLHttpRequest对象的重要属性&quot; class=&quot;headerlink&quot; title=&quot;XMLHttpRequest对象的重要属性&quot;&gt;&lt;/a&gt;XMLHttpRequest对象的重要属性&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;* onreadystatechange： 每当 readyState 属性改变时，就会调用该函数
-* readyState
-    * 0: 请求未初始化
-    * 1: 服务器连接已建立
-    * 2: 请求已接收
-    * 3: 请求处理中
-    * 4: 请求已完成，且响应已就绪
-* status：200 = &amp;quot;OK&amp;quot;， 404 = &amp;quot;未找到页面&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;与-的区别&quot;&gt;&lt;a href=&quot;#与-的区别&quot; class=&quot;headerlink&quot; title=&quot;===与==的区别&quot;&gt;&lt;/a&gt;&lt;strong&gt;===与==的区别&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;：-不做类型转换，直接判等&quot;&gt;&lt;a href=&quot;#：-不做类型转换，直接判等&quot; class=&quot;headerlink&quot; title=&quot;===： 不做类型转换，直接判等&quot;&gt;&lt;/a&gt;===： 不做类型转换，直接判等&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;1. 如果类型不同，就[不相等] 
-1. 如果两个都是数值，并且是同一个值，那么[相等]；(！例外)的是，如果其中至少一个是NaN，那么[不相等]。（判断一个值是否是NaN，只能用isNaN()来判断） 
-1. 如果两个都是字符串，每个位置的字符都一样，那么[相等]；否则[不相等]。 
-1. 如果两个值都是true，或者都是false，那么[相等]。 
-1. 如果两个值都引用同一个对象或函数，那么[相等]；否则[不相等]。 
-1. 如果两个值都是null，或者都是undefined，那么[相等]。 
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;：先做类型转换，再判等&quot;&gt;&lt;a href=&quot;#：先做类型转换，再判等&quot; class=&quot;headerlink&quot; title=&quot;==：先做类型转换，再判等&quot;&gt;&lt;/a&gt;==：先做类型转换，再判等&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;1. 如果两个值类型相同，进行 === 比较。 
-1. 如果两个值类型不同，他们可能相等。根据下面规则进行类型转换再比较： 
-    -  如果一个是null、一个是undefined，那么[相等]。 
-    - 如果一个是字符串，一个是数值，把字符串转换成数值再进行比较。 
-    - 如果任一值是 true，把它转换成 1 再比较；如果任一值是 false，把它转换成 0 再比较。 
-    - 如果一个是对象，另一个是数值或字符串，把对象转换成基础类型的值再比较。对象转换成基础类型，利用它的toString或者valueOf方法。 js核心内置类，会尝试valueOf先于toString；例外的是Date，Date利用的是toString转换。非js核心的对象，令说。
-    - 任何其他组合，都[不相等]。 
-
-            var a = 3;
-            var b = &amp;quot;3&amp;quot;;
-            alert(a==b) //true，类型不同，会把字符串转化为数字
-            alert(a===b) //false 
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;正则&quot;&gt;&lt;a href=&quot;#正则&quot; class=&quot;headerlink&quot; title=&quot;正则&quot;&gt;&lt;/a&gt;&lt;strong&gt;正则&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;pattern：-regExpr-flag&quot;&gt;&lt;a href=&quot;#pattern：-regExpr-flag&quot; class=&quot;headerlink&quot; title=&quot;pattern：/regExpr/flag&quot;&gt;&lt;/a&gt;pattern：/regExpr/flag&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;* flag：
-    * g：全局模式，发现第一个匹配串后依然继续匹配。
-    * i：不区分大小写模式。
-    * m：多行模式，到达一行文本末尾后依然匹配下一行。
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;String的match-方法和RegExp的exec-方法基本相同。&quot;&gt;&lt;a href=&quot;#String的match-方法和RegExp的exec-方法基本相同。&quot; class=&quot;headerlink&quot; title=&quot;String的match()方法和RegExp的exec()方法基本相同。&quot;&gt;&lt;/a&gt;String的match()方法和RegExp的exec()方法基本相同。&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;var text = &amp;quot;cat, bat, sat, fat&amp;quot;;
-var pattern = /.at/;
-//与pattern.exec(text)结果相同，但如果pattern=/.at/g,那么两者得到的matches会有所不同
-var matches = text.match(pattern);
-alert(matches.index); //0
-alert(matches); //[&amp;quot;cat&amp;quot;]
-alert(pattern.lastIndex); //0
-&lt;/code&gt;&lt;/pre&gt;</content>
+    <content type="html">&lt;h3 id=&quot;1-Array类型的方法&quot;&gt;&lt;a href=&quot;#1-Array类型的方法&quot; class=&quot;headerlink&quot; title=&quot;1. Array类型的方法&quot;&gt;&lt;/a&gt;&lt;strong&gt;1. Array类型的方法&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;1-1-转换方法&quot;&gt;&lt;a href=&quot;#1-1-转换方法&quot; class=&quot;headerlink&quot; title=&quot;1.1 转换方法&quot;&gt;&lt;/a&gt;1.1 转换方法&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;toString()&lt;/code&gt;：对数组里的每个元素调用toString()，然后用”,”连接数组。 &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;valueOf()&lt;/code&gt;： 返回原数组。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;join()&lt;/code&gt;： 接受一个参数，连接数组。&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; colors = [&lt;span class=&quot;string&quot;&gt;&quot;red&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;blue&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;green&quot;&lt;/span&gt;]; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;colors.length = &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;//设置数组长度为4，则第四项(colors[3])为undefined&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(colors.join(&lt;span class=&quot;string&quot;&gt;&#39;||&#39;&lt;/span&gt;) ) &lt;span class=&quot;comment&quot;&gt;// 结果为：red||green||blue||， 因为undefined 的项toString()后的结果是空字符串&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;1-2-栈方法&quot;&gt;&lt;a href=&quot;#1-2-栈方法&quot; class=&quot;headerlink&quot; title=&quot;1.2 栈方法&quot;&gt;&lt;/a&gt;1.2 栈方法&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;push()&lt;/code&gt;： 返回数组长度&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pop()&lt;/code&gt;： 返回最后一个元素&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;1-3-队列方法&quot;&gt;&lt;a href=&quot;#1-3-队列方法&quot; class=&quot;headerlink&quot; title=&quot;1.3 队列方法&quot;&gt;&lt;/a&gt;1.3 队列方法&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;shift()&lt;/code&gt;： 返回第一个元素&lt;br&gt;&lt;code&gt;var item = colors.shift()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;unshift()&lt;/code&gt;：在数组前端添加任意个项并返回新数组的长度&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; colors = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Array&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; count = colors.unshift(&lt;span class=&quot;string&quot;&gt;&quot;red&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;green&quot;&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;// colors = [&quot;red&quot;, &quot;green&quot;]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;1-4-重排序方法&quot;&gt;&lt;a href=&quot;#1-4-重排序方法&quot; class=&quot;headerlink&quot; title=&quot;1.4 重排序方法&quot;&gt;&lt;/a&gt;1.4 重排序方法&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;reverse()&lt;/code&gt;： 反转数组项的顺序&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;sort()&lt;/code&gt;： 默认会调用toString()方法转换数组项，然后比较数组元素的大小，从小到大排序。&lt;/p&gt;
+&lt;p&gt;  可以接受比较函数作为参数，如果第一个参数位于第二个参数之前，返回负数，如果两个参数相等，返回0，如果第一个参数位于第二个参数之后，返回负数。比较函数可如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;compare&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;value1, value2&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(value1 &amp;lt; value2) &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(value1 &amp;gt; value2) &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; values = [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;values.sort(compare);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;1-5-操作方法&quot;&gt;&lt;a href=&quot;#1-5-操作方法&quot; class=&quot;headerlink&quot; title=&quot;1.5 操作方法&quot;&gt;&lt;/a&gt;1.5 操作方法&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;concat()&lt;/code&gt;：可以基于当前数组中的所有项创建一个新数组，首先创建当前数组的一个副本，然后将接收到的参数添加到这个副本的末尾。如果传递给concat()方法的是一个或多个数组，则该方法会将这些数组中的每一项都添加到结果数组中。所以该方法可以用来&lt;strong&gt;连接两个或多个数组&lt;/strong&gt;。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; a = [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;]; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; b = [&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;];  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; c = a.concat(&lt;span class=&quot;string&quot;&gt;&quot;hi&quot;&lt;/span&gt;, b); &lt;span class=&quot;comment&quot;&gt;// c = [1,2,3,&quot;hi&quot;,3,4]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;slice()&lt;/code&gt;：能够基于当前数组的一个或多个项创建一个新数组。接收两个参数，要返回项的起始和结束位置（返回的新数组不包括结束位置）。若只有一个参数，则返回从起始位置到当前数末尾的所有项。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; a = [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; b = a.slice(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;//b = [2,3,4,5] &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; c = a.slice(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;//c = [2,3,4]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;splice()&lt;/code&gt;：用于向数组中部插入项。&lt;strong&gt;返回从原数组中删除的项&lt;/strong&gt;。有以下三种用法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;删除：指定2个参数，要删除的第一项的位置和要删除的项数。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;插入：向指定位置插入任意数量的项。指定3个参数：起始位置，0（要删除的项数为0），要插入的项。    &lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;colors.splice(&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;red&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;blue&quot;&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;// 从位置2开始插入字符串&quot;red&quot;,&quot;blue&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;替换：可以向指定位置插入任意数量的项，且删除任意数量的项。指定3个参数：起始位置，要删除的项数，要插入的项。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;colors.splice(&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;red&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;blue&quot;&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;// 删除位置2的项，然后从位置2开始插入字符串&quot;red&quot;,&quot;blue&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;1-6-位置方法&quot;&gt;&lt;a href=&quot;#1-6-位置方法&quot; class=&quot;headerlink&quot; title=&quot;1.6 位置方法&quot;&gt;&lt;/a&gt;1.6 位置方法&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;indexOf()&lt;/code&gt;：返回查找的项在数组中的位置，从头开始查找&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lastIndexOf()&lt;/code&gt;：同样返回查找的项在数组中的位置，从数组末尾开始查找&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;1-7-迭代方法&quot;&gt;&lt;a href=&quot;#1-7-迭代方法&quot; class=&quot;headerlink&quot; title=&quot;1.7 迭代方法&quot;&gt;&lt;/a&gt;1.7 迭代方法&lt;/h4&gt;&lt;p&gt;都接受一个函数作为传入参数，该函数会接收三个参数，数据项的值，该项在数组中的位置和数组对象本身。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;every()&lt;/code&gt;：传入一个函数，对数组中的每一项运行给定函数，每一项都返回true,则最后返回true。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;filter()&lt;/code&gt;：传入一个函数，对数组中的每一项运行给定函数，返回函数会返回true的项组成的数组。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;forEach()&lt;/code&gt;：传入一个函数，对数组中的每一项运行给定函数，没有返回值。&lt;br&gt;  &lt;code&gt;var numbers = [1,2,3,4];&lt;/code&gt;&lt;br&gt;  &lt;code&gt;numbers.forEach(function(item, index, array){...})&lt;/code&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;map()&lt;/code&gt;：传入一个函数，对数组中的每一项运行给定函数，返回函数调用的结果组成的数组。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;some()&lt;/code&gt;：传入一个函数，对数组中的每一项运行给定函数，如果函数对任一项返回true，就返回true。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;1-8-归并方法&quot;&gt;&lt;a href=&quot;#1-8-归并方法&quot; class=&quot;headerlink&quot; title=&quot;1.8 归并方法&quot;&gt;&lt;/a&gt;1.8 归并方法&lt;/h4&gt;&lt;p&gt;迭代数组中的所有项，构建一个最终返回的值。接受2个参数：在每一项上调用的函数，归并的初始值。传给函数的4个参数：前一个值，当前值，项的索引，数组对象。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;reduce()&lt;/code&gt;：从数组第一项开始&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;reduceRight()&lt;/code&gt;：从数组最后一项开始&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var values = [1,2,3,4,5];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var sum = values.reduce(function(prev, cur, index, array)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		return prev+cur;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;console.log(sum) //15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2-AJAX&quot;&gt;&lt;a href=&quot;#2-AJAX&quot; class=&quot;headerlink&quot; title=&quot;2. AJAX&quot;&gt;&lt;/a&gt;&lt;strong&gt;2. AJAX&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。&lt;/p&gt;
+&lt;h4 id=&quot;2-1-创建XMLHttpRequest对象&quot;&gt;&lt;a href=&quot;#2-1-创建XMLHttpRequest对象&quot; class=&quot;headerlink&quot; title=&quot;2.1 创建XMLHttpRequest对象&quot;&gt;&lt;/a&gt;2.1 创建XMLHttpRequest对象&lt;/h4&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; xmlhttp;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt;.XMLHttpRequest)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;span class=&quot;comment&quot;&gt;// code for IE7+, Firefox, Chrome, Opera, Safari&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 xmlhttp=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; XMLHttpRequest();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;span class=&quot;comment&quot;&gt;// code for IE6, IE5&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	xmlhttp=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ActiveXObjec(&lt;span class=&quot;string&quot;&gt;&quot;Microsoft.XMLHTTP&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;2-2-向服务器发送请求&quot;&gt;&lt;a href=&quot;#2-2-向服务器发送请求&quot; class=&quot;headerlink&quot; title=&quot;2.2 向服务器发送请求&quot;&gt;&lt;/a&gt;2.2 向服务器发送请求&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;xmlhttp.open(&amp;quot;GET&amp;quot;,&amp;quot;demo_get2.asp?fname=Bill&amp;amp;lname=Gates&amp;quot;,true);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;xmlhttp.send();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;open的三个参数：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;method:请求使用的方法&lt;/li&gt;
+&lt;li&gt;url：请求的地址&lt;/li&gt;
+&lt;li&gt;async:是否异步，true表示异步，如果异步，则需要加onreadystatechange函数。&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;xmlhttp.open(&lt;span class=&quot;string&quot;&gt;&quot;GET&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;test1.txt&quot;&lt;/span&gt;,&lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;xmlhttp.send();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;xmlhttp.onreadystatechange=&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (xmlhttp.readyState==&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt; &amp;amp;&amp;amp; xmlhttp.status==&lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.getElementById(&lt;span class=&quot;string&quot;&gt;&quot;myDiv&quot;&lt;/span&gt;).innerHTML=xmlhttp.responseText;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果设置为async设置为false,则不需要加onreadystatechange函数。如果没有响应，则挂起应用程序，一般不推荐使用。&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;xmlhttp.open(&lt;span class=&quot;string&quot;&gt;&quot;GET&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;test1.txt&quot;&lt;/span&gt;,&lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;xmlhttp.send();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.getElementById(&lt;span class=&quot;string&quot;&gt;&quot;myDiv&quot;&lt;/span&gt;).innerHTML=xmlhttp.responseText;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h4 id=&quot;2-3-服务器响应&quot;&gt;&lt;a href=&quot;#2-3-服务器响应&quot; class=&quot;headerlink&quot; title=&quot;2.3 服务器响应&quot;&gt;&lt;/a&gt;2.3 服务器响应&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;responseText属性：响应的是文本&lt;/li&gt;
+&lt;li&gt;responseXML属性：响应的是XML&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;xmlDoc=xmlhttp.responseXML;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;txt=&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;x=xmlDoc.getElementsByTagName(&lt;span class=&quot;string&quot;&gt;&quot;ARTIST&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (i=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;i&amp;lt;x.length;i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	txt=txt + x[i].childNodes[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;].nodeValue + &lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br /&amp;gt;&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.getElementById(&lt;span class=&quot;string&quot;&gt;&quot;myDiv&quot;&lt;/span&gt;).innerHTML=txt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;2-4XMLHttpRequest对象的重要属性&quot;&gt;&lt;a href=&quot;#2-4XMLHttpRequest对象的重要属性&quot; class=&quot;headerlink&quot; title=&quot;2.4XMLHttpRequest对象的重要属性&quot;&gt;&lt;/a&gt;2.4XMLHttpRequest对象的重要属性&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;onreadystatechange： 每当 readyState 属性改变时，就会调用该函数&lt;/li&gt;
+&lt;li&gt;readyState&lt;ul&gt;
+&lt;li&gt;0: 请求未初始化&lt;/li&gt;
+&lt;li&gt;1: 服务器连接已建立&lt;/li&gt;
+&lt;li&gt;2: 请求已接收&lt;/li&gt;
+&lt;li&gt;3: 请求处理中&lt;/li&gt;
+&lt;li&gt;4: 请求已完成，且响应已就绪&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;status：200 = “OK”， 404 = “未找到页面”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3-与-的区别&quot;&gt;&lt;a href=&quot;#3-与-的区别&quot; class=&quot;headerlink&quot; title=&quot;3. ===与==的区别&quot;&gt;&lt;/a&gt;&lt;strong&gt;3. ===与==的区别&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;3-1-：-不做类型转换，直接判等&quot;&gt;&lt;a href=&quot;#3-1-：-不做类型转换，直接判等&quot; class=&quot;headerlink&quot; title=&quot;3.1 ===： 不做类型转换，直接判等&quot;&gt;&lt;/a&gt;3.1 ===： 不做类型转换，直接判等&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;如果类型不同，就[不相等] &lt;/li&gt;
+&lt;li&gt;如果两个都是数值，并且是同一个值，那么[相等]；(！例外)的是，如果其中至少一个是NaN，那么[不相等]。（判断一个值是否是NaN，只能用isNaN()来判断） &lt;/li&gt;
+&lt;li&gt;如果两个都是字符串，每个位置的字符都一样，那么[相等]；否则[不相等]。 &lt;/li&gt;
+&lt;li&gt;如果两个值都是true，或者都是false，那么[相等]。 &lt;/li&gt;
+&lt;li&gt;如果两个值都引用同一个对象或函数，那么[相等]；否则[不相等]。 &lt;/li&gt;
+&lt;li&gt;如果两个值都是null，或者都是undefined，那么[相等]。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&quot;3-2-：先做类型转换，再判等&quot;&gt;&lt;a href=&quot;#3-2-：先做类型转换，再判等&quot; class=&quot;headerlink&quot; title=&quot;3.2 ==：先做类型转换，再判等&quot;&gt;&lt;/a&gt;3.2 ==：先做类型转换，再判等&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;如果两个值类型相同，进行 === 比较。 &lt;/li&gt;
+&lt;li&gt;如果两个值类型不同，他们可能相等。根据下面规则进行类型转换再比较： &lt;ul&gt;
+&lt;li&gt;如果一个是null、一个是undefined，那么[相等]。 &lt;/li&gt;
+&lt;li&gt;如果一个是字符串，一个是数值，把字符串转换成数值再进行比较。 &lt;/li&gt;
+&lt;li&gt;如果任一值是 true，把它转换成 1 再比较；如果任一值是 false，把它转换成 0 再比较。 &lt;/li&gt;
+&lt;li&gt;如果一个是对象，另一个是数值或字符串，把对象转换成基础类型的值再比较。对象转换成基础类型，利用它的toString或者valueOf方法。 js核心内置类，会尝试valueOf先于toString；例外的是Date，Date利用的是toString转换。非js核心的对象，令说。&lt;/li&gt;
+&lt;li&gt;任何其他组合，都[不相等]。 &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; a = &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; b = &lt;span class=&quot;string&quot;&gt;&quot;3&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(a==b) &lt;span class=&quot;comment&quot;&gt;//true，类型不同，会把字符串转化为数字&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(a===b) &lt;span class=&quot;comment&quot;&gt;//false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;4-正则&quot;&gt;&lt;a href=&quot;#4-正则&quot; class=&quot;headerlink&quot; title=&quot;4. 正则&quot;&gt;&lt;/a&gt;&lt;strong&gt;4. 正则&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;4-1-正则表达式形式&quot;&gt;&lt;a href=&quot;#4-1-正则表达式形式&quot; class=&quot;headerlink&quot; title=&quot;4.1 正则表达式形式&quot;&gt;&lt;/a&gt;4.1 正则表达式形式&lt;/h4&gt;&lt;p&gt;/regExpr/flag&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;flag：&lt;ul&gt;
+&lt;li&gt;g：全局模式，发现第一个匹配串后依然继续匹配。&lt;/li&gt;
+&lt;li&gt;i：不区分大小写模式。&lt;/li&gt;
+&lt;li&gt;m：多行模式，到达一行文本末尾后依然匹配下一行。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;4-2-String的match-和RegExp的exec&quot;&gt;&lt;a href=&quot;#4-2-String的match-和RegExp的exec&quot; class=&quot;headerlink&quot; title=&quot;4.2 String的match()和RegExp的exec()&quot;&gt;&lt;/a&gt;4.2 String的match()和RegExp的exec()&lt;/h4&gt;&lt;p&gt;String的match()方法和RegExp的exec()方法基本相同。&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; text = &lt;span class=&quot;string&quot;&gt;&quot;cat, bat, sat, fat&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; pattern = &lt;span class=&quot;regexp&quot;&gt;/.at/&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//与pattern.exec(text)结果相同，但如果pattern=/.at/g,那么两者得到的matches会有所不同&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; matches = text.match(pattern);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(matches.index); &lt;span class=&quot;comment&quot;&gt;//0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(matches); &lt;span class=&quot;comment&quot;&gt;//[&quot;cat&quot;]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(pattern.lastIndex); &lt;span class=&quot;comment&quot;&gt;//0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+</content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;Array类型的方法&quot;&gt;&lt;a href=&quot;#Array类型的方法&quot; class=&quot;headerlink&quot; title=&quot;Array类型的方法&quot;&gt;&lt;/a&gt;&lt;strong&gt;Array类型的方法&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;转换方法&quot;&gt;&lt;a href=&quot;#
+      &lt;h3 id=&quot;1-Array类型的方法&quot;&gt;&lt;a href=&quot;#1-Array类型的方法&quot; class=&quot;headerlink&quot; title=&quot;1. Array类型的方法&quot;&gt;&lt;/a&gt;&lt;strong&gt;1. Array类型的方法&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;1-1-转换
     
     </summary>
     
